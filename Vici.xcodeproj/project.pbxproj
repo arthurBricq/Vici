@@ -17,7 +17,6 @@
 		4ED292502437B423004FA1FD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2924F2437B423004FA1FD /* ListViewController.swift */; };
 		4ED292522437B42A004FA1FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292512437B42A004FA1FD /* SettingsViewController.swift */; };
 		4ED292542437B44D004FA1FD /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292532437B44D004FA1FD /* CompanyViewController.swift */; };
-		4ED292562437B707004FA1FD /* CustomTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292552437B707004FA1FD /* CustomTabController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		4ED2924F2437B423004FA1FD /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4ED292512437B42A004FA1FD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4ED292532437B44D004FA1FD /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
-		4ED292552437B707004FA1FD /* CustomTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +83,6 @@
 				4ED2924F2437B423004FA1FD /* ListViewController.swift */,
 				4ED292512437B42A004FA1FD /* SettingsViewController.swift */,
 				4ED292532437B44D004FA1FD /* CompanyViewController.swift */,
-				4ED292552437B707004FA1FD /* CustomTabController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -163,7 +160,6 @@
 			files = (
 				4ED292402437B088004FA1FD /* Vici.xcdatamodeld in Sources */,
 				4ED292362437B088004FA1FD /* AppDelegate.swift in Sources */,
-				4ED292562437B707004FA1FD /* CustomTabController.swift in Sources */,
 				4ED292382437B088004FA1FD /* SceneDelegate.swift in Sources */,
 				4ED292502437B423004FA1FD /* ListViewController.swift in Sources */,
 				4ED2924E2437B419004FA1FD /* MapViewController.swift in Sources */,
