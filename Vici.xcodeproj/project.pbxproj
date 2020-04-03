@@ -9,23 +9,31 @@
 /* Begin PBXBuildFile section */
 		4ED292362437B088004FA1FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292352437B088004FA1FD /* AppDelegate.swift */; };
 		4ED292382437B088004FA1FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292372437B088004FA1FD /* SceneDelegate.swift */; };
-		4ED2923A2437B088004FA1FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292392437B088004FA1FD /* ViewController.swift */; };
 		4ED2923D2437B088004FA1FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED2923B2437B088004FA1FD /* Main.storyboard */; };
 		4ED292402437B088004FA1FD /* Vici.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2923E2437B088004FA1FD /* Vici.xcdatamodeld */; };
 		4ED292422437B08A004FA1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED292412437B08A004FA1FD /* Assets.xcassets */; };
 		4ED292452437B08A004FA1FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED292432437B08A004FA1FD /* LaunchScreen.storyboard */; };
+		4ED2924E2437B419004FA1FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2924D2437B419004FA1FD /* MapViewController.swift */; };
+		4ED292502437B423004FA1FD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2924F2437B423004FA1FD /* ListViewController.swift */; };
+		4ED292522437B42A004FA1FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292512437B42A004FA1FD /* SettingsViewController.swift */; };
+		4ED292542437B44D004FA1FD /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292532437B44D004FA1FD /* CompanyViewController.swift */; };
+		4ED292562437B707004FA1FD /* CustomTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292552437B707004FA1FD /* CustomTabController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4ED292322437B088004FA1FD /* Vici.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vici.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED292352437B088004FA1FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ED292372437B088004FA1FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4ED292392437B088004FA1FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4ED2923C2437B088004FA1FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4ED2923F2437B088004FA1FD /* Vici.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vici.xcdatamodel; sourceTree = "<group>"; };
 		4ED292412437B08A004FA1FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ED292442437B08A004FA1FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4ED292462437B08A004FA1FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ED2924D2437B419004FA1FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4ED2924F2437B423004FA1FD /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		4ED292512437B42A004FA1FD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4ED292532437B44D004FA1FD /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
+		4ED292552437B707004FA1FD /* CustomTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +68,7 @@
 			children = (
 				4ED292352437B088004FA1FD /* AppDelegate.swift */,
 				4ED292372437B088004FA1FD /* SceneDelegate.swift */,
-				4ED292392437B088004FA1FD /* ViewController.swift */,
+				4ED2924C2437B3FD004FA1FD /* ViewControllers */,
 				4ED2923B2437B088004FA1FD /* Main.storyboard */,
 				4ED292412437B08A004FA1FD /* Assets.xcassets */,
 				4ED292432437B08A004FA1FD /* LaunchScreen.storyboard */,
@@ -68,6 +76,18 @@
 				4ED2923E2437B088004FA1FD /* Vici.xcdatamodeld */,
 			);
 			path = Vici;
+			sourceTree = "<group>";
+		};
+		4ED2924C2437B3FD004FA1FD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4ED2924D2437B419004FA1FD /* MapViewController.swift */,
+				4ED2924F2437B423004FA1FD /* ListViewController.swift */,
+				4ED292512437B42A004FA1FD /* SettingsViewController.swift */,
+				4ED292532437B44D004FA1FD /* CompanyViewController.swift */,
+				4ED292552437B707004FA1FD /* CustomTabController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,9 +162,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ED292402437B088004FA1FD /* Vici.xcdatamodeld in Sources */,
-				4ED2923A2437B088004FA1FD /* ViewController.swift in Sources */,
 				4ED292362437B088004FA1FD /* AppDelegate.swift in Sources */,
+				4ED292562437B707004FA1FD /* CustomTabController.swift in Sources */,
 				4ED292382437B088004FA1FD /* SceneDelegate.swift in Sources */,
+				4ED292502437B423004FA1FD /* ListViewController.swift in Sources */,
+				4ED2924E2437B419004FA1FD /* MapViewController.swift in Sources */,
+				4ED292542437B44D004FA1FD /* CompanyViewController.swift in Sources */,
+				4ED292522437B42A004FA1FD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
