@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--List View Controller-->
         <scene sceneID="ngK-gy-DJr">
             <objects>
-                <viewController id="lfz-cL-rNl" sceneMemberID="viewController">
+                <viewController id="lfz-cL-rNl" customClass="ListViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="alK-W0-Keh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="-7" y="2386"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorite View Controller-->
         <scene sceneID="n7W-7i-U0G">
             <objects>
-                <viewController id="fFY-iT-MNv" sceneMemberID="viewController">
+                <viewController id="fFY-iT-MNv" customClass="FavoriteViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rBS-Yn-pZ3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,17 +111,32 @@
             </objects>
             <point key="canvasLocation" x="1136" y="1343"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="pMM-pA-ZeV">
             <objects>
-                <viewController id="3PT-bj-e0o" sceneMemberID="viewController">
+                <viewController id="3PT-bj-e0o" customClass="MapViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BfF-Qu-2kJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESR-7e-Niu">
+                                <rect key="frame" x="20" y="108" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ESR-7e-Niu" firstAttribute="top" secondItem="voN-ep-g6Q" secondAttribute="top" constant="20" id="82e-bC-cpH"/>
+                            <constraint firstItem="ESR-7e-Niu" firstAttribute="leading" secondItem="voN-ep-g6Q" secondAttribute="leading" constant="20" id="Xv3-w8-wqH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="voN-ep-g6Q"/>
                     </view>
                     <navigationItem key="navigationItem" id="hCi-vU-AF8"/>
+                    <connections>
+                        <outlet property="testLabel" destination="ESR-7e-Niu" id="fkS-h4-w1E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrR-2e-7Md" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avn-Eu-NeD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2062" y="1343"/>
+            <point key="canvasLocation" x="2104" y="1343"/>
         </scene>
         <!--Map-->
         <scene sceneID="kXa-Ix-eZG">

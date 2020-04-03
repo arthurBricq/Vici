@@ -1,0 +1,12 @@
+
+/* Class = "UITabBarItem"; title = "List"; ObjectID = "FML-pp-LBP"; */
+"FML-pp-LBP.title" = "List";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "GpX-30-k6B"; */
+"GpX-30-k6B.title" = "Settings";
+
+/* Class = "UITabBarItem"; title = "Favorite"; ObjectID = "IN9-NI-co3"; */
+"IN9-NI-co3.title" = "Favorite";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "Obh-qe-Qlx"; */
+"Obh-qe-Qlx.title" = "Map";

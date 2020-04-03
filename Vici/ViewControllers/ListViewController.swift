@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListViewController: UIPageViewController {
+class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,20 +8,15 @@
 
 import UIKit
 
-class MapViewController: UIPageViewController {
-
+class MapViewController: UIViewController {
+    
+    @IBOutlet weak var testLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 44, width: view.frame.size.width, height: 44))
-        view.addSubview(navBar)
-        print(view.safeAreaLayoutGuide)
-
-        let navItem = UINavigationItem(title: "SomeTitle")
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(selectorName))
-        navItem.rightBarButtonItem = doneItem
-
-        navBar.setItems([navItem], animated: false)
+        print(NSLocalizedString("welcome", comment: ""))
+        print(testLabel)
+        testLabel.text? = NSLocalizedString("welcome", comment: "")
     }
     
     @objc func selectorName() {

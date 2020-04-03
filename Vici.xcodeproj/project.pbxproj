@@ -17,6 +17,9 @@
 		4ED292502437B423004FA1FD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2924F2437B423004FA1FD /* ListViewController.swift */; };
 		4ED292522437B42A004FA1FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292512437B42A004FA1FD /* SettingsViewController.swift */; };
 		4ED292542437B44D004FA1FD /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292532437B44D004FA1FD /* CompanyViewController.swift */; };
+		4ED2925B2437CD2D004FA1FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4ED2925D2437CD2D004FA1FD /* Localizable.strings */; };
+		4ED292602437CFE5004FA1FD /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2925F2437CFE5004FA1FD /* FavoriteViewController.swift */; };
+		4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292612437D046004FA1FD /* ListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,12 @@
 		4ED2924F2437B423004FA1FD /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4ED292512437B42A004FA1FD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4ED292532437B44D004FA1FD /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
+		4ED292572437C05E004FA1FD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		4ED292582437C05E004FA1FD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4ED2925C2437CD2D004FA1FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4ED2925E2437CD31004FA1FD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4ED2925F2437CFE5004FA1FD /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		4ED292612437D046004FA1FD /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +81,7 @@
 				4ED292432437B08A004FA1FD /* LaunchScreen.storyboard */,
 				4ED292462437B08A004FA1FD /* Info.plist */,
 				4ED2923E2437B088004FA1FD /* Vici.xcdatamodeld */,
+				4ED2925D2437CD2D004FA1FD /* Localizable.strings */,
 			);
 			path = Vici;
 			sourceTree = "<group>";
@@ -81,8 +91,10 @@
 			children = (
 				4ED2924D2437B419004FA1FD /* MapViewController.swift */,
 				4ED2924F2437B423004FA1FD /* ListViewController.swift */,
+				4ED2925F2437CFE5004FA1FD /* FavoriteViewController.swift */,
 				4ED292512437B42A004FA1FD /* SettingsViewController.swift */,
 				4ED292532437B44D004FA1FD /* CompanyViewController.swift */,
+				4ED292612437D046004FA1FD /* ListTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -129,6 +141,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 4ED292292437B088004FA1FD;
 			productRefGroup = 4ED292332437B088004FA1FD /* Products */;
@@ -146,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ED292452437B08A004FA1FD /* LaunchScreen.storyboard in Resources */,
+				4ED2925B2437CD2D004FA1FD /* Localizable.strings in Resources */,
 				4ED292422437B08A004FA1FD /* Assets.xcassets in Resources */,
 				4ED2923D2437B088004FA1FD /* Main.storyboard in Resources */,
 			);
@@ -164,6 +178,8 @@
 				4ED292502437B423004FA1FD /* ListViewController.swift in Sources */,
 				4ED2924E2437B419004FA1FD /* MapViewController.swift in Sources */,
 				4ED292542437B44D004FA1FD /* CompanyViewController.swift in Sources */,
+				4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */,
+				4ED292602437CFE5004FA1FD /* FavoriteViewController.swift in Sources */,
 				4ED292522437B42A004FA1FD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +191,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4ED2923C2437B088004FA1FD /* Base */,
+				4ED292572437C05E004FA1FD /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -183,8 +200,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				4ED292442437B08A004FA1FD /* Base */,
+				4ED292582437C05E004FA1FD /* fr */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4ED2925D2437CD2D004FA1FD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4ED2925C2437CD2D004FA1FD /* en */,
+				4ED2925E2437CD31004FA1FD /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -194,6 +221,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -254,6 +282,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

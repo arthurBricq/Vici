@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIPageViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  CompanyViewController.swift
+//  FavoriteViewController.swift
 //  Vici
 //
 //  Created by Arthur BRICQ on 03/04/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CompanyViewController: UIViewController {
+class FavoriteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
