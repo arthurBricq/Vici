@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E3C5F252437D6190056B226 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5F242437D6190056B226 /* Company.swift */; };
+		4E3C5F272437D6750056B226 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5F262437D6750056B226 /* Service.swift */; };
 		4ED292362437B088004FA1FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292352437B088004FA1FD /* AppDelegate.swift */; };
 		4ED292382437B088004FA1FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292372437B088004FA1FD /* SceneDelegate.swift */; };
 		4ED2923D2437B088004FA1FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED2923B2437B088004FA1FD /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E3C5F242437D6190056B226 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		4E3C5F262437D6750056B226 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		4ED292322437B088004FA1FD /* Vici.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vici.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED292352437B088004FA1FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ED292372437B088004FA1FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E3C5F232437D5FE0056B226 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E3C5F242437D6190056B226 /* Company.swift */,
+				4E3C5F262437D6750056B226 /* Service.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		4ED292292437B088004FA1FD = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +88,7 @@
 			children = (
 				4ED292352437B088004FA1FD /* AppDelegate.swift */,
 				4ED292372437B088004FA1FD /* SceneDelegate.swift */,
+				4E3C5F232437D5FE0056B226 /* DataModel */,
 				4ED2924C2437B3FD004FA1FD /* ViewControllers */,
 				4ED2923B2437B088004FA1FD /* Main.storyboard */,
 				4ED292412437B08A004FA1FD /* Assets.xcassets */,
@@ -175,10 +189,12 @@
 				4ED292402437B088004FA1FD /* Vici.xcdatamodeld in Sources */,
 				4ED292362437B088004FA1FD /* AppDelegate.swift in Sources */,
 				4ED292382437B088004FA1FD /* SceneDelegate.swift in Sources */,
+				4E3C5F252437D6190056B226 /* Company.swift in Sources */,
 				4ED292502437B423004FA1FD /* ListViewController.swift in Sources */,
 				4ED2924E2437B419004FA1FD /* MapViewController.swift in Sources */,
 				4ED292542437B44D004FA1FD /* CompanyViewController.swift in Sources */,
 				4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */,
+				4E3C5F272437D6750056B226 /* Service.swift in Sources */,
 				4ED292602437CFE5004FA1FD /* FavoriteViewController.swift in Sources */,
 				4ED292522437B42A004FA1FD /* SettingsViewController.swift in Sources */,
 			);
