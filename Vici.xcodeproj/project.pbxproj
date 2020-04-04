@@ -24,6 +24,8 @@
 		4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292612437D046004FA1FD /* ListTableViewController.swift */; };
 		9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62B2438CA30000D320D /* ProfileViewController.swift */; };
 		9C8CA62E2438CA4C000D320D /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */; };
+		9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA6332438DE2A000D320D /* CheckerButton.swift */; };
+		9C8CA6362438E6B7000D320D /* NiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA6352438E6B7000D320D /* NiceButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		4ED292612437D046004FA1FD /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		9C8CA62B2438CA30000D320D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		9C8CA6332438DE2A000D320D /* CheckerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerButton.swift; sourceTree = "<group>"; };
+		9C8CA6352438E6B7000D320D /* NiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiceButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 			children = (
 				4ED292352437B088004FA1FD /* AppDelegate.swift */,
 				4ED292372437B088004FA1FD /* SceneDelegate.swift */,
+				9C8CA62F2438DCAD000D320D /* Graphism */,
 				4E3C5F232437D5FE0056B226 /* DataModel */,
 				4ED2924C2437B3FD004FA1FD /* ViewControllers */,
 				4ED2923B2437B088004FA1FD /* Main.storyboard */,
@@ -117,6 +122,15 @@
 				9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9C8CA62F2438DCAD000D320D /* Graphism */ = {
+			isa = PBXGroup;
+			children = (
+				9C8CA6332438DE2A000D320D /* CheckerButton.swift */,
+				9C8CA6352438E6B7000D320D /* NiceButton.swift */,
+			);
+			path = Graphism;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C8CA6362438E6B7000D320D /* NiceButton.swift in Sources */,
 				4ED292402437B088004FA1FD /* Vici.xcdatamodeld in Sources */,
 				4ED292362437B088004FA1FD /* AppDelegate.swift in Sources */,
 				4ED292382437B088004FA1FD /* SceneDelegate.swift in Sources */,
@@ -199,6 +214,7 @@
 				4ED292502437B423004FA1FD /* ListViewController.swift in Sources */,
 				4ED2924E2437B419004FA1FD /* MapViewController.swift in Sources */,
 				9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */,
+				9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */,
 				4ED292542437B44D004FA1FD /* CompanyViewController.swift in Sources */,
 				4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */,
 				4E3C5F272437D6750056B226 /* Service.swift in Sources */,
