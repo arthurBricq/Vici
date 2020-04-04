@@ -15,6 +15,11 @@ class MapViewController: UIViewController {
     
     // outlets and variables
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var slideView: UIView!
+    @IBOutlet weak var companyName: UILabel!
+    @IBOutlet weak var companyLogo: UIImageView!
+    @IBOutlet weak var servicesScrollView: UIScrollView!
+    
     var locationManager = CLLocationManager.init()
     
     let annotationTest = MKPointAnnotation()
@@ -44,22 +49,27 @@ class MapViewController: UIViewController {
         
         // request the location when app launches
         locationManager.requestWhenInUseAuthorization()
-        
+
+        // set up the map
         mapView.mapType = .standard
         mapView.showsUserLocation = true
         mapView.showsScale = true
         mapView.showsCompass = true
         mapView.delegate = self
+        
+        slideView.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        centerMap()
-        
         annotationTest.coordinate = CLLocationCoordinate2D(latitude: 45.7580620, longitude: 4.8313981)
         annotationTest.title = "Chez Leo"
         mapView.addAnnotation(annotationTest)
+        
+        centerMap()
+        
+        print(slideView.frame)
     }
     
 }
