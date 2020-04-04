@@ -16,12 +16,20 @@ class MapViewController: UIViewController {
     // outlets and variables
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var slideView: UIView!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var companyName: UILabel!
     @IBOutlet weak var companyLogo: UIImageView!
-    @IBOutlet weak var servicesScrollView: UIScrollView!
     
     var locationManager = CLLocationManager.init()
+    var currentAnnotation: MKAnnotation?
+    
+    var startYOfWindow: CGFloat = 0
+    var startHeight: CGFloat = 0
+    // 0 : close, 1 : return to start, 2 : segue
+    var animationEnding = 1
+    var swipeAnimator: UIViewPropertyAnimator?
+    
     
     // actions and functions
     @IBAction func searchButtonTapped(_ sender: Any) {
@@ -39,17 +47,45 @@ class MapViewController: UIViewController {
     @IBAction func swipeHandler(_ gestureRecognizer : UIPanGestureRecognizer) {
         
         if (gestureRecognizer.state == .began) {
-            print("Began")
+            startYOfWindow = self.slideView.center.y
+            startHeight = heightConstraint.constant
         }
         
         if (gestureRecognizer.state == .changed) {
-            let translation = gestureRecognizer.translation(in: view)
+            let translation = gestureRecognizer.translation(in: self.view)
+            gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
             
-            print(translation.y)
+            if (slideView.frame.minY >= view.safeAreaInsets.top + 10 || translation.y > 0) {
+                slideView.center.y += translation.y
+                
+                if (heightConstraint.constant >= startHeight) {
+                    heightConstraint.constant -= translation.y
+                    if (heightConstraint.constant < startHeight) {
+                        heightConstraint.constant = startHeight
+                    }
+                }
+            }
+            
+            if (slideView.center.y > startYOfWindow) {
+                animationEnding = 0
+            } else if (slideView.frame.minY < mapView.center.y) {
+                animationEnding = 2
+            } else {
+                animationEnding = 1
+            }
         }
         
         if (gestureRecognizer.state == .ended) {
-            print("Ended")
+            if (animationEnding >= 1) {
+                print(animationEnding)
+                self.heightConstraint.constant = self.startHeight
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.slideView.center.y = self.startYOfWindow
+                    self.slideView.layoutIfNeeded()
+                })
+            } else {
+                mapView.deselectAnnotation(currentAnnotation, animated: true)
+            }
         }
     }
     
@@ -77,7 +113,6 @@ class MapViewController: UIViewController {
         mapView.showsCompass = true
         mapView.delegate = self
         
-        // Hide view to set it up later
         slideView.isHidden = true
     }
 
@@ -96,10 +131,6 @@ class MapViewController: UIViewController {
         
         centerMap()
         
-        /* now the slide view exists as it is in the storyboard
-           we can move it out of the screen and make it visible for the
-           future animations
-        */
         slideView.center.y = mapView.frame.maxY + slideView.frame.height/2
         slideView.isHidden = false
     }
@@ -108,12 +139,13 @@ class MapViewController: UIViewController {
 
 extension MapViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
         let lat = (view.annotation?.coordinate.latitude)!
         let lon = (view.annotation?.coordinate.longitude)!
         centerMap(latitude: lat, longitude: lon)
+        currentAnnotation = view.annotation
         
         companyName.text = (view.annotation?.title)!
-        
         UIView.animate(withDuration: 0.3) {
             self.slideView.center.y = self.mapView.frame.maxY - self.slideView.frame.height/2
         }
