@@ -17,6 +17,7 @@ class CompanyTableViewCell: UITableViewCell {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet var serviceImageViews: [UIImageView]!
+    @IBOutlet weak var downView: UIView!
     
     // MARK: - Functions
     
@@ -28,7 +29,7 @@ class CompanyTableViewCell: UITableViewCell {
         self.logoImageView.layer.borderColor = UIColor.gray.cgColor
         self.logoImageView.layer.borderWidth = 1.0
         
-        // 2. Set up the gradient
+        // 2. Set up the gradient of the top
         let view = UIView(frame: coverImageView.frame)
         let gradient = CAGradientLayer()
         gradient.frame = view.frame
@@ -37,6 +38,15 @@ class CompanyTableViewCell: UITableViewCell {
         view.layer.insertSublayer(gradient, at: 0)
         coverImageView.addSubview(view)
         coverImageView.bringSubviewToFront(view)
+        
+        // 3. Set up the gradient of the top
+        let gradient2: CAGradientLayer = CAGradientLayer()
+        gradient2.colors = [UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.clear.cgColor]
+        gradient2.locations = [0.0 , 1.0]
+        gradient2.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradient2.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient2.frame = CGRect(x: 0.0, y: 0.0, width: self.downView.frame.size.width, height: self.downView.frame.size.height)
+        self.downView.layer.insertSublayer(gradient2, at: 0)
         
     }
 

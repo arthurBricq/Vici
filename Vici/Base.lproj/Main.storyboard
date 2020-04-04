@@ -220,6 +220,7 @@
                                 <connections>
                                     <outlet property="bodyLabel" destination="W9V-O9-OoD" id="Dpz-C0-E3o"/>
                                     <outlet property="coverImageView" destination="77N-Z0-uki" id="blL-79-Oif"/>
+                                    <outlet property="downView" destination="1Lt-bz-R2x" id="E7E-DG-kzK"/>
                                     <outlet property="logoImageView" destination="S4Z-gq-L3z" id="Pco-ug-Ybu"/>
                                     <outlet property="titleLabel" destination="FEW-NK-3Zu" id="L7e-Kf-7ie"/>
                                     <outletCollection property="serviceImageViews" destination="Pzf-7h-w1m" collectionClass="NSMutableArray" id="uQ4-S2-wR6"/>
@@ -343,7 +344,7 @@
         <scene sceneID="kXa-Ix-eZG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JH2-vG-tgi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="Obh-qe-Qlx"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="Obh-qe-Qlx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="odI-7B-s1l">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -362,7 +363,7 @@
         <scene sceneID="hYd-3A-72N">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="057-Jd-6FB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="FML-pp-LBP"/>
+                    <tabBarItem key="tabBarItem" title="List" image="ListIcon" id="FML-pp-LBP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6et-3s-bs6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -381,7 +382,7 @@
         <scene sceneID="AhG-yS-Kys">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FpL-OS-rkq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorite" id="IN9-NI-co3"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="HeartIcon" id="IN9-NI-co3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XWB-Bz-MUB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -400,7 +401,7 @@
         <scene sceneID="K6r-Qq-mMs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c26-21-t1C" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="GpX-30-k6B"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsIcon" selectedImage="SettingsIcon" id="GpX-30-k6B"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U0B-w3-J6y">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -417,11 +418,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="HeartIcon" width="25" height="25"/>
+        <image name="ListIcon" width="25" height="25"/>
+        <image name="MapIcon" width="25" height="25"/>
         <image name="ProfileLogo" width="119" height="111"/>
+        <image name="SettingsIcon" width="25" height="25"/>
         <image name="vaches" width="1920" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XlD-VG-bYN"/>
-        <segue reference="Yhg-Je-PxX"/>
+        <segue reference="HC7-8a-jtX"/>
     </inferredMetricsTieBreakers>
 </document>
