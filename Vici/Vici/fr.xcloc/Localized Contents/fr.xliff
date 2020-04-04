@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Vici/Base.lproj/Main.storyboard" source-language="en" target-language="fr" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3" build-num="11C29"/>
+    </header>
+    <body>
+      <trans-unit id="FML-pp-LBP.title" xml:space="preserve">
+        <source>List</source>
+        <target>List</target>
+        <note>Class = "UITabBarItem"; title = "List"; ObjectID = "FML-pp-LBP";</note>
+      </trans-unit>
+      <trans-unit id="GpX-30-k6B.title" xml:space="preserve">
+        <source>Settings</source>
+        <target>Settings</target>
+        <note>Class = "UITabBarItem"; title = "Settings"; ObjectID = "GpX-30-k6B";</note>
+      </trans-unit>
+      <trans-unit id="IN9-NI-co3.title" xml:space="preserve">
+        <source>Favorite</source>
+        <target>Favorite</target>
+        <note>Class = "UITabBarItem"; title = "Favorite"; ObjectID = "IN9-NI-co3";</note>
+      </trans-unit>
+      <trans-unit id="Obh-qe-Qlx.title" xml:space="preserve">
+        <source>Map</source>
+        <target>Map</target>
+        <note>Class = "UITabBarItem"; title = "Map"; ObjectID = "Obh-qe-Qlx";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Vici/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="fr">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3" build-num="11C29"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Vici</source>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

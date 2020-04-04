@@ -31,6 +31,10 @@
 		4ED2925B2437CD2D004FA1FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4ED2925D2437CD2D004FA1FD /* Localizable.strings */; };
 		4ED292602437CFE5004FA1FD /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2925F2437CFE5004FA1FD /* FavoriteViewController.swift */; };
 		4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292612437D046004FA1FD /* ListTableViewController.swift */; };
+		9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62B2438CA30000D320D /* ProfileViewController.swift */; };
+		9C8CA62E2438CA4C000D320D /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */; };
+		9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA6332438DE2A000D320D /* CheckerButton.swift */; };
+		9C8CA6362438E6B7000D320D /* NiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA6352438E6B7000D320D /* NiceButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +67,10 @@
 		4ED2925E2437CD31004FA1FD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4ED2925F2437CFE5004FA1FD /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		4ED292612437D046004FA1FD /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		9C8CA62B2438CA30000D320D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		9C8CA6332438DE2A000D320D /* CheckerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerButton.swift; sourceTree = "<group>"; };
+		9C8CA6352438E6B7000D320D /* NiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiceButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +155,7 @@
 				4E73A0922438653D00D215AF /* Swift.swift */,
 				4E73A0972438658600D215AF /* Extensions */,
 				4E73A0942438656900D215AF /* Utilities */,
+				9C8CA62F2438DCAD000D320D /* Graphism */,
 				4E3C5F232437D5FE0056B226 /* DataModel */,
 				4ED2924C2437B3FD004FA1FD /* ViewControllers */,
 				4EAC5C3A2438993C006E63CD /* TableViewController */,
@@ -168,8 +177,22 @@
 				4ED292512437B42A004FA1FD /* SettingsViewController.swift */,
 				4ED2924F2437B423004FA1FD /* ListViewController.swift */,
 				4ED2925F2437CFE5004FA1FD /* FavoriteViewController.swift */,
+				4ED292512437B42A004FA1FD /* SettingsViewController.swift */,
+				4ED292532437B44D004FA1FD /* CompanyViewController.swift */,
+				4ED292612437D046004FA1FD /* ListTableViewController.swift */,
+				9C8CA62B2438CA30000D320D /* ProfileViewController.swift */,
+				9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9C8CA62F2438DCAD000D320D /* Graphism */ = {
+			isa = PBXGroup;
+			children = (
+				9C8CA6332438DE2A000D320D /* CheckerButton.swift */,
+				9C8CA6352438E6B7000D320D /* NiceButton.swift */,
+			);
+			path = Graphism;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E73A0962438657300D215AF /* Network.swift in Sources */,
+				9C8CA6362438E6B7000D320D /* NiceButton.swift in Sources */,
 				4ED292402437B088004FA1FD /* Vici.xcdatamodeld in Sources */,
 				4ED292362437B088004FA1FD /* AppDelegate.swift in Sources */,
 				4EAC5C39243887E0006E63CD /* CompanyTableViewCell.swift in Sources */,
@@ -257,6 +281,9 @@
 				4EAC5C3124387BB7006E63CD /* Initial.swift in Sources */,
 				4E73A0932438653D00D215AF /* Swift.swift in Sources */,
 				4EAC5C2D24386832006E63CD /* CompanyGetter.swift in Sources */,
+				9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */,
+				9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */,
+				4ED292542437B44D004FA1FD /* CompanyViewController.swift in Sources */,
 				4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */,
 				4E3C5F272437D6750056B226 /* Service.swift in Sources */,
 				4EAC5C36243885E8006E63CD /* Image.swift in Sources */,
@@ -265,6 +292,7 @@
 				4E73A0992438659F00D215AF /* Dictionary.swift in Sources */,
 				4ED292602437CFE5004FA1FD /* FavoriteViewController.swift in Sources */,
 				4ED292522437B42A004FA1FD /* SettingsViewController.swift in Sources */,
+				9C8CA62E2438CA4C000D320D /* CreateProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
