@@ -134,6 +134,14 @@ class MapViewController: UIViewController {
         slideView.isHidden = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (currentAnnotation != nil) {
+            mapView.deselectAnnotation(currentAnnotation, animated: true)
+        }
+    }
+    
 }
 
 extension MapViewController : MKMapViewDelegate {
@@ -151,6 +159,7 @@ extension MapViewController : MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        currentAnnotation = nil
         UIView.animate(withDuration: 0.3, animations: {
             self.slideView.center.y = self.mapView.frame.maxY + self.slideView.frame.height/2
         })

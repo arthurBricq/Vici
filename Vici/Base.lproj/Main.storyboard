@@ -44,7 +44,29 @@
                     <view key="view" contentMode="scaleToFill" id="Mxd-fv-mVX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXv-JO-eTs">
+                                <rect key="frame" x="20" y="118" width="100" height="33.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fds-cU-hsb">
+                                <rect key="frame" x="20" y="221.5" width="49" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Profile"/>
+                                <connections>
+                                    <segue destination="vqY-xE-tAr" kind="show" id="yjN-kb-Ckp"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EXv-JO-eTs" firstAttribute="leading" secondItem="gGv-ol-zf6" secondAttribute="leading" constant="20" id="4qy-ky-nDe"/>
+                            <constraint firstItem="fds-cU-hsb" firstAttribute="top" secondItem="EXv-JO-eTs" secondAttribute="bottom" constant="70" id="MiY-nl-A3E"/>
+                            <constraint firstItem="fds-cU-hsb" firstAttribute="leading" secondItem="gGv-ol-zf6" secondAttribute="leading" constant="20" id="Tv8-E7-SqF"/>
+                            <constraint firstItem="EXv-JO-eTs" firstAttribute="top" secondItem="gGv-ol-zf6" secondAttribute="top" constant="30" id="jNW-3E-5rD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gGv-ol-zf6"/>
                     </view>
                     <navigationItem key="navigationItem" id="SbK-ba-3dz"/>
@@ -52,6 +74,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8c5-u7-i8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7" y="2386"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="4Ud-pF-ba4">
+            <objects>
+                <viewController id="vqY-xE-tAr" customClass="ProfileViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mex-7g-nb8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nR-jJ-149">
+                                <rect key="frame" x="161" y="188" width="92" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6nR-jJ-149" firstAttribute="centerX" secondItem="mex-7g-nb8" secondAttribute="centerX" id="WVh-58-Dcs"/>
+                            <constraint firstItem="6nR-jJ-149" firstAttribute="top" secondItem="z1y-Ks-RSQ" secondAttribute="top" constant="100" id="pDK-rn-9Wh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z1y-Ks-RSQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5O5-gb-5xH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pob-na-kGC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1035" y="2373"/>
+        </scene>
+        <!--Create Profile View Controller-->
+        <scene sceneID="Wti-z3-wMV">
+            <objects>
+                <viewController storyboardIdentifier="CreateProfileVC" id="0gG-aH-ybm" customClass="CreateProfileViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b4L-va-dts">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqS-T4-IKJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qFB-Sc-yVb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v6Y-8Y-boc">
+                                <rect key="frame" x="41.5" y="89.5" width="331" height="717"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="v6Y-8Y-boc" firstAttribute="centerX" secondItem="b4L-va-dts" secondAttribute="centerX" id="9W4-mG-ki0"/>
+                            <constraint firstItem="bqS-T4-IKJ" firstAttribute="centerX" secondItem="b4L-va-dts" secondAttribute="centerX" id="BTb-7I-HgE"/>
+                            <constraint firstItem="v6Y-8Y-boc" firstAttribute="height" secondItem="b4L-va-dts" secondAttribute="height" multiplier="0.8" id="BXw-GQ-dWp"/>
+                            <constraint firstItem="bqS-T4-IKJ" firstAttribute="width" secondItem="b4L-va-dts" secondAttribute="width" id="EWY-By-FCU"/>
+                            <constraint firstItem="bqS-T4-IKJ" firstAttribute="centerY" secondItem="b4L-va-dts" secondAttribute="centerY" id="IWr-B9-Ccl"/>
+                            <constraint firstItem="v6Y-8Y-boc" firstAttribute="width" secondItem="b4L-va-dts" secondAttribute="width" multiplier="0.8" id="VqL-H0-qdo"/>
+                            <constraint firstItem="v6Y-8Y-boc" firstAttribute="centerY" secondItem="b4L-va-dts" secondAttribute="centerY" id="fvI-8m-U3G"/>
+                            <constraint firstItem="bqS-T4-IKJ" firstAttribute="height" secondItem="b4L-va-dts" secondAttribute="height" id="kvp-fQ-8TP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pej-fz-QyO"/>
+                    </view>
+                    <connections>
+                        <outlet property="mainView" destination="v6Y-8Y-boc" id="AP2-fr-5vJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkt-kG-wWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1743" y="2373"/>
         </scene>
         <!--Favorite View Controller-->
         <scene sceneID="n7W-7i-U0G">
