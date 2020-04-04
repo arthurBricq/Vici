@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E3199A8243902E400854E97 /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3199A7243902E400854E97 /* CreateProfileTableViewController.swift */; };
 		4E3C5F252437D6190056B226 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5F242437D6190056B226 /* Company.swift */; };
 		4E3C5F272437D6750056B226 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5F262437D6750056B226 /* Service.swift */; };
 		4E73A0932438653D00D215AF /* Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E73A0922438653D00D215AF /* Swift.swift */; };
@@ -39,7 +38,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4E3199A7243902E400854E97 /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		4E3C5F242437D6190056B226 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		4E3C5F262437D6750056B226 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		4E73A0922438653D00D215AF /* Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			children = (
 				4ED292612437D046004FA1FD /* ListTableViewController.swift */,
 				4ED292532437B44D004FA1FD /* CompanyTableViewController.swift */,
-				4E3199A7243902E400854E97 /* CreateProfileTableViewController.swift */,
 			);
 			path = TableViewController;
 			sourceTree = "<group>";
@@ -279,7 +276,6 @@
 				4ED2924E2437B419004FA1FD /* MapViewController.swift in Sources */,
 				4ED292542437B44D004FA1FD /* CompanyTableViewController.swift in Sources */,
 				4EAC5C3124387BB7006E63CD /* Initial.swift in Sources */,
-				4E3199A8243902E400854E97 /* CreateProfileTableViewController.swift in Sources */,
 				4E73A0932438653D00D215AF /* Swift.swift in Sources */,
 				4EAC5C2D24386832006E63CD /* CompanyGetter.swift in Sources */,
 				9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */,

@@ -151,50 +151,6 @@
             </objects>
             <point key="canvasLocation" x="917" y="2373"/>
         </scene>
-        <!--Create Profile Table View Controller-->
-        <scene sceneID="Ime-RR-RpB">
-            <objects>
-                <tableViewController id="B4o-mO-Hh2" customClass="CreateProfileTableViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tRo-zI-BM2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <sections>
-                            <tableViewSection headerTitle="Section-1" id="S2I-Q5-4Cc">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="207" id="FU4-gw-w9R">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="207"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FU4-gw-w9R" id="Qbg-tp-zC7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Section-2" id="mhS-04-4zl">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="207" id="vTn-JE-dQl">
-                                        <rect key="frame" x="0.0" y="291" width="414" height="207"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vTn-JE-dQl" id="hKb-Bm-Oog">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="B4o-mO-Hh2" id="mss-SX-7wB"/>
-                            <outlet property="delegate" destination="B4o-mO-Hh2" id="fwV-Ly-fhQ"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hH0-wb-IAC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3870" y="2796"/>
-        </scene>
         <!--Create your account-->
         <scene sceneID="Wti-z3-wMV">
             <objects>
@@ -551,16 +507,16 @@
                         <sections>
                             <tableViewSection id="1gA-ls-L74">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="457" id="nQe-fR-3os">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="457"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="143" id="nQe-fR-3os">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nQe-fR-3os" id="wnr-eQ-bi3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="457"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="143"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xoM-f9-nkm">
-                                        <rect key="frame" x="0.0" y="485" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="171" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xoM-f9-nkm" id="VGc-r7-kHr">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -568,7 +524,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pNm-EM-h6N">
-                                        <rect key="frame" x="0.0" y="528.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="214.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pNm-EM-h6N" id="fua-Yj-drh">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -587,7 +543,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIq-0a-IRL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976.8115942028987" y="1342.6339285714284"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="1342.6339285714284"/>
         </scene>
         <!--VICI-->
         <scene sceneID="pMM-pA-ZeV">
@@ -825,6 +781,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XlD-VG-bYN"/>
-        <segue reference="HC7-8a-jtX"/>
+        <segue reference="Yhg-Je-PxX"/>
     </inferredMetricsTieBreakers>
 </document>
