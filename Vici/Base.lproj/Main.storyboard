@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HCN-7M-eK5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HCN-7M-eK5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -111,7 +111,7 @@
             </objects>
             <point key="canvasLocation" x="1136" y="1343"/>
         </scene>
-        <!--Map View Controller-->
+        <!--VICI-->
         <scene sceneID="pMM-pA-ZeV">
             <objects>
                 <viewController id="3PT-bj-e0o" customClass="MapViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,23 +119,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESR-7e-Niu">
-                                <rect key="frame" x="20" y="108" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nDb-5o-eFR">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKt-lL-mZw">
+                                <rect key="frame" x="342" y="758" width="47" height="30"/>
+                                <state key="normal" title="Center"/>
+                                <connections>
+                                    <action selector="centerButtonTapped:" destination="3PT-bj-e0o" eventType="touchUpInside" id="fsP-Ot-xrh"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uln-GG-iSi">
+                                <rect key="frame" x="0.0" y="813" width="414" height="0.0"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="0dL-Hd-2fL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ESR-7e-Niu" firstAttribute="top" secondItem="voN-ep-g6Q" secondAttribute="top" constant="20" id="82e-bC-cpH"/>
-                            <constraint firstItem="ESR-7e-Niu" firstAttribute="leading" secondItem="voN-ep-g6Q" secondAttribute="leading" constant="20" id="Xv3-w8-wqH"/>
+                            <constraint firstItem="nDb-5o-eFR" firstAttribute="top" secondItem="voN-ep-g6Q" secondAttribute="top" id="5df-eS-vNa"/>
+                            <constraint firstItem="Uln-GG-iSi" firstAttribute="bottom" secondItem="voN-ep-g6Q" secondAttribute="bottom" id="AJp-zg-Mcc"/>
+                            <constraint firstItem="voN-ep-g6Q" firstAttribute="trailing" secondItem="DKt-lL-mZw" secondAttribute="trailing" constant="25" id="BAD-d0-drG"/>
+                            <constraint firstItem="voN-ep-g6Q" firstAttribute="trailing" secondItem="Uln-GG-iSi" secondAttribute="trailing" id="ICd-Yk-LLE"/>
+                            <constraint firstItem="voN-ep-g6Q" firstAttribute="bottom" secondItem="nDb-5o-eFR" secondAttribute="bottom" id="KL9-7S-zi6"/>
+                            <constraint firstItem="nDb-5o-eFR" firstAttribute="leading" secondItem="voN-ep-g6Q" secondAttribute="leading" id="QXT-Pg-dXg"/>
+                            <constraint firstItem="voN-ep-g6Q" firstAttribute="trailing" secondItem="nDb-5o-eFR" secondAttribute="trailing" id="hJZ-P1-edK"/>
+                            <constraint firstItem="Uln-GG-iSi" firstAttribute="leading" secondItem="voN-ep-g6Q" secondAttribute="leading" id="nD6-Lk-cCi"/>
+                            <constraint firstItem="voN-ep-g6Q" firstAttribute="bottom" secondItem="DKt-lL-mZw" secondAttribute="bottom" constant="25" id="qK4-Xe-A4c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="voN-ep-g6Q"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hCi-vU-AF8"/>
+                    <navigationItem key="navigationItem" title="VICI" id="hCi-vU-AF8">
+                        <barButtonItem key="leftBarButtonItem" title="Filters" id="OrH-fm-LVB">
+                            <connections>
+                                <action selector="filterButtonTapped:" destination="3PT-bj-e0o" id="2NO-BA-5CT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" image="magnifyingglass" catalog="system" id="wQX-oK-oFv">
+                            <connections>
+                                <action selector="searchButtonTapped:" destination="3PT-bj-e0o" id="1qk-uw-BPk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="testLabel" destination="ESR-7e-Niu" id="fkS-h4-w1E"/>
+                        <outlet property="mapView" destination="nDb-5o-eFR" id="lEJ-jI-GRA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrR-2e-7Md" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -254,6 +283,9 @@
             <point key="canvasLocation" x="-917" y="2386"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yhg-Je-PxX"/>
     </inferredMetricsTieBreakers>

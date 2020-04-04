@@ -7,31 +7,70 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController {
+        
     
-    @IBOutlet weak var testLabel: UILabel!
+    // outlets and variables
+    @IBOutlet weak var mapView: MKMapView!
+    var locationManager = CLLocationManager.init()
+    
+    let annotationTest = MKPointAnnotation()
+    
+    // actions and functions
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        print("search")
+    }
+    
+    @IBAction func filterButtonTapped(_ sender: Any) {
+        print("filter")
+    }
+    
+    @IBAction func centerButtonTapped(_ sender: Any) {
+        centerMap()
+    }
+    
+    func centerMap() {
+        // corresponds to a zone of around 1km * 1km
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.009, longitudeDelta: 0.009)
+        let region = MKCoordinateRegion.init(center: (locationManager.location?.coordinate)!, span: span)
+        mapView.setRegion(region, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(NSLocalizedString("welcome", comment: ""))
-        print(testLabel)
-        testLabel.text? = NSLocalizedString("welcome", comment: "")
+        
+        // request the location when app launches
+        locationManager.requestWhenInUseAuthorization()
+        
+        mapView.mapType = .standard
+        mapView.showsUserLocation = true
+        mapView.showsScale = true
+        mapView.showsCompass = true
+        mapView.delegate = self
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        centerMap()
+        
+        annotationTest.coordinate = CLLocationCoordinate2D(latitude: 45.7580620, longitude: 4.8313981)
+        annotationTest.title = "Chez Leo"
+        mapView.addAnnotation(annotationTest)
     }
     
-    @objc func selectorName() {
-        print("done")
+}
+
+extension MapViewController : MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let h = self.view.frame.height
+        let w = self.view.frame.width
+        let view = UIView(frame: CGRect(x: 0, y: h/2, width: w, height: 50))
+        view.backgroundColor = .gray
+        view.alpha = 1
+        self.view.addSubview(view)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
