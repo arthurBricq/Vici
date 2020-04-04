@@ -15,7 +15,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(NSLocalizedString("welcome", comment: ""))
-        print(testLabel)
         testLabel.text? = NSLocalizedString("welcome", comment: "")
     }
     

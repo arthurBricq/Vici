@@ -13,7 +13,9 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Try to get the data from the API
+        let model = CompanyGetter(delegate: self)
+        model.downloadCompanies(url: URLServices.urlTest)
         
         
     }
@@ -29,4 +31,12 @@ class ListViewController: UIViewController {
     }
     */
 
+}
+
+extension ListViewController: Downloadable { // implements our Downloadable protocol
+    func didReceiveData(data: Any) {
+        // The data model has been dowloaded at this point
+        // Now, pass the data model to the Holidays table view controller
+        print(data)
+    }
 }

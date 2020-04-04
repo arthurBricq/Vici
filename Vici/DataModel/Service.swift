@@ -8,17 +8,20 @@
 
 import UIKit
 
-class Service {
+/**
+This class is one service of a company
+ */
+class Service: Codable {
     var name: String
     var description: String
-    var logoId: String
-    var prix: Int?
+    var logo: String
+    var price: Int?
     
-    init(name: String, description: String, logoId: String, prix: Int?) {
+    init(name: String, description: String, logo: String, price: Int) {
         self.name = name
         self.description = description
-        self.logoId = logoId
-        self.prix = prix
+        self.logo = logo
+        self.price = price
     }
 }
 

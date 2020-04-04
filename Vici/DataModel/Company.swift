@@ -8,19 +8,28 @@
 
 import UIKit
 
-class Company {
+/**
+ This class represents a company referenced in our database.
+ It is the constructing elements of our different table views
+ 
+ */
+class Company: Codable {
+
+    var id: Int
     var name: String
-    var category: Int
-    var contacts: [String]
-    var services: [Service]
-    var helpDescription: String
+    var description: String
+    var category: Int?
+    var contacts: [String]?
     
-    init(name: String, category: Int, contacts: [String], services: [Service], helpDescription: String) {
+    // var services: [Service]?
+    var images: [String]?
+    
+    init(id: Int, name: String, description: String, category: Int, contacts: [String]) {
+        self.id = id
         self.name = name
+        self.description = description
         self.category = category
         self.contacts = contacts
-        self.services = services
-        self.helpDescription = helpDescription
     }
     
 }
