@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        /* 
         if (!login) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let popupVC = storyboard.instantiateViewController(withIdentifier: "CreateProfileVC") as! CreateProfileViewController
@@ -24,6 +24,8 @@ class ProfileViewController: UIViewController {
             popupVC.modalTransitionStyle = .crossDissolve
             self.present(popupVC, animated: true, completion: nil)
         }
+        
+        */
     }
 
 }
