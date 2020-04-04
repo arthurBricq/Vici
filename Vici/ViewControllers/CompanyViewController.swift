@@ -2,25 +2,20 @@
 //  CompanyViewController.swift
 //  Vici
 //
-//  Created by Arthur BRICQ on 03/04/2020.
+//  Created by Arthur BRICQ on 04/04/2020.
 //  Copyright © 2020 ArthurBricq. All rights reserved.
 //
 
 import UIKit
 
-class CompanyTableViewController: UITableViewController {
+class CompanyViewController: UIViewController {
 
-    var company: Company? 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100 
-    }
 
     /*
     // MARK: - Navigation
