@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
         
     
     // outlets and variables
@@ -20,8 +20,25 @@ class MapViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var companyName: UILabel!
     @IBOutlet weak var companyLogo: UIImageView!
+    @IBOutlet weak var centerButton: UIButton!
     
     var locationManager = CLLocationManager.init()
+    var locationAllowed: Bool {
+        get {
+            if CLLocationManager.locationServicesEnabled() {
+                switch CLLocationManager.authorizationStatus() {
+                case .authorizedAlways, .authorizedWhenInUse:
+                    return true
+                case .denied, .notDetermined, .restricted:
+                    return false
+                default:
+                    return false
+                }
+            } else {
+                return false
+            }
+        }
+    }
     var currentAnnotation: MKAnnotation?
     
     var startYOfWindow: CGFloat = 0
@@ -88,15 +105,35 @@ class MapViewController: UIViewController {
         }
     }
     
+    // this function can be called without parameters to center on the current location
+    // or to center on given location
     func centerMap(latitude : Double = -1, longitude : Double = -1) {
-        // corresponds to a zone of around 1km * 1km
-        let span = MKCoordinateSpan.init(latitudeDelta: 0.009, longitudeDelta: 0.009)
-        var coord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        
-        if (latitude == -1 && longitude == -1) { coord = (locationManager.location?.coordinate)! }
-        
-        let region = MKCoordinateRegion.init(center: coord, span: span)
-        mapView.setRegion(region, animated: true)
+        // if the coords are (-1, -1) we want the location of the phone so we need to check if
+        // it is allowed otherwise it can show the map
+        if (locationAllowed || (latitude != -1 && longitude != -1)) {
+            // corresponds to a zone of around 1km * 1km
+            let span = MKCoordinateSpan.init(latitudeDelta: 0.009, longitudeDelta: 0.009)
+            var coord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            
+            if (latitude == -1 && longitude == -1) {
+                coord = (locationManager.location?.coordinate)!
+            }
+            
+            let region = MKCoordinateRegion.init(center: coord, span: span)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    // Make the current location unclickable
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        if let userLocationView = mapView.view(for: mapView.userLocation) {
+            userLocationView.canShowCallout = false
+        }
+    }
+    
+    // When ask for authorization to use location, update the center button to make it visible when needed
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        centerButton.isHidden = !locationAllowed
     }
     
     override func viewDidLoad() {
@@ -104,6 +141,7 @@ class MapViewController: UIViewController {
         
         // request the location when app launches
         locationManager.requestWhenInUseAuthorization()
+        centerButton.isHidden = !locationAllowed
 
         // set up the map
         mapView.mapType = .standard
@@ -146,22 +184,25 @@ class MapViewController: UIViewController {
 
 extension MapViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        let lat = (view.annotation?.coordinate.latitude)!
-        let lon = (view.annotation?.coordinate.longitude)!
-        centerMap(latitude: lat, longitude: lon)
-        currentAnnotation = view.annotation
-        
-        companyName.text = (view.annotation?.title)!
-        UIView.animate(withDuration: 0.3) {
-            self.slideView.center.y = self.mapView.frame.maxY - self.slideView.frame.height/2
+        if (view != mapView.view(for: mapView.userLocation)) {
+            let lat = (view.annotation?.coordinate.latitude)!
+            let lon = (view.annotation?.coordinate.longitude)!
+            centerMap(latitude: lat, longitude: lon)
+            currentAnnotation = view.annotation
+            
+            companyName.text = (view.annotation?.title)!
+            UIView.animate(withDuration: 0.3) {
+                self.slideView.center.y = self.mapView.frame.maxY - self.slideView.frame.height/2
+            }
         }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        currentAnnotation = nil
-        UIView.animate(withDuration: 0.3, animations: {
-            self.slideView.center.y = self.mapView.frame.maxY + self.slideView.frame.height/2
-        })
+        if (view != mapView.view(for: mapView.userLocation)) {
+            currentAnnotation = nil
+            UIView.animate(withDuration: 0.3, animations: {
+                self.slideView.center.y = self.mapView.frame.maxY + self.slideView.frame.height/2
+            })
+        }
     }
 }
