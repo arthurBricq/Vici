@@ -78,6 +78,8 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
             
             // We can create the account here with the infos
             
+            
+            
         }
         
     }
@@ -113,8 +115,6 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-    }
-    @IBAction func facebookButtonTapped(_ sender: Any) {
     }
     
     @IBAction func skipButtonTapped(_ sender: Any) {

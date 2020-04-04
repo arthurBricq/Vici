@@ -31,6 +31,7 @@
 		4ED2925B2437CD2D004FA1FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4ED2925D2437CD2D004FA1FD /* Localizable.strings */; };
 		4ED292602437CFE5004FA1FD /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2925F2437CFE5004FA1FD /* FavoriteViewController.swift */; };
 		4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED292612437D046004FA1FD /* ListTableViewController.swift */; };
+		9C31D602243934AB00EB5966 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C31D601243934AB00EB5966 /* AccountManager.swift */; };
 		9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62B2438CA30000D320D /* ProfileViewController.swift */; };
 		9C8CA62E2438CA4C000D320D /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */; };
 		9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA6332438DE2A000D320D /* CheckerButton.swift */; };
@@ -67,6 +68,7 @@
 		4ED2925E2437CD31004FA1FD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4ED2925F2437CFE5004FA1FD /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		4ED292612437D046004FA1FD /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		9C31D601243934AB00EB5966 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		9C8CA62B2438CA30000D320D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		9C8CA6332438DE2A000D320D /* CheckerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerButton.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				4E3C5F242437D6190056B226 /* Company.swift */,
 				4E3C5F262437D6750056B226 /* Service.swift */,
 				4EAC5C35243885E8006E63CD /* Image.swift */,
+				9C31D601243934AB00EB5966 /* AccountManager.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */,
 				9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */,
 				4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */,
+				9C31D602243934AB00EB5966 /* AccountManager.swift in Sources */,
 				4E3C5F272437D6750056B226 /* Service.swift in Sources */,
 				4EAC5C36243885E8006E63CD /* Image.swift in Sources */,
 				4EAC5C2F2438731E006E63CD /* Meta.swift in Sources */,
