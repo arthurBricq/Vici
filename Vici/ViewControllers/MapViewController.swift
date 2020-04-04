@@ -22,8 +22,6 @@ class MapViewController: UIViewController {
     
     var locationManager = CLLocationManager.init()
     
-    let annotationTest = MKPointAnnotation()
-    
     // actions and functions
     @IBAction func searchButtonTapped(_ sender: Any) {
         print("search")
@@ -37,10 +35,14 @@ class MapViewController: UIViewController {
         centerMap()
     }
     
-    func centerMap() {
+    func centerMap(latitude : Double = -1, longitude : Double = -1) {
         // corresponds to a zone of around 1km * 1km
         let span = MKCoordinateSpan.init(latitudeDelta: 0.009, longitudeDelta: 0.009)
-        let region = MKCoordinateRegion.init(center: (locationManager.location?.coordinate)!, span: span)
+        var coord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        if (latitude == -1 && longitude == -1) { coord = (locationManager.location?.coordinate)! }
+        
+        let region = MKCoordinateRegion.init(center: coord, span: span)
         mapView.setRegion(region, animated: true)
     }
     
@@ -63,24 +65,40 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        let annotationTest = MKPointAnnotation()
         annotationTest.coordinate = CLLocationCoordinate2D(latitude: 45.7580620, longitude: 4.8313981)
         annotationTest.title = "Chez Leo"
         mapView.addAnnotation(annotationTest)
         
+        let annotationTest2 = MKPointAnnotation()
+        annotationTest2.coordinate = CLLocationCoordinate2D(latitude: 45.7590620, longitude: 4.8333981)
+        annotationTest2.title = "Chez Marcel"
+        mapView.addAnnotation(annotationTest2)
+        
         centerMap()
         
-        print(slideView.frame)
+        slideView.center.y += slideView.frame.height
+        slideView.isHidden = false
     }
     
 }
 
 extension MapViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let h = self.view.frame.height
-        let w = self.view.frame.width
-        let view = UIView(frame: CGRect(x: 0, y: h/2, width: w, height: 50))
-        view.backgroundColor = .gray
-        view.alpha = 1
-        self.view.addSubview(view)
+        let lat = (view.annotation?.coordinate.latitude)!
+        let lon = (view.annotation?.coordinate.longitude)!
+        centerMap(latitude: lat, longitude: lon)
+        
+        companyName.text = (view.annotation?.title)!
+        
+        UIView.animate(withDuration: 0.3) {
+            self.slideView.center.y -= self.slideView.frame.height
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.slideView.center.y += self.slideView.frame.height
+        })
     }
 }
