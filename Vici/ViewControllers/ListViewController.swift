@@ -67,9 +67,9 @@ class ListViewController: UIViewController {
                 self.showCompany(company: company)
             }
         }
-        if let dest = segue.destination as? CompanyTableViewController {
+        /*if let dest = segue.destination as? CompanyTableViewController {
             dest.company = sender as? Company
-        }
+        }*/
     }
 }
 

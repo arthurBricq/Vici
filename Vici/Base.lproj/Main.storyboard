@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HCN-7M-eK5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HCN-7M-eK5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -233,9 +233,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTK-iw-6aE" customClass="NiceButton" customModule="Vici" customModuleProvider="target">
-                                        <rect key="frame" x="132" y="565.5" width="150" height="36"/>
+                                        <rect key="frame" x="57" y="565.5" width="300" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="pxh-ea-SjL"/>
+                                            <constraint firstAttribute="width" constant="300" id="pxh-ea-SjL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <userDefinedRuntimeAttributes>
@@ -275,9 +275,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVl-lc-oFr" customClass="NiceButton" customModule="Vici" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="665" width="200" height="36"/>
+                                        <rect key="frame" x="57" y="665" width="300" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="fFD-Ai-brB"/>
+                                            <constraint firstAttribute="width" constant="300" id="fFD-Ai-brB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <userDefinedRuntimeAttributes>
@@ -350,7 +350,9 @@
                     <navigationItem key="navigationItem" title="Create your account" id="nmU-fC-bnE"/>
                     <connections>
                         <outlet property="checkerButton" destination="ufQ-1R-Szu" id="d7e-Jg-i4R"/>
+                        <outlet property="conditionLabel" destination="5jl-a2-Z6e" id="vzd-EK-m21"/>
                         <outlet property="confirmPasswordField" destination="gek-X4-u8B" id="AVd-JR-fPo"/>
+                        <outlet property="createAccountButton" destination="CTK-iw-6aE" id="J1w-Z5-2nO"/>
                         <outlet property="emailField" destination="b4K-79-OKk" id="ow1-td-chW"/>
                         <outlet property="mainView" destination="v6Y-8Y-boc" id="AP2-fr-5vJ"/>
                         <outlet property="passwordField" destination="0g1-No-8nU" id="JoD-qF-Nag"/>

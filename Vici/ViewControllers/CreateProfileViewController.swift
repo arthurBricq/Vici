@@ -17,29 +17,67 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var checkerButton: CheckerButton!
-    
+    @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var createAccountButton: NiceButton!
     
     // actions
     @IBAction func createAccountButtonTapped(_ sender: Any) {
         
+        var errorMsg = ""
+        
         let username = usernameField.text!
         if (username == "") {
             animateError(for: self.usernameField)
+            errorMsg = "Username cannot be empty"
         }
         
         let email = emailField.text!
         if (!validateEmail(enteredEmail: email)) {
             animateError(for: self.emailField)
+            if (errorMsg == "") {
+                errorMsg = "Email adress incorrect"
+            } else {
+                errorMsg = "Multiple fields are incorrect"
+            }
         }
         
         let password = passwordField.text!
         if (!validatePassword(password: password)) {
             animateError(for: self.passwordField)
+            animateError(for: self.confirmPasswordField)
+            if (errorMsg == "") {
+                errorMsg = "Respect password rules"
+            } else {
+                errorMsg = "Multiple fields are incorrect"
+            }
         }
         
         let confirmed = confirmPasswordField.text!
         if (confirmed != password) {
             animateError(for: self.confirmPasswordField)
+            animateError(for: self.confirmPasswordField)
+            if (errorMsg == "") {
+                errorMsg = "Two different passwords"
+            } else {
+                errorMsg = "Multiple fields are incorrect"
+            }
+        }
+        
+        if (!checkerButton.isChecked) {
+            animateError(for: self.conditionLabel)
+            if (errorMsg == "") {
+                errorMsg = "You need to accept conditions"
+            } else {
+                errorMsg = "Multiple fields are incorrect"
+            }
+        }
+        
+        if (errorMsg != "") {
+            createAccountButton.text = errorMsg
+        } else {
+            
+            // We can create the account here with the infos
+            
         }
         
     }
