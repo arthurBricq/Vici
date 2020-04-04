@@ -77,7 +77,6 @@ class MapViewController: UIViewController {
         
         if (gestureRecognizer.state == .ended) {
             if (animationEnding >= 1) {
-                print(animationEnding)
                 self.heightConstraint.constant = self.startHeight
                 UIView.animate(withDuration: 0.5, animations: {
                     self.slideView.center.y = self.startYOfWindow
