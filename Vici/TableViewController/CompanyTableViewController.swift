@@ -8,13 +8,17 @@
 
 import UIKit
 
-class CompanyViewController: UIViewController {
+class CompanyTableViewController: UITableViewController {
 
+    var company: Company? 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print(company?.name)
     }
+    
     
 
     /*
