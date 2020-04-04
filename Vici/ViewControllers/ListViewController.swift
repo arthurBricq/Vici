@@ -55,6 +55,10 @@ class ListViewController: UIViewController {
     
     func showCompany(company: Company) {
         self.performSegue(withIdentifier: "ListToCompany", sender: company)
+        
+        
+        
+        
     }
     
     
@@ -67,7 +71,7 @@ class ListViewController: UIViewController {
                 self.showCompany(company: company)
             }
         }
-        if let dest = segue.destination as? CompanyTableViewController {
+        if let dest = segue.destination as? CompanyViewController {
             dest.company = sender as? Company
         }
     }

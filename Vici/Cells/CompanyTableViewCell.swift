@@ -57,37 +57,7 @@ class CompanyTableViewCell: UITableViewCell {
     }
     
     public func setCompany(company c: Company) {
-        self.titleLabel.text = c.name
-        self.bodyLabel.text = c.description
-        
-        // Set the icons on the main page
-        if let services = c.services {
-            var i: Int = 0
-            for s in services {
-                if let cat = ServiceCategory(rawValue: s.category) {
-                    let name = cat.getLogoName()
-                    if let image = UIImage(named: name) {
-                        serviceImageViews[i].image = image
-                    } else {
-                        print("LOGO NAME ERROR WITH : ", name)
-                    }
-                    i = i + 1
-                    if i > serviceImageViews.count {
-                        break
-                    }
-                }
-            }
-        }
-        
-        // Set the cover image background
-        if let images = c.images {
-            if let cover = images.first(where: { (image) -> Bool in
-                return image.legend == "cover"
-            }) {
-                // todo: change this when server connection is done
-                self.coverImageView.image = UIImage(named: cover.image)
-            }
-        }
+        c.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, coverImageView: coverImageView, logoImageView: logoImageView, serviceImageViews: serviceImageViews)
     }
 
 }

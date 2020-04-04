@@ -12,7 +12,6 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,8 +28,6 @@ class SettingsViewController: UIViewController {
                 print("DATA ERROR ON GETTING IMAGE")
             }
         }
-        
-        
         
         
     }
