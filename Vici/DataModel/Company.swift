@@ -14,7 +14,6 @@ import UIKit
  
  */
 class Company: Codable {
-
     var id: Int
     var name: String
     var description: String
@@ -22,7 +21,7 @@ class Company: Codable {
     var contacts: [String]?
     
     // var services: [Service]?
-    var images: [String]?
+    var images: [Image]?
     
     init(id: Int, name: String, description: String, category: Int, contacts: [String]) {
         self.id = id

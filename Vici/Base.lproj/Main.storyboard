@@ -37,17 +37,33 @@
             </objects>
             <point key="canvasLocation" x="-7" y="962"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="A66-aw-piV">
             <objects>
-                <viewController id="Iy7-vl-rev" sceneMemberID="viewController">
+                <viewController id="Iy7-vl-rev" customClass="SettingsViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mxd-fv-mVX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LYe-Cw-1l1">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="IOb-Qn-WcN"/>
+                                    <constraint firstAttribute="width" constant="240" id="g1o-Dx-pgO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LYe-Cw-1l1" firstAttribute="centerX" secondItem="Mxd-fv-mVX" secondAttribute="centerX" id="ffp-y0-oDO"/>
+                            <constraint firstItem="LYe-Cw-1l1" firstAttribute="centerY" secondItem="Mxd-fv-mVX" secondAttribute="centerY" id="j59-6z-JbU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gGv-ol-zf6"/>
                     </view>
                     <navigationItem key="navigationItem" id="SbK-ba-3dz"/>
+                    <connections>
+                        <outlet property="imageView" destination="LYe-Cw-1l1" id="5ad-GJ-JW3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8c5-u7-i8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,10 +10,29 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Try to load an image and then to display it !
+        
+        let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
+        let imageLoader = ImageLoader()
+        imageLoader.downloadImage(from: url) { (image) in
+            if let image = image {
+                self.imageView.image = image
+            } else {
+                print("DATA ERROR ON GETTING IMAGE")
+            }
+        }
+        
+        
+        
+        
     }
     
 
