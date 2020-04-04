@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
     // outlets and variables
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var slideView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var companyName: UILabel!
     @IBOutlet weak var companyLogo: UIImageView!
     @IBOutlet weak var servicesScrollView: UIScrollView!
@@ -33,6 +34,10 @@ class MapViewController: UIViewController {
     
     @IBAction func centerButtonTapped(_ sender: Any) {
         centerMap()
+    }
+    
+    @IBAction func swipeHandler(_ gestureRecognizer : UISwipeGestureRecognizer) {
+        print("aaa")
     }
     
     func centerMap(latitude : Double = -1, longitude : Double = -1) {
@@ -59,17 +64,18 @@ class MapViewController: UIViewController {
         mapView.showsCompass = true
         mapView.delegate = self
         
+        // Hide view to set it up later
         slideView.isHidden = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // These two annotations are just here for testing
         let annotationTest = MKPointAnnotation()
         annotationTest.coordinate = CLLocationCoordinate2D(latitude: 45.7580620, longitude: 4.8313981)
         annotationTest.title = "Chez Leo"
         mapView.addAnnotation(annotationTest)
-        
         let annotationTest2 = MKPointAnnotation()
         annotationTest2.coordinate = CLLocationCoordinate2D(latitude: 45.7590620, longitude: 4.8333981)
         annotationTest2.title = "Chez Marcel"
@@ -77,7 +83,11 @@ class MapViewController: UIViewController {
         
         centerMap()
         
-        slideView.center.y += slideView.frame.height
+        /* now the slide view exists as it is in the storyboard
+           we can move it out of the screen and make it visible for the
+           future animations
+        */
+        slideView.center.y = mapView.frame.maxY + slideView.frame.height/2
         slideView.isHidden = false
     }
     
@@ -92,13 +102,13 @@ extension MapViewController : MKMapViewDelegate {
         companyName.text = (view.annotation?.title)!
         
         UIView.animate(withDuration: 0.3) {
-            self.slideView.center.y -= self.slideView.frame.height
+            self.slideView.center.y = self.mapView.frame.maxY - self.slideView.frame.height/2
         }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         UIView.animate(withDuration: 0.3, animations: {
-            self.slideView.center.y += self.slideView.frame.height
+            self.slideView.center.y = self.mapView.frame.maxY + self.slideView.frame.height/2
         })
     }
 }

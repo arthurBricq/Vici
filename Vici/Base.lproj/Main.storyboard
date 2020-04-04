@@ -174,6 +174,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="0dL-Hd-2fL"/>
                                     <constraint firstAttribute="trailing" secondItem="niV-Hi-8I1" secondAttribute="trailing" constant="30" id="4GR-Vp-kDe"/>
@@ -198,6 +199,9 @@
                                     <constraint firstItem="xjB-vP-her" firstAttribute="bottom" secondItem="T1z-1o-KDJ" secondAttribute="bottom" constant="48" id="vJK-AI-lS6"/>
                                     <constraint firstItem="czZ-fD-t2D" firstAttribute="centerX" secondItem="Uln-GG-iSi" secondAttribute="centerX" id="yWH-H1-k1h"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Kj7-JR-18s" appends="YES" id="0XD-tI-vVL"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -229,12 +233,18 @@
                     <connections>
                         <outlet property="companyLogo" destination="j5M-xF-rLp" id="sJQ-Fv-qz2"/>
                         <outlet property="companyName" destination="GqL-ed-l4p" id="3Be-IZ-cMA"/>
+                        <outlet property="imageView" destination="xjB-vP-her" id="Fuj-pn-t2s"/>
                         <outlet property="mapView" destination="nDb-5o-eFR" id="lEJ-jI-GRA"/>
                         <outlet property="servicesScrollView" destination="T1z-1o-KDJ" id="yUS-hG-cLk"/>
                         <outlet property="slideView" destination="Uln-GG-iSi" id="IiQ-q1-UOG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrR-2e-7Md" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="Kj7-JR-18s">
+                    <connections>
+                        <action selector="swipeHandler:" destination="3PT-bj-e0o" id="4Se-mH-Uol"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="258.48214285714283"/>
         </scene>
