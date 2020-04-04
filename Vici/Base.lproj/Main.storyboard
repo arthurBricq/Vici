@@ -200,7 +200,7 @@
                                     <constraint firstItem="czZ-fD-t2D" firstAttribute="centerX" secondItem="Uln-GG-iSi" secondAttribute="centerX" id="yWH-H1-k1h"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Kj7-JR-18s" appends="YES" id="0XD-tI-vVL"/>
+                                    <outletCollection property="gestureRecognizers" destination="GQC-sh-cSB" appends="YES" id="Lwu-0S-7RZ"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -240,11 +240,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrR-2e-7Md" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="up" id="Kj7-JR-18s">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="GQC-sh-cSB">
                     <connections>
-                        <action selector="swipeHandler:" destination="3PT-bj-e0o" id="4Se-mH-Uol"/>
+                        <action selector="swipeHandler:" destination="3PT-bj-e0o" id="bHD-iw-FhQ"/>
                     </connections>
-                </swipeGestureRecognizer>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="258.48214285714283"/>
         </scene>

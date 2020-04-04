@@ -36,8 +36,21 @@ class MapViewController: UIViewController {
         centerMap()
     }
     
-    @IBAction func swipeHandler(_ gestureRecognizer : UISwipeGestureRecognizer) {
-        print("aaa")
+    @IBAction func swipeHandler(_ gestureRecognizer : UIPanGestureRecognizer) {
+        
+        if (gestureRecognizer.state == .began) {
+            print("Began")
+        }
+        
+        if (gestureRecognizer.state == .changed) {
+            let translation = gestureRecognizer.translation(in: view)
+            
+            print(translation.y)
+        }
+        
+        if (gestureRecognizer.state == .ended) {
+            print("Ended")
+        }
     }
     
     func centerMap(latitude : Double = -1, longitude : Double = -1) {
