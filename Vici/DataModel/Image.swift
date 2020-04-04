@@ -15,6 +15,12 @@ class Image: Codable {
     var legend: String
     // Image URL
     var image: String
+    
+    init(legend: String, image: String) {
+        self.legend = legend
+        self.image = image
+    }
+    
 }
 
 

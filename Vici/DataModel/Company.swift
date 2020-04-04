@@ -14,14 +14,17 @@ import UIKit
  
  */
 class Company: Codable {
-    var id: Int?
     var name: String
     var description: String
+    var location: [Float]?
     var category: Int?
+    var id: Int?
+    var openingHours: String?
+    var adress: [String]?
     var contacts: [String]?
-    var help: String? 
+    var helpMessage: String?
     
-    // var services: [Service]?
+    var services: [Service]?
     var images: [Image]?
     
     init(name: String, description: String) {
@@ -30,3 +33,7 @@ class Company: Codable {
     }
     
 }
+
+
+
+

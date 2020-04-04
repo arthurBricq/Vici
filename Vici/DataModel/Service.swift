@@ -12,16 +12,60 @@ import UIKit
 This class is one service of a company
  */
 class Service: Codable {
-    var name: String
+    var category: Int
     var description: String
-    var logo: String
-    var price: Int?
     
-    init(name: String, description: String, logo: String, price: Int) {
-        self.name = name
+    init(category: Int, description: String) {
         self.description = description
-        self.logo = logo
-        self.price = price
+        self.category = category
+    }
+    
+}
+
+
+/**
+ Enumartion of all the different types of logo
+ */
+enum ServiceCategory: Int {
+    case artisanat
+    case basket
+    case charity
+    case delivery
+    case house
+    case mapPin
+    case restaurant
+    case sport
+    case tools
+    case other
+    
+    func getString() -> String {
+        switch self {
+        case .artisanat: return "Artisanat"
+        case .basket: return "Shopping"
+        case .charity: return "Charity"
+        case .delivery: return "Delivery"
+        case .house: return "House"
+        case .mapPin: return "Point-relais"
+        case .restaurant: return "Restaurant"
+        case .sport: return "Sport"
+        case .tools: return "Tools"
+        case .other: return "Others"
+        }
+    }
+    
+    func getLogoName() -> String {
+        switch self {
+        case .artisanat: return "ArtisanatLogo"
+        case .basket: return "BasketLogo"
+        case .charity: return "CharityLogo"
+        case .delivery: return "DeliveryLogo"
+        case .house: return "HouseLogo"
+        case .mapPin: return "MapPinLogo"
+        case .restaurant: return "RestaurantLogo"
+        case .sport: return "SportLogo"
+        case .tools: return "ToolsLogo"
+        case .other: return "ProfileLogo"
+        }
     }
 }
 

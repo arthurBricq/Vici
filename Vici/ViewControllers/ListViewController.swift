@@ -22,8 +22,33 @@ class ListViewController: UIViewController {
         model.downloadCompanies(url: URLServices.urlTest)
          */
         
-        companies.append(Company(name: "Epicerie", description: "Petite épicerie de quartier à votre panier."))
-        companies.append(Company(name: "Reparateur de vélo", description: "Nous sommes à votre disposition pour réparer vos vélos cassés."))
+        let s1 = Service(category: ServiceCategory.artisanat.rawValue, description: "ABC")
+        let s2 = Service(category: ServiceCategory.basket.rawValue, description: "ABC")
+        let s3 = Service(category: ServiceCategory.charity.rawValue, description: "ABC")
+        let s4 = Service(category: ServiceCategory.delivery.rawValue, description: "ABC")
+        let s5 = Service(category: ServiceCategory.house.rawValue, description: "ABC")
+        let s6 = Service(category: ServiceCategory.other.rawValue, description: "ABC")
+        
+        let i1 = Image(legend: "cover", image: "vaches")
+        let i2 = Image(legend: "cover", image: "velo1")
+        let i3 = Image(legend: "cover", image: "biere1")
+        
+        let c1 = Company(name: "Agriculteur local", description: "Nous sommes une coopérative agricole locale et nous avons beaucoup d'artichaux à revendre !")
+        c1.services = [s1, s2, s3]
+        c1.images = [i1]
+        
+        let c2 = Company(name: "Reparateur de vélo", description: "Nous sommes à votre disposition pour réparer vos vélos cassés.")
+        c2.services = [s2, s4, s3]
+        c2.images = [i2]
+        
+        let c3 = Company(name: "Brasserie", description: "Même en temps de crise, continuez de vous abbreuvez ! On vous livre les provisions.")
+        c3.services = [s5, s6]
+        c3.images = [i3]
+        
+        companies.append(c1)
+        companies.append(c2)
+        companies.append(c3)
+        
         tableViewController?.companies = companies
         tableViewController?.tableView.reloadData()
     }

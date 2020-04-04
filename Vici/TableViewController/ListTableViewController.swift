@@ -9,7 +9,10 @@
 import UIKit
 
 class ListTableViewController: UITableViewController {
-
+    
+    let headerHeight: CGFloat = 70.0
+    let rowHeight: CGFloat = 200.0
+    
     // MARK: - Variables
     
     var companies: [Company] = []
@@ -38,8 +41,31 @@ class ListTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let frame = self.view.frame
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: headerHeight))
+        view.backgroundColor = UIColor.clear
+        
+        let label = UILabel(frame: CGRect(x: 30, y: 12, width: 200, height: 50))
+        label.text = "Discover"
+        label.numberOfLines = 0
+        label.textColor = UIColor.black
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        
+        view.addSubview(label)
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Discover"
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return rowHeight
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -47,6 +73,7 @@ class ListTableViewController: UITableViewController {
         let company = companies[indexPath.row]
         showCompanyMethod?(company)
     }
+    
     
 
     /*
