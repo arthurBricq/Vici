@@ -33,7 +33,6 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
     
     // actions
     @IBAction func createAccountButtonTapped(_ sender: Any) {
-        
         if isCreating {
             var errorMsg = ""
             
@@ -89,11 +88,18 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
             } else {
                 
                 // We can create the account here with the infos
-                
+                if (accountManager.sentPostToCreate(username: username, email: email, password: password)) {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    animateError(for: self.usernameField)
+                    animateError(for: self.emailField)
+                    animateError(for: self.passwordField)
+                    animateError(for: self.confirmPasswordField)
+                    createAccountButton.text = "There is an error"
+                }
                 
             }
         } else {
-            
             let username = usernameField.text!
             let password = passwordField.text!
             
@@ -102,13 +108,15 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
                 animateError(for: self.passwordField)
                 createAccountButton.text = "Username or password empty"
             } else {
-                
-                
-                
+                if (accountManager.sendPostToConnect(username: username, password: password)) {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    animateError(for: self.usernameField)
+                    animateError(for: self.passwordField)
+                    createAccountButton.text = "Username or password incorrect"
+                }
             }
-            
         }
-        
     }
     
     // Make the view wiggle a little to give a feedback to the user
@@ -125,6 +133,7 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
         return emailPredicate.evaluate(with: enteredEmail)
     }
     
+    // check if the password respect our criteria
     func validatePassword(password: String) -> Bool {
         if (password.count < 8) {
             return false
