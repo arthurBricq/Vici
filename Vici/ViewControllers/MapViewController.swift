@@ -16,7 +16,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     // outlets and variables
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var slideView: UIView!
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var companyName: UILabel!
     @IBOutlet weak var companyLogo: UIImageView!
@@ -42,9 +41,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var currentAnnotation: CompanyPointAnnotation?
     
     var startYOfWindow: CGFloat = 0
-    var startHeight: CGFloat = 0
-    // 0 : close, 1 : return to start, 2 : segue
-    var animationEnding = 1
     var swipeAnimator: UIViewPropertyAnimator?
     
     var companies: [Company] = []
@@ -66,45 +62,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         if (gestureRecognizer.state == .began) {
             startYOfWindow = self.slideView.center.y
-            startHeight = heightConstraint.constant
         }
         
         if (gestureRecognizer.state == .changed) {
             let translation = gestureRecognizer.translation(in: self.view)
             gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
             
-            if (slideView.frame.minY >= view.safeAreaInsets.top + 10 || translation.y > 0) {
+            if (slideView.center.y - translation.y >= startYOfWindow || translation.y > 0) {
                 slideView.center.y += translation.y
-                
-                if (heightConstraint.constant >= startHeight) {
-                    heightConstraint.constant -= translation.y
-                    if (heightConstraint.constant < startHeight) {
-                        heightConstraint.constant = startHeight
-                    }
-                }
             }
-            
-            if (slideView.center.y > startYOfWindow) {
-                animationEnding = 0
-            } else if (slideView.frame.minY < mapView.center.y) {
-                animationEnding = 2
-            } else {
-                animationEnding = 1
+            if (slideView.center.y < startYOfWindow) {
+                slideView.center.y = startYOfWindow
             }
         }
         
         if (gestureRecognizer.state == .ended) {
-            if (animationEnding >= 1) {
-                self.heightConstraint.constant = self.startHeight
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.slideView.center.y = self.startYOfWindow
-                    self.slideView.layoutIfNeeded()
-                })
-            } else {
+            let difference = slideView.center.y - startYOfWindow
+            let percentage = difference/slideView.frame.height
+            
+            if (percentage > 0.3) {
                 mapView.deselectAnnotation(currentAnnotation, animated: true)
+            } else {
+                UIView.animate(withDuration: 0.3) {
+                    self.slideView.center.y = self.startYOfWindow
+                }
             }
         }
     }
+    
+    @IBAction func tapGestureToSegue(_ sender: Any) {
+        performSegue(withIdentifier: "mapToCompanyVC", sender: nil)
+    }
+    
     
     // this function can be called without parameters to center on the current location
     // or to center on given location
@@ -151,6 +140,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsCompass = true
         mapView.delegate = self
         
+        centerMap()
+        
         slideView.isHidden = true
         
         let s1 = Service(category: ServiceCategory.artisanat.rawValue, description: "Service 1,")
@@ -182,6 +173,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         companies.append(c1)
         companies.append(c2)
         companies.append(c3)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -198,8 +190,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        centerMap()
-        
         slideView.center.y = mapView.frame.maxY + slideView.frame.height/2
         slideView.isHidden = false
     }
@@ -209,6 +199,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         if (currentAnnotation != nil) {
             mapView.deselectAnnotation(currentAnnotation, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CompanyViewController {
+            dest.company = companies[(currentAnnotation?.companyPos)!]
         }
     }
     

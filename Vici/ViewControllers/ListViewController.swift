@@ -55,10 +55,6 @@ class ListViewController: UIViewController {
     
     func showCompany(company: Company) {
         self.performSegue(withIdentifier: "ListToCompany", sender: company)
-        
-        
-        
-        
     }
     
     

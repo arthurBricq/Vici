@@ -785,6 +785,7 @@
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="GQC-sh-cSB" appends="YES" id="Lwu-0S-7RZ"/>
+                                    <outletCollection property="gestureRecognizers" destination="p4x-V2-YQP" appends="YES" id="PGF-aM-F8s"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -818,9 +819,9 @@
                         <outlet property="centerButton" destination="DKt-lL-mZw" id="Mw7-4n-dUx"/>
                         <outlet property="companyLogo" destination="j5M-xF-rLp" id="sJQ-Fv-qz2"/>
                         <outlet property="companyName" destination="GqL-ed-l4p" id="3Be-IZ-cMA"/>
-                        <outlet property="heightConstraint" destination="0dL-Hd-2fL" id="S7h-yS-ua4"/>
                         <outlet property="mapView" destination="nDb-5o-eFR" id="lEJ-jI-GRA"/>
                         <outlet property="slideView" destination="Uln-GG-iSi" id="IiQ-q1-UOG"/>
+                        <segue destination="RB3-lZ-OlT" kind="show" identifier="mapToCompanyVC" id="9ru-Kg-DRv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrR-2e-7Md" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -829,6 +830,11 @@
                         <action selector="swipeHandler:" destination="3PT-bj-e0o" id="bHD-iw-FhQ"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="p4x-V2-YQP">
+                    <connections>
+                        <action selector="tapGestureToSegue:" destination="3PT-bj-e0o" id="8wb-ds-cE9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="258.48214285714283"/>
         </scene>
@@ -943,7 +949,7 @@
         <image name="vaches" width="1920" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DUh-jk-U53"/>
+        <segue reference="9ru-Kg-DRv"/>
         <segue reference="Yhg-Je-PxX"/>
     </inferredMetricsTieBreakers>
 </document>
