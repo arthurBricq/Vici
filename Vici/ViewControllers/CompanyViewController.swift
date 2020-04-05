@@ -61,6 +61,12 @@ class CompanyViewController: UIViewController {
         
     }
     
+    // this hides the view if we leave using the bar menu
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.popViewController(animated: false)
+    }
+    
     /**
         This function will programmatically update the stackview that shows all the services offered by the company
      */
@@ -99,16 +105,5 @@ class CompanyViewController: UIViewController {
     private func setUpCharitySection() {
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

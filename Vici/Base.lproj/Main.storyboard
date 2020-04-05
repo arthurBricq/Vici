@@ -703,10 +703,10 @@
             </objects>
             <point key="canvasLocation" x="2227.536231884058" y="1309.8214285714284"/>
         </scene>
-        <!--VICI-->
+        <!--MapVC-->
         <scene sceneID="pMM-pA-ZeV">
             <objects>
-                <viewController id="3PT-bj-e0o" customClass="MapViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MapVC" id="3PT-bj-e0o" customClass="MapViewController" customModule="Vici" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BfF-Qu-2kJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -828,7 +828,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nDb-5o-eFR" firstAttribute="top" secondItem="voN-ep-g6Q" secondAttribute="top" id="5df-eS-vNa"/>
                             <constraint firstItem="voN-ep-g6Q" firstAttribute="trailing" secondItem="DKt-lL-mZw" secondAttribute="trailing" constant="25" id="BAD-d0-drG"/>
@@ -842,7 +842,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="voN-ep-g6Q"/>
                     </view>
-                    <navigationItem key="navigationItem" title="VICI" id="hCi-vU-AF8">
+                    <navigationItem key="navigationItem" title="Vici" id="hCi-vU-AF8">
                         <barButtonItem key="leftBarButtonItem" title="Filters" id="OrH-fm-LVB">
                             <connections>
                                 <action selector="filterButtonTapped:" destination="3PT-bj-e0o" id="2NO-BA-5CT"/>

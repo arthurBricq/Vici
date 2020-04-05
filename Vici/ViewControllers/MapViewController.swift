@@ -146,7 +146,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         centerMap()
         
         // set up the slide view
-        slideView.isHidden = true
+        slideView.alpha = 0
         
         
         navigationController?.delegate = self
@@ -202,7 +202,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         if (currentAnnotation != nil) {
             mapView.deselectAnnotation(currentAnnotation, animated: true)
         }
@@ -240,7 +239,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.downView.layer.insertSublayer(gradient2, at: 0)
         
         slideView.center.y = mapView.frame.maxY + slideView.frame.height/2
-        slideView.isHidden = false
+        slideView.alpha = 0
     }
     
 }
@@ -248,6 +247,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 extension MapViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if (view != mapView.view(for: mapView.userLocation)) {
+            slideView.alpha = 1
             currentAnnotation = view.annotation as? CompanyPointAnnotation
             
             let lat = (currentAnnotation?.coordinate.latitude)!
@@ -270,6 +270,11 @@ extension MapViewController : MKMapViewDelegate {
             currentAnnotation = nil
             UIView.animate(withDuration: 0.3, animations: {
                 self.slideView.center.y = self.mapView.frame.maxY + self.slideView.frame.height/2
+            }, completion: {(_) in
+                // check if no annotation is currently on
+                if self.currentAnnotation == nil {
+                    self.slideView.alpha = 0
+                }
             })
         }
     }
