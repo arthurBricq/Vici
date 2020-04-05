@@ -22,6 +22,7 @@ class ListTableViewController: UITableViewController {
     var dataModel: [(sectionName: String, companies: [Company])] = []
     var showCompanyMethod: ((Company) -> Void)?
     var refreshData: (()->Void)?
+    var addMoreRows: (()->Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +86,16 @@ class ListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // We must call the segue to the company page
-        let company = companies[indexPath.row]
+        let company = dataModel[indexPath.section].companies[indexPath.row]
         showCompanyMethod?(company)
     }
     
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == dataModel.count-1 && indexPath.row == dataModel[indexPath.section].companies.count-1 {
+            self.addMoreRows?()
+        }
+    }
     
 
     /*

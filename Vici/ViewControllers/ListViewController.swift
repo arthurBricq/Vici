@@ -101,6 +101,12 @@ class ListViewController: UIViewController {
                 self.isRefreshing = true
                 self.getAllCompanies()
             }
+            dest.addMoreRows = {
+                // Let's download 5 more rows and update it
+                let model = CompanyGetter(delegate: self)
+                model.downloadNCompanies(n: 3, code: 2)
+                self.numberOfRequestInProcess += 1
+            }
         }
         if let dest = segue.destination as? CompanyViewController {
             dest.company = sender as? Company
@@ -126,6 +132,18 @@ extension ListViewController: Downloadable { // implements our Downloadable prot
             numberOfRequestInProcess -= 1
             if let data = data as? Initial {
                 self.dataModelToSend.append((sectionName: "Around you", companies: data.objects))
+            }
+            if numberOfRequestInProcess == 0 {
+                self.sendDataToTVC()
+            }
+        }
+        
+        if code == 2 {
+            // Adding more rows
+            // Request for all the companies
+            numberOfRequestInProcess -= 1
+            if let data = data as? Initial {
+                self.dataModelToSend[1].companies.append(contentsOf: data.objects)
             }
             if numberOfRequestInProcess == 0 {
                 self.sendDataToTVC()
