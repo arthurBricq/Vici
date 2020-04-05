@@ -844,7 +844,7 @@
                         <viewLayoutGuide key="safeArea" id="voN-ep-g6Q"/>
                     </view>
                     <navigationItem key="navigationItem" title="Vici" id="hCi-vU-AF8">
-                        <barButtonItem key="leftBarButtonItem" title="Filters" id="OrH-fm-LVB">
+                        <barButtonItem key="leftBarButtonItem" image="ListIcon" id="OrH-fm-LVB">
                             <connections>
                                 <segue destination="sVR-WG-DMW" kind="popoverPresentation" identifier="filtersPopover" popoverAnchorBarButtonItem="OrH-fm-LVB" id="hrh-G8-cFO">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -1340,7 +1340,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tjT-fd-uR4"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="450"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="400"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="400"/>
                     <connections>
