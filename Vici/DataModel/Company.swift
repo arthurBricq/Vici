@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 var cache = NSCache<NSString, UIImage>()
 
@@ -126,6 +127,15 @@ class Company: Codable {
                 }
             }
         }
+    }
+    
+    func getLocationForMap() -> CLLocationCoordinate2D {
+        if (location != nil) {
+            if (location!.count >= 2) {
+                return CLLocationCoordinate2D(latitude: CLLocationDegrees(location![0]), longitude: CLLocationDegrees(location![1]))
+            }
+        }
+        return CLLocationCoordinate2D(latitude: 0, longitude: 0)
     }
 }
 

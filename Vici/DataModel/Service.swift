@@ -22,6 +22,19 @@ class Service: Codable {
     
 }
 
+enum CompanyCategory: Int {
+    case restaurant = 0
+    case epicerie = 1
+    case fruitVegetables = 2
+    case artisanat = 3
+    case fleuriste = 4
+    case mode = 5
+    case boulangerie = 6
+    case children = 7
+    case alimentaire = 8
+    case sport = 9
+    case other = 10
+}
 
 enum CompanyCategory: Int {
     case restaurant = 0
