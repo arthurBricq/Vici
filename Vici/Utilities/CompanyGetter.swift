@@ -20,26 +20,26 @@ class CompanyGetter {
         self.delegate = delegate
     }
     
-    func downloadAllCompanies(url: String) {
-        let request = networkModel.getGetRequest(url: url)
+    func downloadAllCompanies(code: Int) {
+        let request = networkModel.getGetRequest(url: URLServices.urlGetAllCompanies)
         networkModel.response(request: request) { (data) in
             print(data.description)
             do {
                 let model = try JSONDecoder().decode(Initial?.self, from: data) as Initial?
-                self.delegate?.didReceiveData(data: model! as Initial)
+                self.delegate?.didReceiveData(data: model! as Initial, code: code)
             } catch {
                 print(error)
             }
         }
     }
     
-    func downloadNNearestCompanies(url: String, n: Int) {
-        let request = networkModel.getGetRequest(url: url)
+    func downloadNCompanies(n: Int, code: Int) {
+        let request = networkModel.getGetRequest(url: URLServices.urlGetFirstNCompanies + String(n))
         networkModel.response(request: request) { (data) in
             print(data.description)
             do {
                 let model = try JSONDecoder().decode(Initial?.self, from: data) as Initial?
-                self.delegate?.didReceiveData(data: model! as Initial)
+                self.delegate?.didReceiveData(data: model! as Initial, code: code)
             } catch {
                 print(error)
             }

@@ -13,12 +13,15 @@ class ListViewController: UIViewController {
     var tableViewController: ListTableViewController?
     var companies: [Company] = []
     
+    var isRefreshing: Bool = false
+    var numberOfRequestInProcess: Int = 0
+    var dataModelToSend: [(sectionName: String, companies: [Company])] = []
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Try to get the data from the API
-        let model = CompanyGetter(delegate: self)
-        model.downloadAllCompanies(url: URLServices.urlTest)
+        
+        getAllCompanies()
         
         /*
         // Fake database
@@ -46,23 +49,44 @@ class ListViewController: UIViewController {
         let c3 = Company(name: "Brasserie", description: "Même en temps de crise, continuez de vous abbreuvez ! On vous livre les provisions.")
         c3.services = [s5, s6]
         c3.images = [i3]
-        
         companies.append(c1)
         companies.append(c2)
         companies.append(c3)
-        
-        */
- 
         tableViewController?.companies = companies
         tableViewController?.tableView.reloadData()
+        */
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
+    // MARK: -  functions
+    
+    /// Called by TVC when a CompanyCell is tapped
     func showCompany(company: Company) {
         self.performSegue(withIdentifier: "ListToCompany", sender: company)
+    }
+    
+    /// Fetching function
+    private func getAllCompanies() {
+        // Try to get the data from the API
+        let model = CompanyGetter(delegate: self)
+        model.downloadNCompanies(n: 3, code: 0)
+        model.downloadAllCompanies(code: 1)
+        numberOfRequestInProcess += 2
+    }
+    
+    /// Call this function when wanting to send the collected data to the children TableViewController
+    private func sendDataToTVC() {
+        DispatchQueue.main.async() {
+            if self.isRefreshing {
+                self.isRefreshing = false
+                self.tableViewController?.refreshControl?.endRefreshing()
+            }
+            self.tableViewController?.dataModel = self.dataModelToSend
+            self.tableViewController?.tableView.reloadData()
+        }
     }
     
     // MARK: - Navigation
@@ -73,6 +97,10 @@ class ListViewController: UIViewController {
             dest.showCompanyMethod = { (company) in
                 self.showCompany(company: company)
             }
+            dest.refreshData = {
+                self.isRefreshing = true
+                self.getAllCompanies()
+            }
         }
         if let dest = segue.destination as? CompanyViewController {
             dest.company = sender as? Company
@@ -81,15 +109,29 @@ class ListViewController: UIViewController {
 }
 
 extension ListViewController: Downloadable { // implements our Downloadable protocol
-    func didReceiveData(data: Any) {
-        // The data model has been dowloaded at this point
-        if let data = data as? Initial {
-            DispatchQueue.main.async() {
-            
-                self.companies = data.objects
-                self.tableViewController?.companies = data.objects
-                self.tableViewController?.tableView.reloadData()
+    func didReceiveData(data: Any, code: Int) {
+        if code == 0 {
+            // request for only the three first ones
+            numberOfRequestInProcess -= 1
+            if let data = data as? Initial {
+                self.dataModelToSend.append((sectionName: "Discover", companies: data.objects))
+            }
+            if numberOfRequestInProcess == 0 {
+                self.sendDataToTVC()
             }
         }
+        
+        if code == 1 {
+            // Request for all the companies
+            numberOfRequestInProcess -= 1
+            if let data = data as? Initial {
+                self.dataModelToSend.append((sectionName: "Around you", companies: data.objects))
+            }
+            if numberOfRequestInProcess == 0 {
+                self.sendDataToTVC()
+            }
+        }
+        
+        
     }
 }

@@ -11,13 +11,13 @@ import Foundation
 
 enum URLServices {
     static let baseURL: String = "http://192.168.1.40:8000"
-    static let urlTest: String = "http://192.168.1.40:8000/api/v1/company/"
+    static let urlGetAllCompanies: String = "http://192.168.1.40:8000/api/v1/company/"
+    static let urlGetFirst10Companies: String = "http://192.168.1.40:8000/api/v1/company/?limit=4"
+    static let urlGetFirstNCompanies: String = "http://192.168.1.40:8000/api/v1/company/?limit="
     static let urlForAccount: String = "http://192.168.1.40:8000/login_app/"
 }
 
-
 class Network {
-    
     func getGetRequest(url: String) -> URLRequest {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"

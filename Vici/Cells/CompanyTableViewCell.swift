@@ -57,8 +57,8 @@ class CompanyTableViewCell: UITableViewCell {
     }
     
     public func setCompany(company c: Company) {
-        c.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, coverImageView: nil, logoImageView: nil, serviceImageViews: serviceImageViews)
-        c.displayImages(coverImageView: coverImageView, logoImageView: logoImageView)
+        c.setScreenWithSelf(titleLabel: self.titleLabel, bodyLabel: self.bodyLabel, coverImageView: nil, logoImageView: nil, serviceImageViews: self.serviceImageViews)
+        c.displayImages(coverImageView: self.coverImageView, logoImageView: self.logoImageView)
     }
 
 }

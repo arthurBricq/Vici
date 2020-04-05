@@ -9,5 +9,10 @@
 import Foundation
 
 protocol Downloadable: class {
-    func didReceiveData(data: Any)
+    /**
+    Callback method for when the data is done being loaded.
+     The 'code' field is used to retrieve which result is coming from which request !
+     We want to be able to handle several request at the same time. 
+     */
+    func didReceiveData(data: Any, code: Int)
 }

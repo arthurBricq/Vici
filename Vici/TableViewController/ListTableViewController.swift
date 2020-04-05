@@ -10,33 +10,48 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
     
+    // MARK: - Constants
+    
     let headerHeight: CGFloat = 70.0
     let rowHeight: CGFloat = 200.0
     
     // MARK: - Variables
     
+    // Those variables are to be set by the parent view controller. 
     var companies: [Company] = []
+    var dataModel: [(sectionName: String, companies: [Company])] = []
     var showCompanyMethod: ((Company) -> Void)?
+    var refreshData: (()->Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl!.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
+    }
+
+    
+    @objc func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        // It is the parent view controller in charge of refreshing the data
+        self.refreshData?()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return dataModel.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return companies.count
+        return dataModel[section].companies.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CompanyCell", for: indexPath) as! CompanyTableViewCell
-        let company = companies[indexPath.row]
+        let company = dataModel[indexPath.section].companies[indexPath.row]
         cell.setCompany(company: company)
         return cell
     }
@@ -47,7 +62,7 @@ class ListTableViewController: UITableViewController {
         view.backgroundColor = UIColor.clear
         
         let label = UILabel(frame: CGRect(x: 30, y: 12, width: 200, height: 50))
-        label.text = "Discover"
+        label.text = dataModel[section].sectionName
         label.numberOfLines = 0
         label.textColor = UIColor.black
         label.font = UIFont.preferredFont(forTextStyle: .title1)

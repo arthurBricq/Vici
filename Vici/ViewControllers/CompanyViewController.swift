@@ -37,11 +37,11 @@ class CompanyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         // 1. Set all the data on the screen
         setUpServicesStackView()
         if let company = company {
             company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, coverImageView: coverImateView, logoImageView: logoImageView, serviceImageViews: serviceImageViews)
+            company.displayImages(coverImageView: coverImateView, logoImageView: logoImageView)
         }
         
         // 2. Set round logo image
