@@ -39,7 +39,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    var currentAnnotation: MKAnnotation?
+    var currentAnnotation: CompanyPointAnnotation?
     
     var startYOfWindow: CGFloat = 0
     var startHeight: CGFloat = 0
@@ -47,6 +47,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var animationEnding = 1
     var swipeAnimator: UIViewPropertyAnimator?
     
+    var companies: [Company] = []
     
     // actions and functions
     @IBAction func searchButtonTapped(_ sender: Any) {
@@ -151,20 +152,51 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.delegate = self
         
         slideView.isHidden = true
+        
+        let s1 = Service(category: ServiceCategory.artisanat.rawValue, description: "Service 1,")
+        let s2 = Service(category: ServiceCategory.basket.rawValue, description: "Service 2")
+        let s3 = Service(category: ServiceCategory.charity.rawValue, description: "À votre service, service 3")
+        let s4 = Service(category: ServiceCategory.delivery.rawValue, description: "Coucou")
+        let s5 = Service(category: ServiceCategory.house.rawValue, description: "C'est de la merde ces noms")
+        let s6 = Service(category: ServiceCategory.other.rawValue, description: "Salut ca va oui et toi")
+        
+        let i1 = Image(legend: "cover", image: "vaches")
+        let i2 = Image(legend: "cover", image: "velo1")
+        let i3 = Image(legend: "cover", image: "biere1")
+        
+        let c1 = Company(name: "BioCoop", description: "Nous sommes une coopérative agricole locale et nous avons beaucoup d'artichaux à revendre !")
+        c1.services = [s1, s2, s3]
+        c1.images = [i1]
+        c1.location = [45.7543263, 4.8293729]
+        
+        let c2 = Company(name: "Velo Mec", description: "Nous sommes à votre disposition pour réparer vos vélos cassés.")
+        c2.services = [s2, s4, s3]
+        c2.images = [i2]
+        c2.location = [45.7595525, 4.8315546]
+        
+        let c3 = Company(name: "Chez Leo", description: "Même en temps de crise, continuez de vous abbreuvez ! On vous livre les provisions.")
+        c3.services = [s5, s6]
+        c3.images = [i3]
+        c3.location = [45.7566603, 4.8343156]
+        
+        companies.append(c1)
+        companies.append(c2)
+        companies.append(c3)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        for i in 0..<companies.count {
+            let annotation = CompanyPointAnnotation(pos: i)
+            annotation.coordinate = companies[i].getLocationForMap()
+            annotation.title = companies[i].name
+            mapView.addAnnotation(annotation)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        // These two annotations are just here for testing
-        let annotationTest = MKPointAnnotation()
-        annotationTest.coordinate = CLLocationCoordinate2D(latitude: 45.7580620, longitude: 4.8313981)
-        annotationTest.title = "Chez Leo"
-        mapView.addAnnotation(annotationTest)
-        let annotationTest2 = MKPointAnnotation()
-        annotationTest2.coordinate = CLLocationCoordinate2D(latitude: 45.7590620, longitude: 4.8333981)
-        annotationTest2.title = "Chez Marcel"
-        mapView.addAnnotation(annotationTest2)
         
         centerMap()
         
@@ -185,12 +217,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 extension MapViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if (view != mapView.view(for: mapView.userLocation)) {
-            let lat = (view.annotation?.coordinate.latitude)!
-            let lon = (view.annotation?.coordinate.longitude)!
-            centerMap(latitude: lat, longitude: lon)
-            currentAnnotation = view.annotation
+            currentAnnotation = view.annotation as? CompanyPointAnnotation
             
-            companyName.text = (view.annotation?.title)!
+            let lat = (currentAnnotation?.coordinate.latitude)!
+            let lon = (currentAnnotation?.coordinate.longitude)!
+            centerMap(latitude: lat, longitude: lon)
+            
+            let companyPos = (currentAnnotation?.companyPos)!
+            companyName.text = companies[companyPos].name
+            //currentAnnotation.
             UIView.animate(withDuration: 0.3) {
                 self.slideView.center.y = self.mapView.frame.maxY - self.slideView.frame.height/2
             }

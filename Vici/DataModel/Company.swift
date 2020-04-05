@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 /**
  This class represents a company referenced in our database.
@@ -78,6 +79,14 @@ class Company: Codable {
         
     }
     
+    func getLocationForMap() -> CLLocationCoordinate2D {
+        if (location != nil) {
+            if (location!.count >= 2) {
+                return CLLocationCoordinate2D(latitude: CLLocationDegrees(location![0]), longitude: CLLocationDegrees(location![1]))
+            }
+        }
+        return CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    }
 }
 
 
