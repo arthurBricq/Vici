@@ -30,6 +30,14 @@ class SettingsViewController: UIViewController {
         }
         
         
+        // Check if the app was already launched
+        let hasLaunchBefore = UserDefaults.standard.bool(forKey: "hasLaunchBefore")
+        if !hasLaunchBefore {
+            UserDefaults.standard.set(true, forKey: "hasLaunchBefore")
+            UserDefaults.standard.set(false, forKey: "hasAccount")
+        }
+        
+        
     }
     
 

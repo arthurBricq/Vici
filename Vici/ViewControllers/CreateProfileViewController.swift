@@ -17,34 +17,109 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var checkerButton: CheckerButton!
+    @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var createAccountButton: NiceButton!
+    @IBOutlet weak var bottomPhrase: UILabel!
+    @IBOutlet weak var changeButton: UIButton!
     
+    @IBOutlet var creatingOutlets: [Any]!
+    
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var middleConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    
+    var isCreating = true
     
     // actions
     @IBAction func createAccountButtonTapped(_ sender: Any) {
-        
-        let username = usernameField.text!
-        if (username == "") {
-            animateError(for: self.usernameField)
+        if isCreating {
+            var errorMsg = ""
+            
+            let username = usernameField.text!
+            if (username == "") {
+                animateError(for: self.usernameField)
+                errorMsg = "Username cannot be empty"
+            }
+            
+            let email = emailField.text!
+            if (!validateEmail(enteredEmail: email)) {
+                animateError(for: self.emailField)
+                if (errorMsg == "") {
+                    errorMsg = "Email adress incorrect"
+                } else {
+                    errorMsg = "Multiple fields are incorrect"
+                }
+            }
+            
+            let password = passwordField.text!
+            if (!validatePassword(password: password)) {
+                animateError(for: self.passwordField)
+                animateError(for: self.confirmPasswordField)
+                if (errorMsg == "") {
+                    errorMsg = "Respect password rules"
+                } else {
+                    errorMsg = "Multiple fields are incorrect"
+                }
+            }
+            
+            let confirmed = confirmPasswordField.text!
+            if (confirmed != password) {
+                animateError(for: self.confirmPasswordField)
+                animateError(for: self.confirmPasswordField)
+                if (errorMsg == "") {
+                    errorMsg = "Two different passwords"
+                } else {
+                    errorMsg = "Multiple fields are incorrect"
+                }
+            }
+            
+            if (!checkerButton.isChecked) {
+                animateError(for: self.conditionLabel)
+                if (errorMsg == "") {
+                    errorMsg = "You need to accept conditions"
+                } else {
+                    errorMsg = "Multiple fields are incorrect"
+                }
+            }
+            
+            if (errorMsg != "") {
+                createAccountButton.text = errorMsg
+            } else {
+                
+                // We can create the account here with the infos
+                if (accountManager.sentPostToCreate(username: username, email: email, password: password)) {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    animateError(for: self.usernameField)
+                    animateError(for: self.emailField)
+                    animateError(for: self.passwordField)
+                    animateError(for: self.confirmPasswordField)
+                    createAccountButton.text = "There is an error"
+                }
+                
+            }
+        } else {
+            let username = usernameField.text!
+            let password = passwordField.text!
+            
+            if (username == "" || password == "") {
+                animateError(for: self.usernameField)
+                animateError(for: self.passwordField)
+                createAccountButton.text = "Username or password empty"
+            } else {
+                if (accountManager.sendPostToConnect(username: username, password: password)) {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    animateError(for: self.usernameField)
+                    animateError(for: self.passwordField)
+                    createAccountButton.text = "Username or password incorrect"
+                }
+            }
         }
-        
-        let email = emailField.text!
-        if (!validateEmail(enteredEmail: email)) {
-            animateError(for: self.emailField)
-        }
-        
-        let password = passwordField.text!
-        if (!validatePassword(password: password)) {
-            animateError(for: self.passwordField)
-        }
-        
-        let confirmed = confirmPasswordField.text!
-        if (confirmed != password) {
-            animateError(for: self.confirmPasswordField)
-        }
-        
     }
     
-    // Make the view wiggle a little to gie a feedback to the user
+    // Make the view wiggle a little to give a feedback to the user
     func animateError(for view: UIView) {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: [], animations: {
             view.bounds.size.width += 20
@@ -58,6 +133,7 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
         return emailPredicate.evaluate(with: enteredEmail)
     }
     
+    // check if the password respect our criteria
     func validatePassword(password: String) -> Bool {
         if (password.count < 8) {
             return false
@@ -74,13 +150,40 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func loginButtonTapped(_ sender: Any) {
-    }
-    @IBAction func facebookButtonTapped(_ sender: Any) {
-    }
-    
-    @IBAction func skipButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
+    @IBAction func changeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.25, animations: {
+            for subview in self.mainView.subviews {
+                subview.alpha = 0
+            }
+            self.navigationItem.title = (self.isCreating ? "Create your account" : "Login")
+        }) { (_) in
+            self.isCreating = !self.isCreating
+            for outlet in self.creatingOutlets {
+                let viewOutlet = outlet as! UIView
+                viewOutlet.isHidden = !self.isCreating
+            }
+            if (self.isCreating) {
+                self.bottomPhrase.text = "You already have an account?"
+                self.changeButton.setTitle("Login", for: .normal)
+                self.createAccountButton.text = "Create an account"
+                self.topConstraint.constant = 30
+                self.middleConstraint.constant = 15
+                self.bottomConstraint.constant = 15
+            } else {
+                self.bottomPhrase.text = "You don't have an account?"
+                self.changeButton.setTitle("Create account", for: .normal)
+                self.createAccountButton.text = "Login"
+                self.topConstraint.constant = 150
+                self.middleConstraint.constant = -60
+                self.bottomConstraint.constant = 120
+            }
+            
+            UIView.animate(withDuration: 0.25) {
+                for subview in self.mainView.subviews {
+                    subview.alpha = 1
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {

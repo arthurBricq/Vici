@@ -73,7 +73,7 @@ class ListViewController: UIViewController {
         }
         if let dest = segue.destination as? CompanyViewController {
             dest.company = sender as? Company
-        }
+        }*/
     }
 }
 
