@@ -34,6 +34,8 @@
 		9C31D602243934AB00EB5966 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C31D601243934AB00EB5966 /* AccountManager.swift */; };
 		9C4CE6422439D50B00C954F0 /* CompanyPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CE6412439D50B00C954F0 /* CompanyPointAnnotation.swift */; };
 		9C4CE64A243A085100C954F0 /* MapToCompanyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CE649243A085100C954F0 /* MapToCompanyTransition.swift */; };
+		9C4CE64C243A31BF00C954F0 /* ButtonWithLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CE64B243A31BF00C954F0 /* ButtonWithLogo.swift */; };
+		9C4CE64E243A46FD00C954F0 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4CE64D243A46FD00C954F0 /* FilterViewController.swift */; };
 		9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62B2438CA30000D320D /* ProfileViewController.swift */; };
 		9C8CA62E2438CA4C000D320D /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */; };
 		9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA6332438DE2A000D320D /* CheckerButton.swift */; };
@@ -73,6 +75,8 @@
 		9C31D601243934AB00EB5966 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		9C4CE6412439D50B00C954F0 /* CompanyPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyPointAnnotation.swift; sourceTree = "<group>"; };
 		9C4CE649243A085100C954F0 /* MapToCompanyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToCompanyTransition.swift; sourceTree = "<group>"; };
+		9C4CE64B243A31BF00C954F0 /* ButtonWithLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithLogo.swift; sourceTree = "<group>"; };
+		9C4CE64D243A46FD00C954F0 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		9C8CA62B2438CA30000D320D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		9C8CA6332438DE2A000D320D /* CheckerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerButton.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				9C8CA62B2438CA30000D320D /* ProfileViewController.swift */,
 				9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */,
 				4E0D6DBB2439199A00AC1670 /* CompanyViewController.swift */,
+				9C4CE64D243A46FD00C954F0 /* FilterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				9C8CA6332438DE2A000D320D /* CheckerButton.swift */,
 				9C8CA6352438E6B7000D320D /* NiceButton.swift */,
 				9C4CE649243A085100C954F0 /* MapToCompanyTransition.swift */,
+				9C4CE64B243A31BF00C954F0 /* ButtonWithLogo.swift */,
 			);
 			path = Graphism;
 			sourceTree = "<group>";
@@ -290,6 +296,8 @@
 				9C8CA62C2438CA30000D320D /* ProfileViewController.swift in Sources */,
 				9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */,
 				4ED292622437D046004FA1FD /* ListTableViewController.swift in Sources */,
+				9C4CE64E243A46FD00C954F0 /* FilterViewController.swift in Sources */,
+				9C4CE64C243A31BF00C954F0 /* ButtonWithLogo.swift in Sources */,
 				9C31D602243934AB00EB5966 /* AccountManager.swift in Sources */,
 				4E3C5F272437D6750056B226 /* Service.swift in Sources */,
 				4EAC5C36243885E8006E63CD /* Image.swift in Sources */,

@@ -210,7 +210,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CompanyViewController {
             dest.company = companies[(currentAnnotation?.companyPos)!]
+        } else if segue.identifier == "filtersPopover" {
+            let popoverVC = segue.destination
+            popoverVC.modalPresentationStyle = .popover
+            popoverVC.popoverPresentationController?.delegate = self
         }
+        
     }
     
     func setUpSlideView() {
@@ -292,6 +297,14 @@ extension MapViewController : UINavigationControllerDelegate {
         }
         
         return nil
+    }
+    
+}
+
+extension MapViewController : UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
 }
