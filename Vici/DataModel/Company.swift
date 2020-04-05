@@ -130,12 +130,19 @@ class Company: Codable {
     }
     
     func getLocationForMap() -> CLLocationCoordinate2D {
-        if (location != nil) {
+        /*if (location != nil) {
             if (location!.count >= 2) {
                 return CLLocationCoordinate2D(latitude: CLLocationDegrees(location![0]), longitude: CLLocationDegrees(location![1]))
             }
-        }
-        return CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        }*/ // TODO !!!
+        let splitted = self.location!.split(separator: Character(" "))
+        let max = splitted.count
+        let latStr = splitted[max-2]
+        let lonStr = splitted[max-1]
+        let lat = CLLocationDegrees(latStr)!
+        let lon = CLLocationDegrees(lonStr)!
+        return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        
     }
 }
 

@@ -483,7 +483,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuh-Gb-dUK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="856.52173913043487" y="1342.96875"/>
+            <point key="canvasLocation" x="806" y="1436"/>
         </scene>
         <!--Company View Controller-->
         <scene sceneID="1V9-Rz-suU">
@@ -1383,7 +1383,7 @@
         <image name="vaches" width="1920" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9ru-Kg-DRv"/>
+        <segue reference="DUh-jk-U53"/>
         <segue reference="Yhg-Je-PxX"/>
     </inferredMetricsTieBreakers>
 </document>

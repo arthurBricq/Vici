@@ -30,7 +30,6 @@ class ListTableViewController: UITableViewController {
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl!.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
     }
-
     
     @objc func refresh(sender:AnyObject) {
         // Code to refresh table view
