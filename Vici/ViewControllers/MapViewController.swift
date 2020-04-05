@@ -91,7 +91,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func tapGestureToSegue(_ sender: Any) {
-        performSegue(withIdentifier: "mapToCompanyVC", sender: nil)
+        performSegue(withIdentifier: "mapToCompanyVC", sender: self)
     }
     
     
@@ -139,10 +139,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsScale = true
         mapView.showsCompass = true
         mapView.delegate = self
-        
         centerMap()
         
+        // this is to set it up at its good position without clipping
         slideView.isHidden = true
+        
+        navigationController?.delegate = self
         
         let s1 = Service(category: ServiceCategory.artisanat.rawValue, description: "Service 1,")
         let s2 = Service(category: ServiceCategory.basket.rawValue, description: "Service 2")
@@ -236,4 +238,18 @@ extension MapViewController : MKMapViewDelegate {
             })
         }
     }
+}
+
+extension MapViewController : UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if toVC is CompanyViewController {
+            let transition = MapToCompanyTransition()
+            transition.operation = operation
+            transition.duration = 1
+            return transition
+        }
+        return nil
+    }
+    
 }
