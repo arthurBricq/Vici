@@ -48,7 +48,7 @@ class Company: Codable {
      - ListTableViewController
      - CompanyViewController
      */
-    func setScreenWithSelf(titleLabel: UILabel?, bodyLabel: UILabel?, coverImageView: UIImageView?, logoImageView: UIImageView?, serviceImageViews: [UIImageView]?) {
+    func setScreenWithSelf(titleLabel: UILabel?, bodyLabel: UILabel?, serviceImageViews: [UIImageView]?) {
         
         titleLabel?.text = self.name
         bodyLabel?.text = self.description
@@ -140,7 +140,6 @@ class Company: Codable {
         let lat = Double(latStr)!
         let lon = Double(lonStr)!
         return CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        
     }
 }
 

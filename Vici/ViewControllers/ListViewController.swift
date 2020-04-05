@@ -21,40 +21,17 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add icon to navigation controller bar
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "AppLogo")
+        imageView.image = image
+        navigationItem.titleView = imageView
+        
+        // Get some companies 
         getAllCompanies()
         
-        /*
-        // Fake database
         
-        let s1 = Service(category: ServiceCategory.charity.rawValue, description: "Service 1,")
-        let s2 = Service(category: ServiceCategory.delivery.rawValue, description: "Service 2")
-        let s3 = Service(category: ServiceCategory.charity.rawValue, description: "À votre service, service 3")
-        let s4 = Service(category: ServiceCategory.delivery.rawValue, description: "Coucou")
-        let s5 = Service(category: ServiceCategory.mapPin.rawValue, description: "C'est de la merde ces noms")
-        let s6 = Service(category: ServiceCategory.other.rawValue, description: "Salut ca va oui et toi")
-        
-        let i1 = Image(legend: "cover", image: "vaches")
-        let i2 = Image(legend: "cover", image: "velo1")
-        let i3 = Image(legend: "cover", image: "biere1")
-        
-        let c1 = Company(name: "Agriculteur local", description: "Nous sommes une coopérative agricole locale et nous avons beaucoup d'artichaux à revendre !")
-        c1.services = [s1, s2, s3]
-        c1.images = [i1]
-        
-        let c2 = Company(name: "Velo Mec", description: "Nous sommes à votre disposition pour réparer vos vélos cassés.")
-        
-        c2.services = [s2, s4, s3]
-        c2.images = [i2]
-        
-        let c3 = Company(name: "Brasserie", description: "Même en temps de crise, continuez de vous abbreuvez ! On vous livre les provisions.")
-        c3.services = [s5, s6]
-        c3.images = [i3]
-        companies.append(c1)
-        companies.append(c2)
-        companies.append(c3)
-        tableViewController?.companies = companies
-        tableViewController?.tableView.reloadData()
-        */
     }
     
     override func viewWillAppear(_ animated: Bool) {

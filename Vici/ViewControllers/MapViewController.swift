@@ -171,14 +171,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         if (locationAllowed || (latitude != -1 && longitude != -1)) {
             // corresponds to a zone of around 1km * 1km
             let span = MKCoordinateSpan.init(latitudeDelta: 0.009, longitudeDelta: 0.009)
-            var coord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            
             if (latitude == -1 && longitude == -1) {
-               // coord = (locationManager.location?.coordinate)!
+                if let coord = (locationManager.location?.coordinate) {
+                    let region = MKCoordinateRegion.init(center: coord, span: span)
+                    mapView.setRegion(region, animated: true)
+                }
             }
-            
-            let region = MKCoordinateRegion.init(center: coord, span: span)
-            mapView.setRegion(region, animated: true)
         }
     }
     
@@ -247,8 +245,9 @@ extension MapViewController : MKMapViewDelegate {
             centerMap(latitude: lat, longitude: lon)
             
             let companyPos = (currentAnnotation?.companyPos)!
-            
-            companies[companyPos].setScreenWithSelf(titleLabel: companyName, bodyLabel: companyDescription, coverImageView: imageView, logoImageView: companyLogo, serviceImageViews: servicesImageViews)
+
+            companies[companyPos].setScreenWithSelf(titleLabel: companyName, bodyLabel: companyDescription, serviceImageViews: servicesImageViews)
+            companies[companyPos].displayImages(coverImageView: imageView, logoImageView: companyLogo)
             
             //currentAnnotation.
             UIView.animate(withDuration: 0.3) {

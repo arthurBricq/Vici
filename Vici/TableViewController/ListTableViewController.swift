@@ -13,7 +13,7 @@ class ListTableViewController: UITableViewController {
     // MARK: - Constants
     
     let headerHeight: CGFloat = 70.0
-    let rowHeight: CGFloat = 200.0
+    let rowHeight: CGFloat = 250.0
     
     // MARK: - Variables
     

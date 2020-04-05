@@ -10,6 +10,10 @@ import UIKit
 
 class CompanyViewController: UIViewController {
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     // MARK: - Constants
     
     /// Stands for the height of the row of a service, within the servicesStackView
@@ -20,6 +24,7 @@ class CompanyViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
     @IBOutlet weak var helpHeaderLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var coverImateView: UIImageView!
     @IBOutlet weak var logoImageView: UIImageView!
@@ -28,7 +33,11 @@ class CompanyViewController: UIViewController {
     @IBOutlet weak var servicesStackView: UIStackView!
     @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var contentView: UIView!
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Variables
     
@@ -36,11 +45,13 @@ class CompanyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.bringSubviewToFront(backButton)
+        
+        
         // 1. Set all the data on the screen
         setUpServicesStackView()
         if let company = company {
-            company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, coverImageView: coverImateView, logoImageView: logoImageView, serviceImageViews: serviceImageViews)
+            company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, serviceImageViews: serviceImageViews)
             company.displayImages(coverImageView: coverImateView, logoImageView: logoImageView)
         }
         

@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 class CompanyPointAnnotation: MKPointAnnotation {
-    
+    /// Index in the containing array of the company represented by this annotation
     var companyPos: Int
     
     init(pos: Int) {
