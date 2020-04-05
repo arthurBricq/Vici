@@ -108,6 +108,11 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
                 animateError(for: self.passwordField)
                 createAccountButton.text = "Username or password empty"
             } else {
+                
+                // So every thing is all right
+                // Create the profile here
+                
+                
                 if (accountManager.sendPostToConnect(username: username, password: password)) {
                     self.navigationController?.popViewController(animated: true)
                 } else {

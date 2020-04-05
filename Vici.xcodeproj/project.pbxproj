@@ -94,7 +94,6 @@
 				4E3C5F242437D6190056B226 /* Company.swift */,
 				4E3C5F262437D6750056B226 /* Service.swift */,
 				4EAC5C35243885E8006E63CD /* Image.swift */,
-				9C31D601243934AB00EB5966 /* AccountManager.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -105,6 +104,7 @@
 				4E73A0952438657300D215AF /* Network.swift */,
 				4EAC5C2C24386832006E63CD /* CompanyGetter.swift */,
 				4EAC5C332438829F006E63CD /* ImageLoader.swift */,
+				9C31D601243934AB00EB5966 /* AccountManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
