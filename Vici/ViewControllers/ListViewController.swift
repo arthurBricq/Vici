@@ -22,12 +22,12 @@ class ListViewController: UIViewController {
         model.downloadCompanies(url: URLServices.urlTest)
          */
         
-        let s1 = Service(category: ServiceCategory.artisanat.rawValue, description: "ABC")
-        let s2 = Service(category: ServiceCategory.basket.rawValue, description: "ABC")
-        let s3 = Service(category: ServiceCategory.charity.rawValue, description: "ABC")
-        let s4 = Service(category: ServiceCategory.delivery.rawValue, description: "ABC")
-        let s5 = Service(category: ServiceCategory.house.rawValue, description: "ABC")
-        let s6 = Service(category: ServiceCategory.other.rawValue, description: "ABC")
+        let s1 = Service(category: ServiceCategory.artisanat.rawValue, description: "Service 1,")
+        let s2 = Service(category: ServiceCategory.basket.rawValue, description: "Service 2")
+        let s3 = Service(category: ServiceCategory.charity.rawValue, description: "À votre service, service 3")
+        let s4 = Service(category: ServiceCategory.delivery.rawValue, description: "Coucou")
+        let s5 = Service(category: ServiceCategory.house.rawValue, description: "C'est de la merde ces noms")
+        let s6 = Service(category: ServiceCategory.other.rawValue, description: "Salut ca va oui et toi")
         
         let i1 = Image(legend: "cover", image: "vaches")
         let i2 = Image(legend: "cover", image: "velo1")

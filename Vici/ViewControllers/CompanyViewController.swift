@@ -13,12 +13,13 @@ class CompanyViewController: UIViewController {
     // MARK: - Constants
     
     /// Stands for the height of the row of a service, within the servicesStackView
-    let serviceHeight: CGFloat = 40
+    let serviceHeight: CGFloat = 50
     
     // MARK: - Outlets
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet weak var helpHeaderLabel: UILabel!
     
     @IBOutlet weak var coverImateView: UIImageView!
     @IBOutlet weak var logoImageView: UIImageView!
@@ -36,9 +37,9 @@ class CompanyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUpServicesStackView()
         
-        // 1. Set all the data
+        // 1. Set all the data on the screen
+        setUpServicesStackView()
         if let company = company {
             company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, coverImageView: coverImateView, logoImageView: logoImageView, serviceImageViews: serviceImageViews)
         }
@@ -60,6 +61,9 @@ class CompanyViewController: UIViewController {
         
     }
     
+    /**
+        This function will programmatically update the stackview that shows all the services offered by the company
+     */
     private func setUpServicesStackView() {
         
         // two things to do
@@ -75,15 +79,24 @@ class CompanyViewController: UIViewController {
             let name = ServiceCategory(rawValue: s.category)!.getLogoName()
             let image = UIImage(named: name)
             let imageView = UIImageView(image: image)
-            imageView.frame = CGRect(x: 0, y: 0, width: serviceHeight, height: serviceHeight)
+            imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 1.0, constant: 0.0))
             
-            let stack = UIStackView(arrangedSubviews: [imageView])
+            let label = UILabel()
+            label.text = s.description
+            label.font = UIFont.preferredFont(forTextStyle: .caption1)
+            
+            let stack = UIStackView(arrangedSubviews: [imageView, label])
             stack.axis = .horizontal
+            stack.alignment = .fill
+            stack.distribution = .fill
+            stack.spacing = 8
             self.servicesStackView.addArrangedSubview(stack)
         }
         
-        
-        
+        // TODO (2)
+    }
+    
+    private func setUpCharitySection() {
         
     }
     
