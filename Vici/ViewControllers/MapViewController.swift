@@ -15,11 +15,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     // outlets and variables
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var centerButton: UIButton!
+    
     @IBOutlet weak var slideView: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var downView: UIView!
     @IBOutlet weak var companyName: UILabel!
+    @IBOutlet weak var companyDescription: UILabel!
     @IBOutlet weak var companyLogo: UIImageView!
-    @IBOutlet weak var centerButton: UIButton!
+    @IBOutlet var servicesImageViews: [UIImageView]!
     
     var locationManager = CLLocationManager.init()
     var locationAllowed: Bool {
@@ -141,8 +145,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.delegate = self
         centerMap()
         
-        // this is to set it up at its good position without clipping
+        // set up the slide view
         slideView.isHidden = true
+        
         
         navigationController?.delegate = self
         
@@ -192,8 +197,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        slideView.center.y = mapView.frame.maxY + slideView.frame.height/2
-        slideView.isHidden = false
+        setUpSlideView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -210,6 +214,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func setUpSlideView() {
+        // 1. Set up logo
+        self.companyLogo.layer.cornerRadius = self.companyLogo.frame.width/2
+        self.companyLogo.layer.borderColor = UIColor.gray.cgColor
+        self.companyLogo.layer.borderWidth = 1.0
+        
+        // 2. Set up the gradient of the top
+        let view = UIView(frame: imageView.frame)
+        let gradient = CAGradientLayer()
+        gradient.frame = view.frame
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.0, 1.0]
+        view.layer.insertSublayer(gradient, at: 0)
+        imageView.addSubview(view)
+        imageView.bringSubviewToFront(view)
+        
+        // 3. Set up the gradient of the top
+        let gradient2: CAGradientLayer = CAGradientLayer()
+        gradient2.colors = [UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.clear.cgColor]
+        gradient2.locations = [0.0 , 1.0]
+        gradient2.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradient2.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient2.frame = CGRect(x: 0.0, y: 0.0, width: self.downView.frame.size.width, height: self.downView.frame.size.height)
+        self.downView.layer.insertSublayer(gradient2, at: 0)
+        
+        slideView.center.y = mapView.frame.maxY + slideView.frame.height/2
+        slideView.isHidden = false
+    }
+    
 }
 
 extension MapViewController : MKMapViewDelegate {
@@ -222,7 +255,9 @@ extension MapViewController : MKMapViewDelegate {
             centerMap(latitude: lat, longitude: lon)
             
             let companyPos = (currentAnnotation?.companyPos)!
-            companyName.text = companies[companyPos].name
+            
+            companies[companyPos].setScreenWithSelf(titleLabel: companyName, bodyLabel: companyDescription, coverImageView: imageView, logoImageView: companyLogo, serviceImageViews: servicesImageViews)
+            
             //currentAnnotation.
             UIView.animate(withDuration: 0.3) {
                 self.slideView.center.y = self.mapView.frame.maxY - self.slideView.frame.height/2
@@ -243,12 +278,14 @@ extension MapViewController : MKMapViewDelegate {
 extension MapViewController : UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if toVC is CompanyViewController {
+        
+        if (toVC is CompanyViewController || fromVC is CompanyViewController) {
             let transition = MapToCompanyTransition()
             transition.operation = operation
-            transition.duration = 1
+            transition.duration = 0.5
             return transition
         }
+        
         return nil
     }
     

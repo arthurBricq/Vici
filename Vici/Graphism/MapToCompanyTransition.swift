@@ -33,6 +33,19 @@ class MapToCompanyTransition: NSObject, UIViewControllerAnimatedTransitioning {
             }) { (_) in
                 transitionContext.completeTransition(true)
             }
+        } else {
+            let toView = transitionContext.view(forKey: .to)!
+            let toVC = transitionContext.viewController(forKey: .to) as! MapViewController
+            let fromView = transitionContext.view(forKey: .from)!
+        
+            toView.frame = CGRect(x: 0, y: 0, width: fromView.bounds.width, height: fromView.bounds.height)
+            containerView.insertSubview(toView, belowSubview: fromView)
+            
+            UIView.animate(withDuration: duration, animations: {
+                fromView.frame = CGRect(x: 0, y: toVC.mapView.frame.maxY, width: fromView.bounds.width, height: fromView.bounds.height)
+            }) { (_) in
+                transitionContext.completeTransition(true)
+            }
         }
     }
     
