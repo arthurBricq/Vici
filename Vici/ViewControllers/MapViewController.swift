@@ -47,6 +47,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     var currentAnnotation: CompanyPointAnnotation?
+    var distance: Int = 40
+    // 11 corresponds to all
+    var filterCategorySelected: Int = 11
     
     var startYOfWindow: CGFloat = 0
     var swipeAnimator: UIViewPropertyAnimator?
@@ -56,10 +59,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     // actions and functions
     @IBAction func searchButtonTapped(_ sender: Any) {
         print("search")
-    }
-    
-    @IBAction func filterButtonTapped(_ sender: Any) {
-        print("filter")
     }
     
     @IBAction func centerButtonTapped(_ sender: Any) {
@@ -160,9 +159,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     /// Fetching function
     private func getCompanies() {
         // Try to get the data from the API
-        let model = CompanyGetter(delegate: self)
+        /*let model = CompanyGetter(delegate: self)
         model.downloadAllCompanies(code: 1)
-        numberOfRequestInProcess += 1
+        numberOfRequestInProcess += 1*/
     }
     
     // this function can be called without parameters to center on the current location
@@ -176,7 +175,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             var coord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             
             if (latitude == -1 && longitude == -1) {
-               // coord = (locationManager.location?.coordinate)!
+               coord = (locationManager.location?.coordinate)!
             }
             
             let region = MKCoordinateRegion.init(center: coord, span: span)
@@ -202,7 +201,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         if let dest = segue.destination as? CompanyViewController {
             dest.company = companies[(currentAnnotation?.companyPos)!]
         } else if segue.identifier == "filtersPopover" {
-            let popoverVC = segue.destination
+            let popoverVC = segue.destination as! FilterViewController
+            popoverVC.distance = distance
+            popoverVC.filterCategorySelected = filterCategorySelected
             popoverVC.modalPresentationStyle = .popover
             popoverVC.popoverPresentationController?.delegate = self
         }
@@ -296,6 +297,13 @@ extension MapViewController : UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        if let filterVC = popoverPresentationController.presentedViewController as? FilterViewController {
+            self.distance = filterVC.distance
+            self.filterCategorySelected = filterVC.filterCategorySelected
+        }
     }
     
 }
