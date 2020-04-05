@@ -10,25 +10,24 @@ import Foundation
 
 
 enum URLServices {
-    // change to your PHP script in your own server.
+    static let baseURL: String = "http://192.168.1.40:8000"
     static let urlTest: String = "http://192.168.1.40:8000/api/v1/company/"
-    static let urlForAccount: String = "<ip>:8000/login_app/"
+    static let urlForAccount: String = "http://192.168.1.40:8000/login_app/"
 }
 
 
 class Network {
     
-    func sendGetRequest(url: String) -> URLRequest {
+    func getGetRequest(url: String) -> URLRequest {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         return request
     }
     
-    func sendPostRequest(parameters: [String: Any], url: String) -> URLRequest {
+    func getPostRequest(parameters: [String: Any], url: String) -> URLRequest {
         var request = URLRequest(url: URL(string: url)!)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        
         request.httpBody = parameters.percentEscaped().data(using: .utf8)
         return request
     }

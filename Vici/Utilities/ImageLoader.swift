@@ -9,7 +9,7 @@
 import UIKit
 
 /**
- This class is used to load images and eventually to reuse them.
+ This class is used to load images from remote urls.
  Sources: https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
  */
 class ImageLoader {

@@ -17,16 +17,17 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
 
         // Try to get the data from the API
-        /*
         let model = CompanyGetter(delegate: self)
-        model.downloadCompanies(url: URLServices.urlTest)
-         */
+        model.downloadAllCompanies(url: URLServices.urlTest)
         
-        let s1 = Service(category: ServiceCategory.artisanat.rawValue, description: "Service 1,")
-        let s2 = Service(category: ServiceCategory.basket.rawValue, description: "Service 2")
+        /*
+        // Fake database
+        
+        let s1 = Service(category: ServiceCategory.charity.rawValue, description: "Service 1,")
+        let s2 = Service(category: ServiceCategory.delivery.rawValue, description: "Service 2")
         let s3 = Service(category: ServiceCategory.charity.rawValue, description: "À votre service, service 3")
         let s4 = Service(category: ServiceCategory.delivery.rawValue, description: "Coucou")
-        let s5 = Service(category: ServiceCategory.house.rawValue, description: "C'est de la merde ces noms")
+        let s5 = Service(category: ServiceCategory.mapPin.rawValue, description: "C'est de la merde ces noms")
         let s6 = Service(category: ServiceCategory.other.rawValue, description: "Salut ca va oui et toi")
         
         let i1 = Image(legend: "cover", image: "vaches")
@@ -37,7 +38,8 @@ class ListViewController: UIViewController {
         c1.services = [s1, s2, s3]
         c1.images = [i1]
         
-        let c2 = Company(name: "Reparateur de vélo", description: "Nous sommes à votre disposition pour réparer vos vélos cassés.")
+        let c2 = Company(name: "Velo Mec", description: "Nous sommes à votre disposition pour réparer vos vélos cassés.")
+        
         c2.services = [s2, s4, s3]
         c2.images = [i2]
         
@@ -49,18 +51,19 @@ class ListViewController: UIViewController {
         companies.append(c2)
         companies.append(c3)
         
+        */
+ 
         tableViewController?.companies = companies
         tableViewController?.tableView.reloadData()
     }
     
-    func showCompany(company: Company) {
-        self.performSegue(withIdentifier: "ListToCompany", sender: company)
-        
-        
-        
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
+    func showCompany(company: Company) {
+        self.performSegue(withIdentifier: "ListToCompany", sender: company)
+    }
     
     // MARK: - Navigation
 
@@ -80,10 +83,13 @@ class ListViewController: UIViewController {
 extension ListViewController: Downloadable { // implements our Downloadable protocol
     func didReceiveData(data: Any) {
         // The data model has been dowloaded at this point
-        // Now, pass the data model to the Holidays table view controller
         if let data = data as? Initial {
-           print(data)
+            DispatchQueue.main.async() {
+            
+                self.companies = data.objects
+                self.tableViewController?.companies = data.objects
+                self.tableViewController?.tableView.reloadData()
+            }
         }
-        
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E0D6DBC2439199A00AC1670 /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D6DBB2439199A00AC1670 /* CompanyViewController.swift */; };
+		4E0D6DBE2439D10100AC1670 /* JSONFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D6DBD2439D10100AC1670 /* JSONFeedback.swift */; };
 		4E3C5F252437D6190056B226 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5F242437D6190056B226 /* Company.swift */; };
 		4E3C5F272437D6750056B226 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5F262437D6750056B226 /* Service.swift */; };
 		4E73A0932438653D00D215AF /* Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E73A0922438653D00D215AF /* Swift.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		4E0D6DBB2439199A00AC1670 /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
+		4E0D6DBD2439D10100AC1670 /* JSONFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFeedback.swift; sourceTree = "<group>"; };
 		4E3C5F242437D6190056B226 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		4E3C5F262437D6750056B226 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		4E73A0922438653D00D215AF /* Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				4EAC5C3024387BB7006E63CD /* Initial.swift */,
 				4EAC5C2E2438731E006E63CD /* Meta.swift */,
+				4E0D6DBD2439D10100AC1670 /* JSONFeedback.swift */,
 				4E3C5F242437D6190056B226 /* Company.swift */,
 				4E3C5F262437D6750056B226 /* Service.swift */,
 				4EAC5C35243885E8006E63CD /* Image.swift */,
@@ -101,10 +104,10 @@
 		4E73A0942438656900D215AF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9C31D601243934AB00EB5966 /* AccountManager.swift */,
 				4E73A0952438657300D215AF /* Network.swift */,
 				4EAC5C2C24386832006E63CD /* CompanyGetter.swift */,
 				4EAC5C332438829F006E63CD /* ImageLoader.swift */,
-				9C31D601243934AB00EB5966 /* AccountManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				4EAC5C342438829F006E63CD /* ImageLoader.swift in Sources */,
 				4E73A0992438659F00D215AF /* Dictionary.swift in Sources */,
 				4E0D6DBC2439199A00AC1670 /* CompanyViewController.swift in Sources */,
+				4E0D6DBE2439D10100AC1670 /* JSONFeedback.swift in Sources */,
 				4ED292602437CFE5004FA1FD /* FavoriteViewController.swift in Sources */,
 				4ED292522437B42A004FA1FD /* SettingsViewController.swift in Sources */,
 				9C8CA62E2438CA4C000D320D /* CreateProfileViewController.swift in Sources */,

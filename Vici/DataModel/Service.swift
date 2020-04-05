@@ -23,48 +23,51 @@ class Service: Codable {
 }
 
 
+enum CompanyCategory: Int {
+    case restaurant = 0
+    case epicerie = 1
+    case fruitVegetables = 2
+    case artisanat = 3
+    case fleuriste = 4
+    case mode = 5
+    case boulangerie = 6
+    case children = 7
+    case alimentaire = 8
+    case sport = 9
+    case other = 10
+}
+
+
 /**
  Enumartion of all the different types of logo
  */
 enum ServiceCategory: Int {
-    case artisanat
-    case basket
-    case charity
-    case delivery
-    case house
-    case mapPin
-    case restaurant
-    case sport
-    case tools
-    case other
+    case inStoreShoppin = 0  // = take away
+    case onlineShopping = 1 // TODO LOGO
+    case charity = 2
+    case delivery = 3
+    case mapPin = 4 // = point relai
+    case other = 5
     
     func getString() -> String {
         switch self {
-        case .artisanat: return "Artisanat"
-        case .basket: return "Shopping"
         case .charity: return "Charity"
         case .delivery: return "Delivery"
-        case .house: return "House"
         case .mapPin: return "Point-relais"
-        case .restaurant: return "Restaurant"
-        case .sport: return "Sport"
-        case .tools: return "Tools"
         case .other: return "Others"
+        case .inStoreShoppin: return "Direct Shopping"
+        case .onlineShopping: return "Online Shopping"
         }
     }
     
     func getLogoName() -> String {
         switch self {
-        case .artisanat: return "ArtisanatLogo"
-        case .basket: return "BasketLogo"
         case .charity: return "CharityLogo"
         case .delivery: return "DeliveryLogo"
-        case .house: return "HouseLogo"
         case .mapPin: return "MapPinLogo"
-        case .restaurant: return "RestaurantLogo"
-        case .sport: return "SportLogo"
-        case .tools: return "ToolsLogo"
         case .other: return "ProfileLogo"
+        case .inStoreShoppin: return "BasketLogo"
+        case .onlineShopping: return "ProfileLogo" // todo
         }
     }
 }

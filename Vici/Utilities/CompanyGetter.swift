@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- This class is used to do the fecthing to the database.
+ This class is used to fetch from the database the companies. It is therefore one of the most important class of the project, as it will perform the synchronisation and the population of the tableviews
  */
 class CompanyGetter {
     
@@ -20,14 +20,32 @@ class CompanyGetter {
         self.delegate = delegate
     }
     
-    func downloadCompanies(url: String) {
-        let request = networkModel.sendGetRequest(url: url)
+    func downloadAllCompanies(url: String) {
+        let request = networkModel.getGetRequest(url: url)
         networkModel.response(request: request) { (data) in
             print(data.description)
-            let model = try! JSONDecoder().decode(Initial?.self, from: data) as Initial?
-            self.delegate?.didReceiveData(data: model! as Initial)
+            do {
+                let model = try JSONDecoder().decode(Initial?.self, from: data) as Initial?
+                self.delegate?.didReceiveData(data: model! as Initial)
+            } catch {
+                print(error)
+            }
         }
     }
+    
+    func downloadNNearestCompanies(url: String, n: Int) {
+        let request = networkModel.getGetRequest(url: url)
+        networkModel.response(request: request) { (data) in
+            print(data.description)
+            do {
+                let model = try JSONDecoder().decode(Initial?.self, from: data) as Initial?
+                self.delegate?.didReceiveData(data: model! as Initial)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     
     
 }

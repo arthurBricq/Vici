@@ -87,8 +87,10 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
                 createAccountButton.text = errorMsg
             } else {
                 
+                // HERE: Create accoutn
+                
                 // We can create the account here with the infos
-                if (accountManager.sentPostToCreate(username: username, email: email, password: password)) {
+                if (accountManager.sendPostToCreate(username: username, email: email, password: password)) {
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     animateError(for: self.usernameField)
@@ -100,6 +102,8 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
                 
             }
         } else {
+            // Not creating an accoutn
+            
             let username = usernameField.text!
             let password = passwordField.text!
             
@@ -108,18 +112,20 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
                 animateError(for: self.passwordField)
                 createAccountButton.text = "Username or password empty"
             } else {
-                
                 // So every thing is all right
-                // Create the profile here
+                // Connect to the profile here
                 
+                accountManager.sendPostToConnect(username: username, password: password)
                 
-                if (accountManager.sendPostToConnect(username: username, password: password)) {
+                /*
+                if () {
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     animateError(for: self.usernameField)
                     animateError(for: self.passwordField)
                     createAccountButton.text = "Username or password incorrect"
                 }
+                */
             }
         }
     }

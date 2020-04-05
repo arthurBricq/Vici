@@ -9,15 +9,18 @@
 import UIKit
 
 /**
- This class represents a company referenced in our database.
- It is the constructing elements of our different table views
+ This class represents a company referenced in our database. It is the constructing elements of our different table views.
+ 
+ # Note about loading the pictures
+ 
+ The pictures are impossible to load directly, and when loaded they need to imediatly appear in an UIImageView of a view controller. Gestion of loading pictures will be quite difficult,
  
  */
 class Company: Codable {
     
     var name: String
     var description: String
-    var location: [Float]?
+    var location: String?
     var category: Int?
     var id: Int?
     var openingHours: String?
@@ -27,6 +30,8 @@ class Company: Codable {
     
     var services: [Service]?
     var images: [Image]?
+    
+    
     
     init(name: String, description: String) {
         self.name = name
@@ -71,15 +76,50 @@ class Company: Codable {
             if let cover = images.first(where: { (image) -> Bool in
                 return image.legend == "cover"
             }) {
-                // todo: change this when server connection is done
-                coverImageView?.image = UIImage(named: cover.image)
+                // Look if the image was loaded, and if so display it
+                if let loaded = cover.loadedImage {
+                    coverImageView?.image = UIImage(data: loaded)
+                }
             }
         }
         
     }
     
+    /**
+     Call this function when wanting to display the images of this company.
+     */
+    func displayImages(coverImageView: UIImageView?, logoImageView: UIImageView?) {
+        if let images = images {
+            for image in images {
+                if !image.isLoaded() {
+                    print("need to load one image !")
+                    // load the image
+                    let url = URL(string: URLServices.baseURL + image.image)!
+                    let imageLoader = ImageLoader()
+                    imageLoader.downloadImage(from: url) { (loadedImage) in
+                        if let loadedImage = loadedImage {
+                            // 1. Save the loaded image
+                            image.loadedImage = loadedImage.pngData()
+                            
+                            // 2. Display it
+                            switch image.legend {
+                            case "cover":
+                                coverImageView?.image = loadedImage
+                            case "logo":
+                                logoImageView?.image = loadedImage
+                            default:
+                                print("Image with ")
+                                break
+                            }
+                        } else {
+                            print("DATA ERROR ON GETTING IMAGE")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }
-
-
 
 

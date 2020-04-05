@@ -8,8 +8,11 @@
 
 import Foundation
 
+// Those strucs are used to decode JSON files sent by Django.
+// They are the roots of the JSON files and act as the top part of the cascade
+
 /**
- This class is used to represent the JSON data fetched from the server
+ Top hierarchy JSON data for when fetching **companies**
  */
 struct Initial: Codable {
     var meta: Meta
@@ -20,3 +23,18 @@ struct Initial: Codable {
         self.objects = objects
     }
 }
+
+/**
+Top hierarchy JSON data for when  **connecting to a user profile**
+*/
+struct InitialConnection: Codable {
+    var meta: Meta
+    var feedback: JSONFeedback
+    
+    init(meta: Meta, feedback: JSONFeedback) {
+        self.meta = meta
+        self.feedback = feedback
+    }
+}
+
+

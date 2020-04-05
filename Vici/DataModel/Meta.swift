@@ -17,12 +17,12 @@ class Meta: Codable {
     var next: String?
     var offset: Int
     var previous: String?
-    var total_count: Int
+    var totalCount: Int
     
-    init(limit: Int, offset: Int, total_count: Int) {
+    init(limit: Int, offset: Int, totalCount: Int) {
         self.limit = limit
         self.offset = offset
-        self.total_count = total_count
+        self.totalCount = totalCount
     }
     
 }
