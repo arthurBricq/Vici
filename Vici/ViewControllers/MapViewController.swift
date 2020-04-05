@@ -12,13 +12,10 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
         
-    
-    // MARK: - Outlets
+    // MARK: - Outlet
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var centerButton: UIButton!
-    
-    
     @IBOutlet weak var slideView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var downView: UIView!
@@ -47,13 +44,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     var currentAnnotation: CompanyPointAnnotation?
-    
     var startYOfWindow: CGFloat = 0
     var swipeAnimator: UIViewPropertyAnimator?
-    
     var companies: [Company] = []
     
-    // actions and functions
+    // MARK: - Functions
+
     @IBAction func searchButtonTapped(_ sender: Any) {
         print("search")
     }
@@ -66,6 +62,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         centerMap()
     }
     
+    /// To detect when to perform animation
     @IBAction func swipeHandler(_ gestureRecognizer : UIPanGestureRecognizer) {
         
         if (gestureRecognizer.state == .began) {
@@ -98,6 +95,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    /// To start a segue after the animation
     @IBAction func tapGestureToSegue(_ sender: Any) {
         performSegue(withIdentifier: "mapToCompanyVC", sender: self)
     }
@@ -128,22 +126,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        for i in 0..<companies.count {
-            let annotation = CompanyPointAnnotation(pos: i)
-            annotation.coordinate = companies[i].getLocationForMap()
-            annotation.title = companies[i].name
-            mapView.addAnnotation(annotation)
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         setUpSlideView()
     }
     
@@ -155,18 +144,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    // MARK: - Functions 
+    // MARK: - Functions
+    
+    fileprivate func annotePointsOnScreen() {
+        for i in 0..<companies.count {
+            let annotation = CompanyPointAnnotation(pos: i)
+            annotation.coordinate = companies[i].getLocationForMap()
+            annotation.title = companies[i].name
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
     
     /// Fetching function
     private func getCompanies() {
         // Try to get the data from the API
         let model = CompanyGetter(delegate: self)
         model.downloadAllCompanies(code: 1)
-        numberOfRequestInProcess += 1
     }
     
-    // this function can be called without parameters to center on the current location
-    // or to center on given location
+    /// This function can be called without parameters to center on the current location
+    /// or to center on given location
     func centerMap(latitude : Double = -1, longitude : Double = -1) {
         // if the coords are (-1, -1) we want the location of the phone so we need to check if
         // it is allowed otherwise it can show the map
@@ -184,30 +182,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    // Make the current location unclickable
+    /// Make the current location unclickable
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         if let userLocationView = mapView.view(for: mapView.userLocation) {
             userLocationView.canShowCallout = false
         }
     }
     
-    // When ask for authorization to use location, update the center button to make it visible when needed
+    /// When ask for authorization to use location, update the center button to make it visible when needed
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         centerButton.isHidden = !locationAllowed
     }
     
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CompanyViewController {
-            dest.company = companies[(currentAnnotation?.companyPos)!]
-        } else if segue.identifier == "filtersPopover" {
-            let popoverVC = segue.destination
-            popoverVC.modalPresentationStyle = .popover
-            popoverVC.popoverPresentationController?.delegate = self
-        }
-        
-    }
     
     func setUpSlideView() {
         // 1. Set up logo
@@ -236,6 +222,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         slideView.center.y = mapView.frame.maxY + slideView.frame.height/2
         slideView.alpha = 0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CompanyViewController {
+            dest.company = companies[(currentAnnotation?.companyPos)!]
+        } else if segue.identifier == "filtersPopover" {
+            let popoverVC = segue.destination
+            popoverVC.modalPresentationStyle = .popover
+            popoverVC.popoverPresentationController?.delegate = self
+        }
     }
     
 }
@@ -292,10 +288,24 @@ extension MapViewController : UINavigationControllerDelegate {
     
 }
 
-extension MapViewController : UIPopoverPresentationControllerDelegate {
+extension MapViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
     
+}
+
+extension MapViewController: Downloadable {
+    func didReceiveData(data: Any, code: Int) {
+        
+        if let data = data as? Initial {
+            print("Companies are received")
+            self.companies = data.objects
+            DispatchQueue.main.async {
+                self.annotePointsOnScreen()
+            }
+        }
+        
+    }
 }
