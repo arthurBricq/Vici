@@ -46,6 +46,23 @@ class CompanyGetter {
         }
     }
     
+    func downloadCompaniesWithFilter(distance: Int, code: Int) {
+        // TODO: get appropriate URL for the filtering
+        let request = networkModel.getGetRequest(url: URLServices.urlGetFirstNCompanies)
+        networkModel.response(request: request) { (data) in
+            print(data.description)
+            do {
+                let model = try JSONDecoder().decode(Initial?.self, from: data) as Initial?
+                self.delegate?.didReceiveData(data: model! as Initial, code: code)
+            } catch {
+                print(error)
+            }
+        }
+        
+        
+        
+    }
+    
     
     
 }

@@ -44,6 +44,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     var currentAnnotation: CompanyPointAnnotation?
+
+    var distance: Int = 40
+    // 11 corresponds to all
+    var filterCategorySelected: Int = 11
+    
     var startYOfWindow: CGFloat = 0
     var swipeAnimator: UIViewPropertyAnimator?
     var companies: [Company] = []
@@ -52,10 +57,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBAction func searchButtonTapped(_ sender: Any) {
         print("search")
-    }
-    
-    @IBAction func filterButtonTapped(_ sender: Any) {
-        print("filter")
     }
     
     @IBAction func centerButtonTapped(_ sender: Any) {
@@ -176,6 +177,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let region = MKCoordinateRegion.init(center: coord, span: span)
                     mapView.setRegion(region, animated: true)
                 }
+
             }
         }
     }
@@ -192,6 +194,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         centerButton.isHidden = !locationAllowed
     }
     
+    
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CompanyViewController {
+            dest.company = companies[(currentAnnotation?.companyPos)!]
+        } else if segue.identifier == "filtersPopover" {
+            let popoverVC = segue.destination as! FilterViewController
+            popoverVC.distance = distance
+            popoverVC.filterCategorySelected = filterCategorySelected
+            popoverVC.modalPresentationStyle = .popover
+            popoverVC.popoverPresentationController?.delegate = self
+        }
+        
+    }
     
     func setUpSlideView() {
         // 1. Set up logo
@@ -222,15 +239,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         slideView.alpha = 0
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CompanyViewController {
-            dest.company = companies[(currentAnnotation?.companyPos)!]
-        } else if segue.identifier == "filtersPopover" {
-            let popoverVC = segue.destination
-            popoverVC.modalPresentationStyle = .popover
-            popoverVC.popoverPresentationController?.delegate = self
-        }
-    }
     
 }
 
@@ -291,6 +299,13 @@ extension MapViewController: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        if let filterVC = popoverPresentationController.presentedViewController as? FilterViewController {
+            self.distance = filterVC.distance
+            self.filterCategorySelected = filterVC.filterCategorySelected
+        }
     }
     
 }
