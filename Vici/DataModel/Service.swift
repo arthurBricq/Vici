@@ -34,6 +34,34 @@ enum CompanyCategory: Int {
     case alimentaire = 8
     case sport = 9
     case other = 10
+    
+    func getString() -> String {
+        switch self {
+        case .restaurant:
+            return "Restaurant"
+        case .epicerie:
+            return "Grocery"
+        case .fruitVegetables:
+            return "Fruits and Vegetables"
+        case .artisanat:
+            return "Home made"
+        case .fleuriste:
+            return "Florist"
+        case .mode:
+            return "Fashion"
+        case .boulangerie:
+            return "Boulangerie"
+        case .children:
+            return "Children"
+        case .alimentaire:
+            return "Food"
+        case .sport:
+            return "Sport"
+        case .other:
+            return "Other"
+        }
+    }
+    
 }
 
 /**

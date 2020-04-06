@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HCN-7M-eK5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -220,7 +220,6 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufQ-1R-Szu" customClass="CheckerButton" customModule="Vici" customModuleProvider="target">
                                         <rect key="frame" x="30" y="542.5" width="32" height="32"/>
-
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ufQ-1R-Szu" secondAttribute="height" multiplier="1:1" id="6G1-bx-wOE"/>
                                             <constraint firstAttribute="width" constant="32" id="6fv-Or-A03"/>
@@ -381,7 +380,7 @@
                                             <rect key="frame" x="0.0" y="186" width="414" height="50"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="L86-YZ-s2E">
-                                                    <rect key="frame" x="10" y="10" width="159" height="30"/>
+                                                    <rect key="frame" x="247" y="10" width="159" height="30"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pzf-7h-w1m">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -413,11 +412,19 @@
                                                         </imageView>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vlh-2Z-qBM">
+                                                    <rect key="frame" x="10" y="15" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="2wP-P4-4KE"/>
-                                                <constraint firstItem="L86-YZ-s2E" firstAttribute="leading" secondItem="1Lt-bz-R2x" secondAttribute="leading" constant="10" id="VyQ-7x-Stk"/>
+                                                <constraint firstItem="Vlh-2Z-qBM" firstAttribute="leading" secondItem="1Lt-bz-R2x" secondAttribute="leading" constant="10" id="Mr2-Yi-Tad"/>
+                                                <constraint firstItem="Vlh-2Z-qBM" firstAttribute="centerY" secondItem="1Lt-bz-R2x" secondAttribute="centerY" id="UtR-wZ-nkA"/>
+                                                <constraint firstAttribute="trailing" secondItem="L86-YZ-s2E" secondAttribute="trailing" constant="8" id="h32-LU-R6H"/>
                                                 <constraint firstItem="L86-YZ-s2E" firstAttribute="centerY" secondItem="1Lt-bz-R2x" secondAttribute="centerY" id="mOb-o5-mHh"/>
                                             </constraints>
                                         </view>
@@ -464,6 +471,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bodyLabel" destination="W9V-O9-OoD" id="Dpz-C0-E3o"/>
+                                    <outlet property="categoryLabel" destination="Vlh-2Z-qBM" id="154-r4-9ME"/>
                                     <outlet property="coverImageView" destination="77N-Z0-uki" id="blL-79-Oif"/>
                                     <outlet property="downView" destination="1Lt-bz-R2x" id="E7E-DG-kzK"/>
                                     <outlet property="logoImageView" destination="S4Z-gq-L3z" id="Pco-ug-Ybu"/>
@@ -484,7 +492,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuh-Gb-dUK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="1436"/>
+            <point key="canvasLocation" x="805.79710144927537" y="1435.3794642857142"/>
         </scene>
         <!--Company View Controller-->
         <scene sceneID="1V9-Rz-suU">
@@ -918,31 +926,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GZ-9C-hYq">
-                                <rect key="frame" x="20" y="70.5" width="63.5" height="19.5"/>
+                                <rect key="frame" x="20" y="114.5" width="63.5" height="19.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEV-5w-eAK">
-                                <rect key="frame" x="234" y="70.5" width="46" height="19.5"/>
+                                <rect key="frame" x="234" y="114.5" width="46" height="19.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Toj-O9-w44">
-                                <rect key="frame" x="20" y="120" width="67" height="19.5"/>
+                                <rect key="frame" x="20" y="164" width="67" height="19.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NwF-Hk-WyZ">
-                                <rect key="frame" x="93.5" y="65.5" width="137.5" height="31"/>
+                                <rect key="frame" x="93.5" y="109.5" width="137.5" height="31"/>
                                 <connections>
                                     <action selector="sliderChanged:" destination="sVR-WG-DMW" eventType="valueChanged" id="ugB-Ya-Le8"/>
                                 </connections>
                             </slider>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fqm-H5-2f4">
-                                <rect key="frame" x="10" y="149.5" width="280" height="180"/>
+                                <rect key="frame" x="10" y="193.5" width="280" height="180"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ICh-MZ-SGs">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>

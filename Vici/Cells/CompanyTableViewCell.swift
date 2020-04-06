@@ -18,6 +18,8 @@ class CompanyTableViewCell: UITableViewCell {
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet var serviceImageViews: [UIImageView]!
     @IBOutlet weak var downView: UIView!
+    @IBOutlet weak var categoryLabel: UILabel!
+    
     
     // MARK: - Functions
     
@@ -57,7 +59,7 @@ class CompanyTableViewCell: UITableViewCell {
     }
     
     public func setCompany(company c: Company) {
-        c.setScreenWithSelf(titleLabel: self.titleLabel, bodyLabel: self.bodyLabel, serviceImageViews: self.serviceImageViews)
+        c.setScreenWithSelf(titleLabel: self.titleLabel, bodyLabel: self.bodyLabel, serviceImageViews: self.serviceImageViews, categoryLabel: self.categoryLabel)
         c.displayImages(coverImageView: self.coverImageView, logoImageView: self.logoImageView)
     }
 

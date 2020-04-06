@@ -48,34 +48,31 @@ class Company: Codable {
      - ListTableViewController
      - CompanyViewController
      */
-    func setScreenWithSelf(titleLabel: UILabel?, bodyLabel: UILabel?, serviceImageViews: [UIImageView]?) {
-        
+    func setScreenWithSelf(titleLabel: UILabel?, bodyLabel: UILabel?, serviceImageViews: [UIImageView]?, categoryLabel: UILabel? = nil) {
+        // Set the labels 
         titleLabel?.text = self.name
         bodyLabel?.text = self.description
+        categoryLabel?.text = CompanyCategory(rawValue: category!)?.getString()
         
         // Set the icons on the main page
-        DispatchQueue.global(qos: .background).async {
-            
-            if let services = self.services {
-                var i: Int = 0
-                for s in services {
-                    if let cat = ServiceCategory(rawValue: s.category) {
-                        let name = cat.getLogoName()
-                        if let image = UIImage(named: name) {
-                            DispatchQueue.main.async {
-                                serviceImageViews?[i].image = image
-                            }
-                        } else {
-                            print("LOGO NAME ERROR WITH : ", name)
-                        }
-                        i = i + 1
-                        if i > (serviceImageViews?.count ?? 0) {
-                            break
-                        }
+        if let services = self.services {
+            var i: Int = 0
+            for s in services {
+                if let cat = ServiceCategory(rawValue: s.category) {
+                    let name = cat.getLogoName()
+                    if let image = UIImage(named: name) {
+                        serviceImageViews?[i].image = image
+                    } else {
+                        print("LOGO NAME ERROR WITH : ", name)
+                    }
+                    i = i + 1
+                    if i > (serviceImageViews?.count ?? 0) {
+                        break
                     }
                 }
             }
         }
+        
         
     }
     
