@@ -130,7 +130,7 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // Make the view wiggle a little to give a feedback to the user
+    /// Make the view wiggle a little to give a feedback to the user
     func animateError(for view: UIView) {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: [], animations: {
             view.bounds.size.width += 20
