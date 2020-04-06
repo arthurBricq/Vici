@@ -154,13 +154,12 @@ class CompanyViewController: UIViewController {
         var y0: CGFloat = 0
         let x0: CGFloat = 20
         let spacing: CGFloat = 20
-        let imageSize: CGFloat = 30
+        let imageSize: CGFloat = 3
         if let iv = helpImageView {
             y0 = iv.frame.origin.y + iv.frame.width + 50
         } else {
             y0 = servicesStackView.frame.origin.y + self.servicesStackView.frame.size.height + spacing
         }
-        
         
         let label = UILabel(frame: CGRect(x: x0, y: y0, width: 300, height: 50))
         label.text = "Comments"
@@ -168,12 +167,36 @@ class CompanyViewController: UIViewController {
         
         let imageView = UIImageView(frame: CGRect(x: x0, y: y0+20+spacing, width: imageSize, height: imageSize))
         imageView.image = UIImage(named: "ProfileLogo")
-        let f = imageView.frame
         
+        let h1: CGFloat = 70
+        let line = UIView(frame: CGRect(x: 5, y: 5, width: 2, height: h1-10))
+        line.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+        let view1 = UIView(frame: CGRect(x: x0+imageSize+spacing , y: y0+20+spacing, width: 300, height: h1))
+        let lbl1 = UILabel(frame: CGRect(x: 15, y: 4, width: view1.frame.width - 30, height: view1.frame.height - 20))
+        lbl1.text = "aoiwhdo idoiwvh doia ci ifa iugsf uzg DUFAGZWF OIUSAG FOIUhd ouizgaduzgwa iduz<g douz<ag douigaouzg<a douzagw odiuzgd ouziag "
+        lbl1.font = UIFont.preferredFont(forTextStyle: .caption1)
+        lbl1.numberOfLines = 0
+        lbl1.sizeToFit()
+        view1.addSubview(line)
+        view1.addSubview(lbl1)
         
+        let h2: CGFloat = 70
+        let line2 = UIView(frame: CGRect(x: 5, y: 5, width: 2, height: h2-10))
+        line2.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+        let view2 = UIView(frame: CGRect(x: x0+imageSize+spacing , y: view1.frame.maxY + 10 , width: 300, height: h2))
+        let lbl2 = UILabel(frame: CGRect(x: 15, y: 4, width: view1.frame.width - 30, height: view1.frame.height - 20))
+        lbl2.text = "aoiwhdo idoiwvh doia ci ifa iugsf uzg DUFAGZWF OIUSAG FOIUhd ouizgaduzgwa iduz<g douz<ag douigaouzg<a douzagw odiuzgd ouziag "
+        lbl2.font = UIFont.preferredFont(forTextStyle: .caption1)
+        lbl2.numberOfLines = 0
+        lbl2.sizeToFit()
+        view2.addSubview(line2)
+        view2.addSubview(lbl2)
+
         
         self.contentView.addSubview(label)
         self.contentView.addSubview(imageView)
+        self.contentView.addSubview(view1)
+        self.contentView.addSubview(view2)
         
     }
 
