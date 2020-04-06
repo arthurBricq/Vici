@@ -39,6 +39,8 @@ class CompanyViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    var pictures: [UIImage] = []
+    @IBOutlet weak var collectionView: UICollectionView!
     var helpImageView: UIImageView?
     
     // MARK: - Variables
@@ -49,8 +51,12 @@ class CompanyViewController: UIViewController {
         super.viewDidLoad()
         self.view.bringSubviewToFront(backButton)
         
+        // Set the image collection view
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        self.pictures = [UIImage(named: "carrottes")!, UIImage(named: "vaches")!, UIImage(named: "velo1")!]
         
-        // 1. Set all the data on the screen
+        // Set all the data on the screen
         setUpServicesStackView()
         if let company = company {
             company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, serviceImageViews: serviceImageViews)
@@ -59,12 +65,12 @@ class CompanyViewController: UIViewController {
         setUpCharitySection()
         setUpCommentSection()
         
-        // 2. Set round logo image
+        // Set round logo image
         self.logoImageView.layer.cornerRadius = self.logoImageView.frame.width/2
         self.logoImageView.layer.borderColor = UIColor.gray.cgColor
         self.logoImageView.layer.borderWidth = 1.0
         
-        // 3. Set up gradient
+        // Set up gradient
         let view = UIView(frame: coverImateView.frame)
         let gradient = CAGradientLayer()
         gradient.frame = view.frame
@@ -86,7 +92,6 @@ class CompanyViewController: UIViewController {
         This function will programmatically update the stackview that shows all the services offered by the company
      */
     private func setUpServicesStackView() {
-        
         // two things to do
         // 1. add one row for each service
         // 2. Update the overall height of the content view, so that it is not overbig
@@ -200,4 +205,30 @@ class CompanyViewController: UIViewController {
         
     }
 
+}
+
+extension CompanyViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.pictures.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCollectionViewCell
+        cell.setCell(legend: "Legend", image: self.pictures[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: collectionView.frame.height - 10)
+    }
+    
+    
+    
+    
+    
 }
