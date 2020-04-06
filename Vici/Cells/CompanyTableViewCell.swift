@@ -19,7 +19,8 @@ class CompanyTableViewCell: UITableViewCell {
     @IBOutlet var serviceImageViews: [UIImageView]!
     @IBOutlet weak var downView: UIView!
     @IBOutlet weak var categoryLabel: UILabel!
-
+    @IBOutlet weak var favButton: UIButton!
+    
     // MARK: - Functions
     
     override func awakeFromNib() {
@@ -48,6 +49,7 @@ class CompanyTableViewCell: UITableViewCell {
         gradient2.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient2.frame = CGRect(x: 0.0, y: 0.0, width: self.downView.frame.size.width, height: self.downView.frame.size.height)
         self.downView.layer.insertSublayer(gradient2, at: 0)
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -59,6 +61,15 @@ class CompanyTableViewCell: UITableViewCell {
     public func setCompany(company c: Company) {
         c.setScreenWithSelf(titleLabel: self.titleLabel, bodyLabel: self.bodyLabel, serviceImageViews: self.serviceImageViews, categoryLabel: self.categoryLabel)
         c.displayImages(coverImageView: self.coverImageView, logoImageView: self.logoImageView)
+        
+        
+        
+        // Set up the button
+        if c.isFavorite() {
+            favButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            favButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
 
 }

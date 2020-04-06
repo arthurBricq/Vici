@@ -32,7 +32,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o3p-Xh-gNl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Vici" id="HGl-bV-DUg"/>
+                    <navigationItem key="navigationItem" title="Vici" id="HGl-bV-DUg">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="slider.horizontal.3" catalog="system" id="19P-f0-pWv">
+                            <connections>
+                                <segue destination="sVR-WG-DMW" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="19P-f0-pWv" id="IwD-iW-vNE">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="cer-he-A0A"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="RB3-lZ-OlT" kind="presentation" identifier="ListToCompany" modalPresentationStyle="fullScreen" id="wq5-iY-Ef1"/>
                     </connections>
@@ -745,6 +754,15 @@
                                             <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51A-Oa-Aw2">
+                                            <rect key="frame" x="364" y="21.5" width="30" height="27.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="GKr-mW-8TZ"/>
+                                                <constraint firstAttribute="width" constant="30" id="l8D-bf-MnH"/>
+                                            </constraints>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" backgroundImage="heart" catalog="system"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="MQO-a6-Ovq" firstAttribute="centerX" secondItem="1S5-m0-6h2" secondAttribute="centerX" id="04Y-Lb-s5Z"/>
@@ -753,6 +771,7 @@
                                         <constraint firstAttribute="trailing" secondItem="W9V-O9-OoD" secondAttribute="trailing" constant="13" id="Cip-im-CG4"/>
                                         <constraint firstAttribute="bottom" secondItem="MQO-a6-Ovq" secondAttribute="bottom" id="NE5-Rs-7sz"/>
                                         <constraint firstItem="77N-Z0-uki" firstAttribute="leading" secondItem="1S5-m0-6h2" secondAttribute="leading" id="Pqf-7x-gY3"/>
+                                        <constraint firstItem="51A-Oa-Aw2" firstAttribute="top" secondItem="1S5-m0-6h2" secondAttribute="top" constant="20" id="UoR-SK-ucV"/>
                                         <constraint firstItem="S4Z-gq-L3z" firstAttribute="leading" secondItem="1S5-m0-6h2" secondAttribute="leading" constant="8" id="YNS-uT-XAi"/>
                                         <constraint firstItem="1Lt-bz-R2x" firstAttribute="top" secondItem="W9V-O9-OoD" secondAttribute="bottom" constant="6" id="Z5u-yk-wtC"/>
                                         <constraint firstItem="1Lt-bz-R2x" firstAttribute="leading" secondItem="1S5-m0-6h2" secondAttribute="leading" id="dPM-pB-yfW"/>
@@ -765,6 +784,7 @@
                                         <constraint firstItem="FEW-NK-3Zu" firstAttribute="leading" secondItem="S4Z-gq-L3z" secondAttribute="trailing" constant="15" id="mDE-ob-har"/>
                                         <constraint firstAttribute="trailing" secondItem="77N-Z0-uki" secondAttribute="trailing" id="pQ3-EB-h6s"/>
                                         <constraint firstItem="MQO-a6-Ovq" firstAttribute="top" secondItem="1Lt-bz-R2x" secondAttribute="bottom" id="trk-5a-RFV"/>
+                                        <constraint firstAttribute="trailing" secondItem="51A-Oa-Aw2" secondAttribute="trailing" constant="20" id="z3Q-as-BUk"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -772,6 +792,7 @@
                                     <outlet property="categoryLabel" destination="Vlh-2Z-qBM" id="154-r4-9ME"/>
                                     <outlet property="coverImageView" destination="77N-Z0-uki" id="blL-79-Oif"/>
                                     <outlet property="downView" destination="1Lt-bz-R2x" id="E7E-DG-kzK"/>
+                                    <outlet property="favButton" destination="51A-Oa-Aw2" id="bQa-2J-CYz"/>
                                     <outlet property="logoImageView" destination="S4Z-gq-L3z" id="Pco-ug-Ybu"/>
                                     <outlet property="titleLabel" destination="FEW-NK-3Zu" id="L7e-Kf-7ie"/>
                                     <outletCollection property="serviceImageViews" destination="Pzf-7h-w1m" collectionClass="NSMutableArray" id="uQ4-S2-wR6"/>
@@ -1224,7 +1245,7 @@
                         <viewLayoutGuide key="safeArea" id="voN-ep-g6Q"/>
                     </view>
                     <navigationItem key="navigationItem" title="Vici" id="hCi-vU-AF8">
-                        <barButtonItem key="leftBarButtonItem" image="ListIcon" id="OrH-fm-LVB">
+                        <barButtonItem key="leftBarButtonItem" image="slider.horizontal.3" catalog="system" id="OrH-fm-LVB">
                             <connections>
                                 <segue destination="sVR-WG-DMW" kind="popoverPresentation" identifier="filtersPopover" popoverAnchorBarButtonItem="OrH-fm-LVB" id="hrh-G8-cFO">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -1755,7 +1776,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ult-bP-tcr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="716.79999999999995" y="219.49025487256372"/>
+            <point key="canvasLocation" x="1096" y="516"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Wl2-qZ-fKX">
@@ -1870,12 +1891,14 @@
         <image name="heart" catalog="system" width="64" height="54"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
+        <image name="slider.horizontal.3" catalog="system" width="64" height="50"/>
         <image name="star" catalog="system" width="64" height="58"/>
         <image name="textformat.size" catalog="system" width="64" height="40"/>
         <image name="vaches" width="1920" height="1280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9ru-Kg-DRv"/>
+        <segue reference="IwD-iW-vNE"/>
+        <segue reference="wq5-iY-Ef1"/>
         <segue reference="HC7-8a-jtX"/>
     </inferredMetricsTieBreakers>
 </document>

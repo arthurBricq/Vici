@@ -17,6 +17,10 @@ class ListViewController: UIViewController {
     var numberOfRequestInProcess: Int = 0
     var dataModelToSend: [(sectionName: String, companies: [Company])] = []
 
+    var distance: Int = 40
+    // 11 corresponds to all
+    var filterCategorySelected: Int = 11
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +92,15 @@ class ListViewController: UIViewController {
         if let dest = segue.destination as? CompanyViewController {
             dest.company = sender as? Company
         }
+        if segue.identifier == "FilterSegue" {
+            let popoverVC = segue.destination as! FilterViewController
+            popoverVC.distance = distance
+            popoverVC.filterCategorySelected = filterCategorySelected
+            popoverVC.modalPresentationStyle = .popover
+            popoverVC.popoverPresentationController?.delegate = self
+        }
     }
+    
 }
 
 extension ListViewController: Downloadable { // implements our Downloadable protocol
@@ -129,4 +141,19 @@ extension ListViewController: Downloadable { // implements our Downloadable prot
         
         
     }
+}
+
+extension ListViewController: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        if let filterVC = popoverPresentationController.presentedViewController as? FilterViewController {
+            self.distance = filterVC.distance
+            self.filterCategorySelected = filterVC.filterCategorySelected
+        }
+    }
+    
 }
