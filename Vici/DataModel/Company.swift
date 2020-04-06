@@ -40,6 +40,7 @@ class Company: Codable {
     
     var services: [Service]?
     var images: [Image]?
+    var comments: [StringData]? 
     
     init(name: String, description: String) {
         self.name = name

@@ -10,6 +10,9 @@ import UIKit
 
 class CommentViewController: UIViewController, UITextFieldDelegate {
 
+    var id: Int?
+    var completion: (() -> Void)?
+    
     // MARK: - Outlets
     
     @IBOutlet weak var titleField: UITextField!
@@ -66,7 +69,8 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
         } else {
             // Send comment to data base
             let am = AccountManager()
-            // am.sendPostToComment(companyId: , message: <#T##String#>, stars: <#T##Int#>)
+            am.sendPostToComment(companyId: self.id ?? 0, message: commentTextView.text, stars: amountOfStars)
+            self.completion?()
             self.dismiss(animated: true, completion: nil)
         }
     }

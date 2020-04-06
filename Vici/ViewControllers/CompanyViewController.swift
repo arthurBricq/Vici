@@ -80,11 +80,24 @@ class CompanyViewController: UIViewController {
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Comment" {
+            let dest = segue.destination as! CommentViewController
+            dest.id = self.company!.id
+            dest.completion = {
+                self.setUpCommentSection()
+            }
+        }
+    }
+    
     
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func commentButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "Comment", sender: nil)
+    }
     
     // MARK: - Action
     
@@ -219,6 +232,9 @@ class CompanyViewController: UIViewController {
     }
     
     private func setUpCommentSection() {
+        
+        let comments = self.company!.co
+        
         // 1. Get the starting point where the add some comments
         var y0: CGFloat = 0
         let x0: CGFloat = 20
@@ -291,9 +307,5 @@ extension CompanyViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: collectionView.frame.height - 10)
     }
-    
-    
-    
-    
     
 }

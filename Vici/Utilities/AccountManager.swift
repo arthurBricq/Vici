@@ -57,7 +57,7 @@ class AccountManager {
         }
     }
     
-    func psendPostToCreate(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
+    func sendPostToCreate(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
         let parameters: [String: Any] = ["username": username, "email": email, "password": password]
         let request = Network().getPostRequest(parameters: parameters, url: URLServices.urlForCreateAccount)
         networkModel.response(request: request) { (data) in
@@ -81,7 +81,7 @@ class AccountManager {
     
     func sendPostToComment(companyId: Int, message: String, stars: Int) {
         let c = "/api/v1/company/" + String(companyId) + "/"
-        let parameters: [String: Any] = ["company": c, "message": message, "stars": stars]
+        let parameters: [String: Any] = ["company": c, "message": message, "stars": stars, "user": "/api/v1/user/1/"]
         let request = Network().getPostRequest(parameters: parameters, url: URLServices.urlForComment)
         networkModel.response(request: request) { (data) in
             // 
