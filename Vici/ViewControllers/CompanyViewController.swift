@@ -23,26 +23,68 @@ class CompanyViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
-    @IBOutlet weak var helpHeaderLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var coverImateView: UIImageView!
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet var serviceImageViews: [UIImageView]!
     
     @IBOutlet weak var servicesStackView: UIStackView!
     @IBOutlet weak var stackViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var heartButton: UIButton!
+    var helpImageView: UIImageView?
+    var helpLabel: UILabel?
+    
+    @IBOutlet weak var monFriLabel: UILabel!
+    @IBOutlet weak var satLabel: UILabel!
+    @IBOutlet weak var streetLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    var pictures: [UIImage] = []
+
+    
+    private func setUpScreenWithCompany() {
+        let c = company!
+        
+        let hours = c.openingHours!.split(separator: Character("_"))
+        print(hours)
+        monFriLabel.text = "Mon-Fri:   " + String(hours[0])
+        if hours.count > 1 { satLabel.text = "Sat:   " + String(hours[1]) }
+        
+        streetLabel.text = c.street
+        cityLabel.text = c.city
+        
+        emailLabel.text = c.email
+        phoneNumberLabel.text = c.phone
+        
+        // Get the pictures !!!!
+        self.pictures = []
+        if let images = c.images {
+            // In theory, the image must be all loaded, if we have reached this point
+            // (I know, this is a weak assumption)
+            for i in images {
+                if let loadedImage = cache.object(forKey: String(i.id) as NSString) {
+                    // If the image was loaded, then get its reference for the collection view
+                    self.pictures.append(loadedImage)
+                }
+            }
+        }
+        self.collectionView.reloadData()
+       
+        
+    }
+    
+    
     
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    var pictures: [UIImage] = []
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var heartButton: UIButton!
-    var helpImageView: UIImageView?
     
     // MARK: - Action
     
@@ -62,14 +104,15 @@ class CompanyViewController: UIViewController {
         // Set the image collection view
         collectionView.dataSource = self
         collectionView.delegate = self
-        self.pictures = [UIImage(named: "carrottes")!, UIImage(named: "vaches")!, UIImage(named: "velo1")!]
+        // self.pictures = [UIImage(named: "carrottes")!, UIImage(named: "vaches")!, UIImage(named: "velo1")!]
         
         // Set all the data on the screen
         heartButton.tintColor = UIColor.white
+        setUpScreenWithCompany()
         setUpFavoriteButton()
         setUpServicesStackView()
         if let company = company {
-            company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, serviceImageViews: serviceImageViews)
+            company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, serviceImageViews: nil)
             company.displayImages(coverImageView: coverImateView, logoImageView: logoImageView)
         }
         setUpCharitySection()
@@ -106,7 +149,6 @@ class CompanyViewController: UIViewController {
         }
     }
     
-    
     /**
         This function will programmatically update the stackview that shows all the services offered by the company
      */
@@ -139,7 +181,6 @@ class CompanyViewController: UIViewController {
             self.servicesStackView.addArrangedSubview(stack)
         }
         
-        // TODO (2)
     }
     
     // This section add the Charity part
@@ -160,16 +201,20 @@ class CompanyViewController: UIViewController {
         let f = imageView.frame
         
         let w: CGFloat = 280
-        let helpLabel = UILabel(frame: CGRect(x: x0 + f.size.width + 20 , y: y0+20+spacing, width: w, height: 100))
-        helpLabel.numberOfLines = 0
-        helpLabel.text = "Aidez-moi s'il vous plait on a besoin de vous, je vous marque un text assez long qui explique comment est-ce que vous pouvez m'aidez mais soyons partielle svp"
-        helpLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
-        helpLabel.textAlignment = .justified
-        helpLabel.sizeToFit()
+        helpLabel = UILabel(frame: CGRect(x: x0 + f.size.width + 20 , y: y0+20+spacing, width: w, height: 100))
+        var helpMessage = self.company!.helpMessage ?? ""
+        if helpMessage == "" {
+            helpMessage = "The company didn't ask for help. Please stay home and stay safe !"
+        }
+        helpLabel!.numberOfLines = 0
+        helpLabel!.text = helpMessage
+        helpLabel!.font = UIFont.preferredFont(forTextStyle: .caption1)
+        helpLabel!.textAlignment = .justified
+        helpLabel!.sizeToFit()
         
         self.contentView.addSubview(label)
         self.contentView.addSubview(imageView)
-        self.contentView.addSubview(helpLabel)
+        self.contentView.addSubview(helpLabel!)
     
     }
     
@@ -215,12 +260,13 @@ class CompanyViewController: UIViewController {
         lbl2.sizeToFit()
         view2.addSubview(line2)
         view2.addSubview(lbl2)
-
         
         self.contentView.addSubview(label)
         self.contentView.addSubview(imageView)
         self.contentView.addSubview(view1)
         self.contentView.addSubview(view2)
+        
+        // TODO (2) : set size !!!!!!!
         
     }
 

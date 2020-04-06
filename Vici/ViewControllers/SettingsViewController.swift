@@ -44,5 +44,8 @@ class SettingsViewController: UIViewController {
             secondButton.isHidden = false
         }
     }
+    @IBAction func createAccount(_ sender: Any) {
+        self.performSegue(withIdentifier: "SettingsToProfile", sender: nil)
+    }
     
 }

@@ -9,6 +9,11 @@
 import UIKit
 import CoreLocation
 
+
+class StringData: Codable {
+    var data: String
+}
+
 var cache = NSCache<NSString, UIImage>()
 
 /**
@@ -27,8 +32,10 @@ class Company: Codable {
     var category: Int?
     var id: Int?
     var openingHours: String?
-    var adress: [String]?
-    var contacts: [String]?
+    var street: String?
+    var city: String?
+    var email: String?
+    var phone: String?
     var helpMessage: String?
     
     var services: [Service]?
@@ -96,7 +103,7 @@ class Company: Codable {
                                 switch image.legend {
                                 case "cover": coverImageView?.image = loadedImage
                                 case "logo": logoImageView?.image = loadedImage
-                                default: print("TODO: image to illustrate the company ")
+                                default: print("Other image was loaded")
                                 }
                             }
                         }
@@ -111,7 +118,7 @@ class Company: Codable {
                                         switch image.legend {
                                         case "cover": coverImageView?.image = loadedImage
                                         case "logo": logoImageView?.image = loadedImage
-                                        default: print("TODO: image to illustrate the company ")
+                                        default: print("Other image was loaded")
                                         }
                                     }
                                 }
