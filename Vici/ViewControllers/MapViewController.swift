@@ -109,6 +109,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // request the location when app launches
         locationManager.requestWhenInUseAuthorization()
         centerButton.isHidden = !locationAllowed
+        
+        // Add icon to navigation controller bar
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "AppLogo")
+        imageView.image = image
+        navigationItem.titleView = imageView
 
         // set up the map
         mapView.mapType = .standard

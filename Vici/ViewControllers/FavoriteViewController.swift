@@ -14,6 +14,13 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Add icon to navigation controller bar
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "AppLogo")
+        imageView.image = image
+        navigationItem.titleView = imageView
     }
     
 
