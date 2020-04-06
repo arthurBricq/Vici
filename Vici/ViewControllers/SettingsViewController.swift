@@ -9,46 +9,47 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
-    @IBOutlet weak var imageView: UIImageView!
+    
+    // MARK: - Outlets
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var firstButton: NiceButton!
+    @IBOutlet weak var secondButton: NiceButton!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
-        // Try to load an image and then to display it !
-        
-        let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
-        let imageLoader = ImageLoader()
-        imageLoader.downloadImage(from: url) { (image) in
-            if let image = image {
-                self.imageView.image = image
-            } else {
-                print("DATA ERROR ON GETTING IMAGE")
-            }
-        }
-        
-        
         // Check if the app was already launched
         let hasLaunchBefore = UserDefaults.standard.bool(forKey: "hasLaunchBefore")
         if !hasLaunchBefore {
             UserDefaults.standard.set(true, forKey: "hasLaunchBefore")
             UserDefaults.standard.set(false, forKey: "hasAccount")
         }
-        
+         
+        // Add icon to navigation controller bar
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "AppLogo")
+        imageView.image = image
+        navigationItem.titleView = imageView
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !(UserDefaults.standard.bool(forKey: "hasAccount")) {
+            usernameLabel.text = "You don't have an account"
+            firstButton.text = "Create"
+            emailLabel.isHidden = true
+            secondButton.isHidden = true
+        } else {
+            usernameLabel.text = "Username : " + UserDefaults.standard.string(forKey: "username")!
+            firstButton.text = "Change"
+            emailLabel.text = "Email address : " + UserDefaults.standard.string(forKey: "emailAddress")!
+            emailLabel.isHidden = false
+            secondButton.isHidden = false
+        }
     }
-    */
-
+    
 }

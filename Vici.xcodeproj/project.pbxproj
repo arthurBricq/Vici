@@ -40,6 +40,7 @@
 		9C8CA62E2438CA4C000D320D /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */; };
 		9C8CA6342438DE2A000D320D /* CheckerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA6332438DE2A000D320D /* CheckerButton.swift */; };
 		9C8CA6362438E6B7000D320D /* NiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CA6352438E6B7000D320D /* NiceButton.swift */; };
+		9CF63C76243B08A600E17BE4 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF63C75243B08A600E17BE4 /* UIFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		9C8CA62D2438CA4C000D320D /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		9C8CA6332438DE2A000D320D /* CheckerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerButton.swift; sourceTree = "<group>"; };
 		9C8CA6352438E6B7000D320D /* NiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiceButton.swift; sourceTree = "<group>"; };
+		9CF63C75243B08A600E17BE4 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				4E73A0982438659F00D215AF /* Dictionary.swift */,
+				9CF63C75243B08A600E17BE4 /* UIFont.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				4ED292382437B088004FA1FD /* SceneDelegate.swift in Sources */,
 				4E3C5F252437D6190056B226 /* Company.swift in Sources */,
 				4ED292502437B423004FA1FD /* ListViewController.swift in Sources */,
+				9CF63C76243B08A600E17BE4 /* UIFont.swift in Sources */,
 				4ED2924E2437B419004FA1FD /* MapViewController.swift in Sources */,
 				4EAC5C3124387BB7006E63CD /* Initial.swift in Sources */,
 				4E73A0932438653D00D215AF /* Swift.swift in Sources */,
