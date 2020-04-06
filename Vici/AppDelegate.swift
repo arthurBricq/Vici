@@ -15,6 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        UserDefaults.standard.set(true, forKey: "hasLaunchBefore")
+        UserDefaults.standard.set(false, forKey: "hasAccount")
+        UserDefaults.standard.set("", forKey: "username")
+        UserDefaults.standard.set("", forKey: "emailAddress")
+        UserDefaults.standard.set([], forKey: "favorites")
+        
+        // Check if the app was already launched
+        let hasLaunchBefore = UserDefaults.standard.bool(forKey: "hasLaunchBefore")
+        if !hasLaunchBefore {
+            UserDefaults.standard.set(true, forKey: "hasLaunchBefore")
+            UserDefaults.standard.set(false, forKey: "hasAccount")
+            UserDefaults.standard.set("", forKey: "username")
+            UserDefaults.standard.set("", forKey: "emailAddress")
+            UserDefaults.standard.set([], forKey: "favorites")
+        }
+        
+        
         return true
     }
 

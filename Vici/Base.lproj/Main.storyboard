@@ -968,19 +968,22 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-ia-ysj" customClass="HeartView" customModule="Vici" customModuleProvider="target">
-                                                <rect key="frame" x="364" y="128.5" width="30" height="30"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIA-5E-Qhh">
+                                                <rect key="frame" x="364" y="130" width="30" height="27.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="8wj-I3-cpx"/>
-                                                    <constraint firstAttribute="height" constant="30" id="oOH-i1-L3d"/>
+                                                    <constraint firstAttribute="height" constant="30" id="fVO-TF-Jl7"/>
+                                                    <constraint firstAttribute="width" constant="30" id="iAn-2j-rmp"/>
                                                 </constraints>
-                                            </view>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" backgroundImage="heart" catalog="system"/>
+                                                <connections>
+                                                    <action selector="heartButton:" destination="RB3-lZ-OlT" eventType="touchUpInside" id="1ZK-eP-CA7"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="jT0-43-OcA" firstAttribute="top" secondItem="9Fx-wl-JlY" secondAttribute="bottom" id="3QT-b9-Bmo"/>
-                                            <constraint firstItem="b7x-ia-ysj" firstAttribute="centerY" secondItem="1Rg-6b-MsZ" secondAttribute="centerY" id="5i8-Nc-MbU"/>
                                             <constraint firstItem="yEl-ar-11h" firstAttribute="top" secondItem="Ab9-lG-uck" secondAttribute="bottom" constant="6" id="680-Yi-lT5"/>
                                             <constraint firstItem="l7S-8b-qE6" firstAttribute="leading" secondItem="vPG-P8-8Jy" secondAttribute="leading" id="7or-5p-60y"/>
                                             <constraint firstItem="bbf-c7-JTm" firstAttribute="top" secondItem="U6s-Lz-Bcn" secondAttribute="top" constant="180" id="8dZ-rF-IRA"/>
@@ -1000,10 +1003,10 @@
                                             <constraint firstAttribute="trailing" secondItem="Wjj-du-8nQ" secondAttribute="trailing" constant="10" id="JZH-nz-eKJ"/>
                                             <constraint firstItem="jRi-ZY-0kT" firstAttribute="top" secondItem="jT0-43-OcA" secondAttribute="bottom" constant="10" id="MHB-72-Vnh"/>
                                             <constraint firstItem="ZL3-AF-8er" firstAttribute="bottom" secondItem="Gt5-QU-G2Y" secondAttribute="bottom" id="ObY-zj-Y8h"/>
-                                            <constraint firstAttribute="trailing" secondItem="b7x-ia-ysj" secondAttribute="trailing" constant="20" id="Ox4-yp-pIB"/>
                                             <constraint firstItem="cwo-1I-LRm" firstAttribute="top" secondItem="U6s-Lz-Bcn" secondAttribute="top" id="QVK-Xf-kef"/>
                                             <constraint firstItem="Gt5-QU-G2Y" firstAttribute="width" secondItem="U6s-Lz-Bcn" secondAttribute="width" multiplier="0.8" id="RSd-kk-zwU"/>
                                             <constraint firstItem="cwo-1I-LRm" firstAttribute="leading" secondItem="U6s-Lz-Bcn" secondAttribute="leading" id="RU2-dC-X2t"/>
+                                            <constraint firstAttribute="trailing" secondItem="xIA-5E-Qhh" secondAttribute="trailing" constant="20" id="RYN-XB-oxB"/>
                                             <constraint firstItem="jT0-43-OcA" firstAttribute="leading" secondItem="U6s-Lz-Bcn" secondAttribute="leading" constant="20" id="SM5-wF-REp"/>
                                             <constraint firstItem="1Rg-6b-MsZ" firstAttribute="centerX" secondItem="U6s-Lz-Bcn" secondAttribute="centerX" id="UsA-N2-BHl"/>
                                             <constraint firstItem="HW1-X7-MGN" firstAttribute="leading" secondItem="3Tm-i0-mnB" secondAttribute="leading" id="VXe-oG-klr"/>
@@ -1014,6 +1017,7 @@
                                             <constraint firstItem="HW1-X7-MGN" firstAttribute="top" secondItem="3Tm-i0-mnB" secondAttribute="bottom" constant="6" id="gOE-vb-n7T"/>
                                             <constraint firstItem="bbf-c7-JTm" firstAttribute="top" secondItem="1Rg-6b-MsZ" secondAttribute="bottom" constant="20" id="gtq-uf-KLF"/>
                                             <constraint firstItem="Gt5-QU-G2Y" firstAttribute="top" secondItem="jRi-ZY-0kT" secondAttribute="bottom" constant="20" id="h9H-nC-ku7"/>
+                                            <constraint firstItem="xIA-5E-Qhh" firstAttribute="centerY" secondItem="1Rg-6b-MsZ" secondAttribute="centerY" id="jW4-44-5Kg"/>
                                             <constraint firstItem="ETH-Vj-r8l" firstAttribute="leading" secondItem="nhO-9D-eeo" secondAttribute="leading" id="jht-Md-qO5"/>
                                             <constraint firstItem="UBZ-1S-9EW" firstAttribute="top" secondItem="bbf-c7-JTm" secondAttribute="bottom" constant="10" id="n6M-gZ-Czm"/>
                                             <constraint firstItem="9Fx-wl-JlY" firstAttribute="top" secondItem="l7S-8b-qE6" secondAttribute="bottom" constant="10" id="oZA-tz-J1p"/>
@@ -1055,6 +1059,7 @@
                         <outlet property="collectionView" destination="jT0-43-OcA" id="e3h-hU-ABL"/>
                         <outlet property="contentView" destination="U6s-Lz-Bcn" id="KmF-VZ-Guc"/>
                         <outlet property="coverImateView" destination="cwo-1I-LRm" id="M6P-hD-Tl5"/>
+                        <outlet property="heartButton" destination="xIA-5E-Qhh" id="jJd-tg-XtL"/>
                         <outlet property="logoImageView" destination="bbf-c7-JTm" id="m2E-wD-eAb"/>
                         <outlet property="servicesStackView" destination="Gt5-QU-G2Y" id="z5r-jG-Ook"/>
                         <outlet property="stackViewHeightConstraint" destination="SP7-1p-g6E" id="KUs-AY-YHG"/>
@@ -1835,6 +1840,7 @@
         <image name="SearchLogo" width="120" height="120"/>
         <image name="SettingsIcon" width="25" height="25"/>
         <image name="doc.text" catalog="system" width="56" height="64"/>
+        <image name="heart" catalog="system" width="64" height="54"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
         <image name="star" catalog="system" width="64" height="58"/>

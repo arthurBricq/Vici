@@ -138,6 +138,30 @@ class Company: Codable {
         let lon = Double(lonStr)!
         return CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }
+    
+    public func isFavorite() -> Bool {
+        if let favorites = UserDefaults.standard.array(forKey: "favorites") as? [Int] {
+            return favorites.contains(self.id!)
+        }
+        return false
+    }
+    
+    public func changeFavoriteSetting() {
+        if let favorites = UserDefaults.standard.array(forKey: "favorites") as? [Int] {
+            if let index = favorites.firstIndex(where: { (id) -> Bool in id == self.id! }) {
+                // It means the favorite needs to be removed
+                var tmp = favorites
+                tmp.remove(at: index)
+                UserDefaults.standard.set(tmp, forKey: "favorites")
+            }
+            else {
+                // It means we need to add in the favorites
+                var tmp = favorites
+                tmp.append(self.id!)
+                UserDefaults.standard.set(tmp, forKey: "favorites")
+            }
+        }
+    }
 }
 
 

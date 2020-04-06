@@ -41,7 +41,15 @@ class CompanyViewController: UIViewController {
     
     var pictures: [UIImage] = []
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var heartButton: UIButton!
     var helpImageView: UIImageView?
+    
+    // MARK: - Action
+    
+    @IBAction func heartButton(_ sender: Any) {
+        self.company!.changeFavoriteSetting()
+        self.setUpFavoriteButton()
+    }
     
     // MARK: - Variables
     
@@ -57,6 +65,8 @@ class CompanyViewController: UIViewController {
         self.pictures = [UIImage(named: "carrottes")!, UIImage(named: "vaches")!, UIImage(named: "velo1")!]
         
         // Set all the data on the screen
+        heartButton.tintColor = UIColor.white
+        setUpFavoriteButton()
         setUpServicesStackView()
         if let company = company {
             company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, serviceImageViews: serviceImageViews)
@@ -79,7 +89,6 @@ class CompanyViewController: UIViewController {
         view.layer.insertSublayer(gradient, at: 0)
         coverImateView.addSubview(view)
         coverImateView.bringSubviewToFront(view)
-        
     }
     
     // this hides the view if we leave using the bar menu
@@ -87,6 +96,16 @@ class CompanyViewController: UIViewController {
         super.viewDidDisappear(animated)
         navigationController?.popViewController(animated: false)
     }
+    
+    private func setUpFavoriteButton() {
+        let isFavorite: Bool = self.company!.isFavorite()
+        if isFavorite {
+            heartButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            heartButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
     
     /**
         This function will programmatically update the stackview that shows all the services offered by the company

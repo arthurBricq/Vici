@@ -18,13 +18,6 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Check if the app was already launched
-        let hasLaunchBefore = UserDefaults.standard.bool(forKey: "hasLaunchBefore")
-        if !hasLaunchBefore {
-            UserDefaults.standard.set(true, forKey: "hasLaunchBefore")
-            UserDefaults.standard.set(false, forKey: "hasAccount")
-        }
          
         // Add icon to navigation controller bar
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
