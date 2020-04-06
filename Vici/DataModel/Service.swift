@@ -33,7 +33,7 @@ enum CompanyCategory: Int {
     case children = 7 // todo
     case alimentaire = 8 // todo
     case sport = 9 // todo
-    case other = 10 // todo 
+    case other = 10 // todo
     
     func getString() -> String {
         switch self {
