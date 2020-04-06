@@ -64,6 +64,9 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
         } else if (commentTextView.text == "") {
             animateError(for: commentTextView)
         } else {
+            // Send comment to data base
+            let am = AccountManager()
+            // am.sendPostToComment(companyId: , message: <#T##String#>, stars: <#T##Int#>)
             self.dismiss(animated: true, completion: nil)
         }
     }

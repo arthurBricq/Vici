@@ -84,7 +84,8 @@ class Company: Codable {
     }
     
     /**
-     Call this function when wanting to display the images of this company. If the image wasn't loaded so far, then it will load it from the server. Else, it will simply reuse it as the image will be on the cache.
+     Call this function when wanting to display the images of this company. If the image wasn't loaded so far, then it will load it from the server.
+     Else, it will simply reuse it as the image will be on the cache.
      */
     func displayImages(coverImageView: UIImageView?, logoImageView: UIImageView?) {
         DispatchQueue.global(qos: .userInitiated).async  {

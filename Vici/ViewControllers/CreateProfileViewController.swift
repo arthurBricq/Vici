@@ -86,19 +86,25 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
             if (errorMsg != "") {
                 createAccountButton.text = errorMsg
             } else {
-                
-                // HERE: Create accoutn
+                print("Start to create account ! ")
                 
                 // We can create the account here with the infos
-                if (accountManager.sendPostToCreate(username: username, email: email, password: password)) {
-                    self.navigationController?.popViewController(animated: true)
-                } else {
-                    animateError(for: self.usernameField)
-                    animateError(for: self.emailField)
-                    animateError(for: self.passwordField)
-                    animateError(for: self.confirmPasswordField)
-                    createAccountButton.text = "There is an error"
-                }
+                accountManager.sendPostToCreate(username: username, email: email, password: password, completion: { (sucess) -> Void in
+                    if sucess {
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.animateError(for: self.usernameField)
+                            self.animateError(for: self.emailField)
+                            self.animateError(for: self.passwordField)
+                            self.animateError(for: self.confirmPasswordField)
+                            self.createAccountButton.text = "There is an error"
+                        }
+                    }
+                })
+                
                 
             }
         } else {
@@ -115,17 +121,20 @@ class CreateProfileViewController: UIViewController, UITextFieldDelegate {
                 // So every thing is all right
                 // Connect to the profile here
                 
-                accountManager.sendPostToConnect(username: username, password: password)
+                accountManager.sendPostToConnect(username: username, password: password, completion: { (success) -> Void in
+                    if (success) {
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.animateError(for: self.usernameField)
+                            self.animateError(for: self.passwordField)
+                            self.createAccountButton.text = "Username or password incorrect"
+                        }
+                    }
+                })
                 
-                /*
-                if () {
-                    self.navigationController?.popViewController(animated: true)
-                } else {
-                    animateError(for: self.usernameField)
-                    animateError(for: self.passwordField)
-                    createAccountButton.text = "Username or password incorrect"
-                }
-                */
             }
         }
     }

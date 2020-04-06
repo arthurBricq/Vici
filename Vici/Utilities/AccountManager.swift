@@ -27,18 +27,27 @@ class AccountManager {
         set { UserDefaults.standard.set(newValue, forKey: "apiKey") }
     }
     
-    func sendPostToConnect(username: String, password: String) -> Bool {
+    func sendPostToConnect(username: String, password: String, completion: @escaping (Bool) -> Void) {
         
         let parameters: [String: Any] = ["username": username, "password": password]
         let request = Network().getPostRequest(parameters: parameters, url: URLServices.urlForAccount)
         networkModel.response(request: request) { (data) in
             print(data.description)
             do {
-                let model = try JSONDecoder().decode(InitialConnection?.self, from: data) as InitialConnection?
-                print(model! as InitialConnection)
+                let model = try JSONDecoder().decode(JSONFeedback?.self, from: data) as JSONFeedback?
+                let success = model!.success
+                if (success) {
+                    UserDefaults.standard.set(true, forKey: "hasAccount")
+                    self.username = username
+                    print("KEY: ", model!.apiKey)
+                    self.apiKey = model!.apiKey
+                }
+                completion(success)
             } catch {
                 print(error)
+                completion(false)
             }
+            // work !!
         }
         
         let success = true
@@ -46,21 +55,38 @@ class AccountManager {
             UserDefaults.standard.set(true, forKey: "hasAccount")
             self.username = username
         }
-        return success
     }
     
-    func sendPostToCreate(username: String, email: String, password: String) -> Bool {
+    func psendPostToCreate(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
         let parameters: [String: Any] = ["username": username, "email": email, "password": password]
-        //let request = Network().sendPostRequest(parameters: parameters, url: <#T##String#>)
-        
-        let success = true
-        if (success) {
-            UserDefaults.standard.set(true, forKey: "hasAccount")
-            self.username = username
-            self.emailAddress = email
+        let request = Network().getPostRequest(parameters: parameters, url: URLServices.urlForCreateAccount)
+        networkModel.response(request: request) { (data) in
+            do {
+                let model = try JSONDecoder().decode(JSONFeedback?.self, from: data) as JSONFeedback?
+                let success = model!.success
+                if (success) {
+                    UserDefaults.standard.set(true, forKey: "hasAccount")
+                    self.username = username
+                    self.emailAddress = email
+                    print("KEY: ", model!.apiKey)
+                    self.apiKey = model!.apiKey
+                }
+                completion(success)
+            } catch {
+                print(error)
+                 completion(false)
+            }
+        }
+    }
+    
+    func sendPostToComment(companyId: Int, message: String, stars: Int) {
+        let c = "/api/v1/company/" + String(companyId) + "/"
+        let parameters: [String: Any] = ["company": c, "message": message, "stars": stars]
+        let request = Network().getPostRequest(parameters: parameters, url: URLServices.urlForComment)
+        networkModel.response(request: request) { (data) in
+            // 
         }
         
-        return success
     }
     
 }

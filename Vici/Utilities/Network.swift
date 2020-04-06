@@ -17,6 +17,9 @@ enum URLServices {
     static let urlGetFirst10Companies: String = "http://192.168.1.40:8000/api/v1/company/?limit=4"
     static let urlGetFirstNCompanies: String = "http://192.168.1.40:8000/api/v1/company/?limit="
     static let urlForAccount: String = "http://192.168.1.40:8000/login_app/"
+    static let urlForCreateAccount: String = "http://192.168.1.40:8000/sign_up_app/"
+    static let urlForComment: String = "http://192.168.1.40:8000/api/v1/comment/"
+
 }
 
 class Network {
