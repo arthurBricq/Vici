@@ -23,17 +23,17 @@ class Service: Codable {
 }
 
 enum CompanyCategory: Int {
-    case restaurant = 0
-    case epicerie = 1
-    case fruitVegetables = 2
-    case artisanat = 3
-    case fleuriste = 4
-    case mode = 5
-    case boulangerie = 6
-    case children = 7
-    case alimentaire = 8
-    case sport = 9
-    case other = 10
+    case restaurant = 0 // ok
+    case epicerie = 1 // todo
+    case fruitVegetables = 2 // todo
+    case artisanat = 3 // todo
+    case fleuriste = 4 // todo
+    case mode = 5 // todo
+    case boulangerie = 6 // todo
+    case children = 7 // todo
+    case alimentaire = 8 // todo
+    case sport = 9 // todo
+    case other = 10 // todo 
     
     func getString() -> String {
         switch self {

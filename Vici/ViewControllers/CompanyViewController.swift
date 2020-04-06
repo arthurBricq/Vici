@@ -39,6 +39,8 @@ class CompanyViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    var helpImageView: UIImageView?
+    
     // MARK: - Variables
     
     var company: Company?
@@ -54,6 +56,8 @@ class CompanyViewController: UIViewController {
             company.setScreenWithSelf(titleLabel: titleLabel, bodyLabel: bodyLabel, serviceImageViews: serviceImageViews)
             company.displayImages(coverImageView: coverImateView, logoImageView: logoImageView)
         }
+        setUpCharitySection()
+        setUpCommentSection()
         
         // 2. Set round logo image
         self.logoImageView.layer.cornerRadius = self.logoImageView.frame.width/2
@@ -101,6 +105,7 @@ class CompanyViewController: UIViewController {
             let label = UILabel()
             label.text = s.description
             label.font = UIFont.preferredFont(forTextStyle: .caption1)
+            label.numberOfLines = 0
             
             let stack = UIStackView(arrangedSubviews: [imageView, label])
             stack.axis = .horizontal
@@ -113,7 +118,62 @@ class CompanyViewController: UIViewController {
         // TODO (2)
     }
     
+    // This section add the Charity part
+    // Assume it is to be added
     private func setUpCharitySection() {
+        let spacing: CGFloat = 30
+        let imageSize: CGFloat = 30
+        let y0 = self.servicesStackView.frame.origin.y + self.servicesStackView.frame.size.height + spacing
+        let x0: CGFloat = 20
+        
+        let label = UILabel(frame: CGRect(x: x0, y: y0, width: 300, height: 50))
+        label.text = "How to help us"
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        
+        let imageView = UIImageView(frame: CGRect(x: x0, y: y0+20+spacing, width: imageSize, height: imageSize))
+        imageView.image = UIImage(named: "CharityLogo")
+        self.helpImageView = imageView
+        let f = imageView.frame
+        
+        let w: CGFloat = 280
+        let helpLabel = UILabel(frame: CGRect(x: x0 + f.size.width + 20 , y: y0+20+spacing, width: w, height: 100))
+        helpLabel.numberOfLines = 0
+        helpLabel.text = "Aidez-moi s'il vous plait on a besoin de vous, je vous marque un text assez long qui explique comment est-ce que vous pouvez m'aidez mais soyons partielle svp"
+        helpLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        helpLabel.textAlignment = .justified
+        helpLabel.sizeToFit()
+        
+        self.contentView.addSubview(label)
+        self.contentView.addSubview(imageView)
+        self.contentView.addSubview(helpLabel)
+    
+    }
+    
+    private func setUpCommentSection() {
+        // 1. Get the starting point where the add some comments
+        var y0: CGFloat = 0
+        let x0: CGFloat = 20
+        let spacing: CGFloat = 20
+        let imageSize: CGFloat = 30
+        if let iv = helpImageView {
+            y0 = iv.frame.origin.y + iv.frame.width + 50
+        } else {
+            y0 = servicesStackView.frame.origin.y + self.servicesStackView.frame.size.height + spacing
+        }
+        
+        
+        let label = UILabel(frame: CGRect(x: x0, y: y0, width: 300, height: 50))
+        label.text = "Comments"
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        
+        let imageView = UIImageView(frame: CGRect(x: x0, y: y0+20+spacing, width: imageSize, height: imageSize))
+        imageView.image = UIImage(named: "ProfileLogo")
+        let f = imageView.frame
+        
+        
+        
+        self.contentView.addSubview(label)
+        self.contentView.addSubview(imageView)
         
     }
 
