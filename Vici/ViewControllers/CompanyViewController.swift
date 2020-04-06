@@ -147,7 +147,7 @@ class CompanyViewController: UIViewController {
     private func setUpCharitySection() {
         let spacing: CGFloat = 30
         let imageSize: CGFloat = 30
-        let y0 = self.servicesStackView.frame.origin.y + self.servicesStackView.frame.size.height + spacing
+        let y0 = self.servicesStackView.frame.origin.y + stackViewHeightConstraint.constant + spacing - 15
         let x0: CGFloat = 20
         
         let label = UILabel(frame: CGRect(x: x0, y: y0, width: 300, height: 50))
