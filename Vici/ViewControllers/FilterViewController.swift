@@ -15,6 +15,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var distanceSlider: UISlider!
     @IBOutlet var buttonOutlets: [UIButton]!
+    @IBOutlet var titleOutlets: [UILabel]!
     
     // MARK: - Variables
     var distance: Int = 40
@@ -23,7 +24,7 @@ class FilterViewController: UIViewController {
     // MARK: - Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setImageColorableForAll()
+        setImagesForAll()
         
         let x = Float(log(0.01718*Double(distance) + 1))
         distanceSlider.setValue(x, animated: false)
@@ -52,19 +53,35 @@ class FilterViewController: UIViewController {
         let lastButton = buttonOutlets[filterCategorySelected]
         
         lastButton.tintColor = UIColor.black
+        lastButton.setTitleColor(UIColor.black, for: .normal)
         filterCategorySelected = button.tag
         button.tintColor = UIColor.blue
+        button.setTitleColor(UIColor.blue, for: .normal)
     }
     
     /// This function has to be called when view appear to make the image of the buttons colorable
-    func setImageColorableForAll() {
+    func setImagesForAll() {
         for i in 0..<buttonOutlets.count {
-            let image = buttonOutlets[i].backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
-            buttonOutlets[i].setBackgroundImage(image, for: .normal)
-            if i == filterCategorySelected {
-                buttonOutlets[i].tintColor = UIColor.blue
+            
+            if (i != buttonOutlets.count - 1) {
+                let companyCategory: CompanyCategory = CompanyCategory(rawValue: i)!
+                
+                titleOutlets[i].text = companyCategory.getString()
+                
+                let image = companyCategory.getImage().withRenderingMode(.alwaysTemplate)
+                buttonOutlets[i].setBackgroundImage(image, for: .normal)
+                
+                if i == filterCategorySelected {
+                    buttonOutlets[i].tintColor = UIColor.blue
+                } else {
+                    buttonOutlets[i].tintColor = UIColor.black
+                }
             } else {
-                buttonOutlets[i].tintColor = UIColor.black
+                if i == filterCategorySelected {
+                    buttonOutlets[i].setTitleColor(UIColor.blue, for: .normal)
+                } else {
+                    buttonOutlets[i].setTitleColor(UIColor.black, for: .normal)
+                }
             }
         }
     }

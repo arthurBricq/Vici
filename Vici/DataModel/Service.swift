@@ -42,15 +42,15 @@ enum CompanyCategory: Int {
         case .epicerie:
             return "Grocery"
         case .fruitVegetables:
-            return "Fruits and Vegetables"
+            return "Fruit & Veg"
         case .artisanat:
-            return "Home made"
+            return "Craft"
         case .fleuriste:
             return "Florist"
         case .mode:
             return "Fashion"
         case .boulangerie:
-            return "Boulangerie"
+            return "Baker"
         case .children:
             return "Children"
         case .alimentaire:
@@ -59,6 +59,33 @@ enum CompanyCategory: Int {
             return "Sport"
         case .other:
             return "Other"
+        }
+    }
+    
+    func getImage() -> UIImage {
+        switch self {
+        case .restaurant:
+            return UIImage(named: "restaurant")!
+        case .epicerie:
+            return UIImage(named: "HouseLogo")!
+        case .fruitVegetables:
+            return UIImage(named: "vegetables")!
+        case .artisanat:
+            return UIImage(named: "artisanat")!
+        case .fleuriste:
+            return UIImage(named: "fluriste")!
+        case .mode:
+            return UIImage(named: "mode")!
+        case .boulangerie:
+            return UIImage(named: "boulangerie")!
+        case .children:
+            return UIImage(named: "children")!
+        case .alimentaire:
+            return UIImage(named: "alimentaire")!
+        case .sport:
+            return UIImage(named: "sport")!
+        case .other:
+            return UIImage(systemName: "questionmark.circle")!
         }
     }
     
