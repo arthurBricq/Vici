@@ -184,7 +184,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let region = MKCoordinateRegion.init(center: coord, span: span)
                     mapView.setRegion(region, animated: true)
                 }
-
+            } else {
+                let coord = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let region = MKCoordinateRegion.init(center: coord, span: span)
+                mapView.setRegion(region, animated: true)
             }
         }
     }
