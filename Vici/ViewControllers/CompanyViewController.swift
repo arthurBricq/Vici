@@ -233,7 +233,9 @@ class CompanyViewController: UIViewController {
     
     private func setUpCommentSection() {
         
-        let comments = self.company!.co
+        if let comments = self.company!.comments {
+            print("Number of comments :", comments.count)
+        }
         
         // 1. Get the starting point where the add some comments
         var y0: CGFloat = 0
