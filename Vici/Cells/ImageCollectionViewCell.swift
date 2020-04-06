@@ -14,7 +14,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     public func setCell(legend: String, image: UIImage) {
         self.imageView.image = image
-        self.imageView.contentMode = .scaleAspectFit
+        self.imageView.contentMode = .scaleAspectFill
     }
     
     

@@ -23,6 +23,16 @@ class FavoriteViewController: UIViewController {
         navigationItem.titleView = imageView
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let favorites = UserDefaults.standard.array(forKey: "favorites") as? [Int] {
+            for id in favorites {
+                // todo 
+            }
+        }
+    }
+    
 
     /*
     // MARK: - Navigation
