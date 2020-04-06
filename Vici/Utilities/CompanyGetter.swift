@@ -66,8 +66,8 @@ class CompanyGetter {
         networkModel.response(request: request) { (data) in
             print(data.description)
             do {
-                let model = try JSONDecoder().decode(Initial?.self, from: data) as Initial?
-                self.delegate?.didReceiveData(data: model! as Initial, code: code)
+                let model = try JSONDecoder().decode(Company?.self, from: data) as Company?
+                self.delegate?.didReceiveData(data: model! as Company, code: code)
             } catch {
                 print(error)
             }

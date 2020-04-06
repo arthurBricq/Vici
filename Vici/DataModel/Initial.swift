@@ -28,7 +28,7 @@ struct Initial: Codable {
 Top hierarchy JSON data for when  **connecting to a user profile**
 */
 struct InitialConnection: Codable {
-    var meta: Meta
+    var meta: Meta?
     var feedback: JSONFeedback
     
     init(meta: Meta, feedback: JSONFeedback) {
